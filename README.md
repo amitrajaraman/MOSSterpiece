@@ -3,6 +3,5 @@
 ## Pun ideas
 
 * MOSSterpiece
-<!--* Like a MOSS-->
-* MOSSmerising
+<!--* Like a MOSS-->* MOSSmerising
 * Detecting MOSStakes
