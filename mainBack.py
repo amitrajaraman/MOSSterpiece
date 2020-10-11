@@ -4,11 +4,15 @@ import scipy.spatial.distance
 
 def cosine_similarity(c1, c2):
 	if(c1.shape != c2.shape):
-		print("ERROR")
-		return 0
+		print("ERROR"),
+		return ""
 	return (1 - scipy.spatial.distance.cosine(c1, c2))
 
 if __name__ == "__main__":
+
+	algo = 0
+	# 0 for the basic BoW, 1 for LSA
+
 	directory = 'inputDir'
 	filenames = [name for name in os.listdir(directory)]
 	numFiles = len(filenames)
@@ -30,8 +34,6 @@ if __name__ == "__main__":
 				baseDict[word][i] += 1
 
 	baseArray = np.array(list(baseDict.values()))
-	baseArray = baseArray.T
-	
 	#print(baseArray)
 
 	#Do some weighting to the matrix
@@ -48,24 +50,40 @@ if __name__ == "__main__":
 	* Cosine normalization
 	"""
 
-	u, s, v = np.linalg.svd(baseArray, False)
-	
-	lowRank = 20
-	# Pick optimal rank reduction; google!!!
+	if(algo == 0):
+		sortedArray = np.sort(baseArray, 0, 'mergesort')
+		
+		for i in range(numFiles):
+			print(filenames[i]),
+			for j in range(numFiles):
+				print(cosine_similarity(sortedArray[:, i], sortedArray[:, j])),
+			print("")
 
-	uRed = u[:, :lowRank]
-	sRed = np.diag(s[:lowRank])
-	vRed = v[:, :lowRank]
+	if(algo == 1):
 
-	vRed = vRed.T
+		u, s, v = np.linalg.svd(baseArray, False)
 
-	for i in range(numFiles):
-		print(filenames[i]),
-		for j in range(numFiles):
-			print(cosine_similarity(vRed[:,i], vRed[:, j])),
-		print("")
+		lowRank = 20
+		# Pick optimal rank reduction; google!!!
 
-	# print(baseArray.shape, 	lowRankArr.shape)
+		uRed = u[:, :lowRank]
+		sRed = np.diag(s[:lowRank])
+		vRed = v[:, :lowRank]
+		print(u.shape, uRed.shape)
+		print(s.shape, sRed.shape)
+		print(v.shape, vRed.shape)
 
-	# for i in range(lowRankArr.shape[1]):
-	# 	for j in range(lowRankArr.shape[1]):
+		arrRed = np.dot(np.dot(uRed, sRed), vRed.T)
+
+
+
+		for i in range(numFiles):
+			print(filenames[i]),
+			for j in range(numFiles):
+				print(cosine_similarity(arrRed[:, i], arrRed[:, j])),
+			print("")
+
+		# print(baseArray.shape, 	lowRankArr.shape)
+
+		# for i in range(lowRankArr.shape[1]):
+		# 	for j in range(lowRankArr.shape[1]):
