@@ -1,32 +1,40 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { FormComponent } from './form/form.component';
-import { AppRoutingModule } from './app-routing.module';
-import { ContactComponent } from './contact/contact.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { PreHeaderComponent } from './pre-header/pre-header.component';
+import { LandingComponent } from './landing/landing.component';
+import { LoginComponent } from './login/login.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { SignupComponent } from './signup/signup.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FormComponent,
-    ContactComponent
+    PreHeaderComponent,
+    LandingComponent,
+    LoginComponent,
+    AboutUsComponent,
+    SignupComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
-    NoopAnimationsModule,
-    MatToolbarModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

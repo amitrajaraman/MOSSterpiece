@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { FormComponent } from './form/form.component';
-import { ContactComponent } from './contact/contact.component';
+import { Routes, RouterModule } from '@angular/router';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { LandingComponent } from './landing/landing.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
-  { path: 'form', component: FormComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: '', redirectTo: '/contact', pathMatch: 'full' },
-  { path: '**', redirectTo: '/contact', pathMatch: 'full' },
+  {path : '', component : LandingComponent },
+  {path : 'login', component: LoginComponent },
+  {path : 'aboutus', component: AboutUsComponent },
+  {path : 'signup', component: SignupComponent},
+  {path: 'upload', component: FileUploadComponent},
 ];
 
 @NgModule({
@@ -15,3 +19,10 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+
+/*const routes: Routes = [
+  { path: 'feedback', component: ContactFormComponent },
+  { path: 'contact', component: ContactPageComponent },
+  { path: '**', redirectTo: 'contact', pathMatch: 'prefix' },
+]; */
