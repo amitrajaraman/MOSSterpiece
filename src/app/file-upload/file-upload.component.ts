@@ -14,24 +14,38 @@ import {SharedService} from 'src/app/shared.service';
 
 export class FileUploadComponent implements OnInit {
 
+  zip:any;
+
   constructor(private service:SharedService) { }
 
   ngOnInit(): void {
+    this.zip = undefined;
   }
 
   @Input() emp:any;
   ZipFileName:string;
   ZipPath:string;
 
-  uploadZip(event){
-    var file = event.target.files[0];
-    const formdata: FormData=new FormData();
-    formdata.append('uploadedFile',file,file.name);
+  updateZip(event){
+    this.zip = event;
+  }
 
-    this.service.UploadZip(formdata).subscribe((data:any)=>{
-      this.ZipFileName = data.toString();
-      this.ZipPath=this.service.ZipUrl+this.ZipFileName;
-    })
+  uploadZip(){
+    if(this.zip==undefined){
+      window.alert("Please upload a zip file.");
+    }
+    else{
+      var file = this.zip.target.files[0];
+      const formdata: FormData=new FormData();
+      formdata.append('uploadedFile',file,file.name);
+
+      this.service.UploadZip(formdata).subscribe((data:any)=>{
+        this.ZipFileName = data.toString();
+        this.ZipPath=this.service.ZipUrl+this.ZipFileName;
+      })
+
+      window.alert("Uploaded Successfully!");
+    }
   }
 
 }
