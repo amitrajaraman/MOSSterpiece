@@ -16,7 +16,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import{SharedService} from './shared.service';
-
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
@@ -27,7 +26,7 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
     LoginComponent,
     AboutUsComponent,
     SignupComponent,
-    FileUploadComponent
+    FileUploadComponent,
   ],
   imports: [
     BrowserModule,
