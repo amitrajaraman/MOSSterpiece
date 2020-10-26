@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 })
 export class SharedService {
   readonly APIUrl = "http://127.0.0.1:8000/";
-  //Add http url for media upload here as well
+  readonly ZipUrl = "http://127.0.0.1:8000/media/";
 
   constructor(private http:HttpClient) { }
 
@@ -20,6 +20,9 @@ export class SharedService {
   }
 
   //Once working, add functionalities here for PUT,DELETE and the such!
-  //Add Method to save profile pictures here!
+
+  UploadZip(val:any){
+    return this.http.post(this.APIUrl+'SaveFile',val);
+  }
 
 }
