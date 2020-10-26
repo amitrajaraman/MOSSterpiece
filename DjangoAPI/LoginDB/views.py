@@ -1,7 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
-from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
@@ -40,3 +37,10 @@ def userApi(request,del_name=""):
         user=Users.objects.get(name=del_name)
         user.delete()
         return JsonResponse("Deleted Succeffully!!", safe=False)
+
+@csrf_exempt
+def SaveFile(request):
+    file=request.FILES['uploadedFile']
+    file_name = default_storage.save(file.name,file)
+
+    return JsonResponse(file_name,safe=False)
