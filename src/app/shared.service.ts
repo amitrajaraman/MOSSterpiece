@@ -19,6 +19,10 @@ export class SharedService {
     return this.http.post(this.APIUrl + 'signupreq/',val);
   }
 
+  login(val: any):Observable<any>{
+    return this.http.post(this.APIUrl + 'api/login/', val);
+  }
+
   //Once working, add functionalities here for PUT,DELETE and the such!
 
   UploadZip(val:any){

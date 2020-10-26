@@ -31,14 +31,15 @@ export class SignupComponent implements OnInit {
     }
     else{
       var data = {
-        first: this.form_firstname.value,
-        last: this.form_lastname.value,
-        name: this.form_username.value,
+        first_name: this.form_firstname.value,
+        last_name: this.form_lastname.value,
+        username: this.form_username.value,
         email: this.form_email.value,
-        pw: this.form_password.value
+        password: this.form_password.value
       }
 
       this.service.addUser(data).subscribe(res=>{
+        console.log(res);
         window.alert(res.toString());
       });
       
