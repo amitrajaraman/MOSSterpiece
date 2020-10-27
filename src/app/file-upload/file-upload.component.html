@@ -8,4 +8,7 @@
 <ng-template #loggedIn>
     <input type="file" (change)="updateZip($event)"/>
     <button (click)="uploadZip()" > Upload! </button>
+    <div *ngIf="this.download;" >
+        <button (click)="Download()">Download</button>
+    </div>
 </ng-template>

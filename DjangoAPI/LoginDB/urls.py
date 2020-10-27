@@ -8,6 +8,9 @@ urlpatterns=[
     url(r'signupreq/$',views.userAPI.as_view()),
     # url(r'signupreq/([\w{}.-]+)',views.userApi),
 
-    url(r'^SaveFile$', views.SaveFile),
+    url(r'^api/files/', views.fileAPI.as_view()),
     url(r'^api/login/', views.loginAPI.as_view()),
+    url(r'^api/logout/', views.logoutAPI.as_view()),
+    url(r'^api/files/(?P<path>.*)$', views.fileAPI.as_view(),
+        {'document root': settings.MEDIA_ROOT}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

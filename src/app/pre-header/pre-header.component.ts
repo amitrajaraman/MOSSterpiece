@@ -28,8 +28,6 @@ export class PreHeaderComponent implements OnInit {
           }
         );
       }
-   
-  }
 
   ngOnInit(): void {
     this.messengerService.message.subscribe(m => this.messages = m);

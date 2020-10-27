@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 
@@ -14,6 +14,7 @@ export class MessengerService {
     public setMessage(value: string) {
         this.messageSource.next(value);
     }
+    public getMessage(): string{ return this.messageSource.value}
 }
 
 
@@ -23,9 +24,7 @@ export class MessengerService {
 export class SharedService {
   readonly APIUrl = "http://127.0.0.1:8000/";
   readonly ZipUrl = "http://127.0.0.1:8000/media/";
-  httpOptions = {
-    headers: new HttpHeaders({ 'Authorization': `Token ${btoa(AuthService.getToken())}` })
-  };
+  
   constructor(private http:HttpClient, private token: MessengerService) { }
 
   getUserList():Observable<any[]>{
@@ -40,16 +39,30 @@ export class SharedService {
     return this.http.post(this.APIUrl + 'api/login/', val);
   }
 
-  logout(val: any):Observable<any>{
-
-    return this.http.post(this.APIUrl + 'api/logout/', val);
+  logout():Observable<any>{
+    const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
+    const httpOptions = {
+          headers: headers_object
+        };
+    return this.http.post(this.APIUrl + 'api/logout/', httpOptions);
   }
   //Once working, add functionalities here for PUT,DELETE and the such!
 
   UploadZip(val:any){
-    return this.http.post(this.APIUrl+'SaveFile',val);
+    const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
+    const httpOptions = {
+          headers: headers_object
+        };
+    return this.http.post(this.APIUrl+'api/files/',val, httpOptions);
   }
 
+  downloadFile(path:string): Observable<Blob>{
+    const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
+    const httpOptions = {
+          headers: headers_object
+        };
+    return this.http.get<Blob>(this.APIUrl+'api/files/?path=' + path, httpOptions);
+  }
 
 
 }

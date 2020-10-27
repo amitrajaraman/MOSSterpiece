@@ -7,10 +7,13 @@ from rest_framework.response import Response
 from rest_framework import generics, permissions
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
-from LoginDB.models import Users
-from LoginDB.serializers import UserSerializer, LoginSerializer
+from LoginDB.models import Users, Files
+from LoginDB.serializers import UserSerializer, LoginSerializer 
 from rest_framework.permissions import IsAuthenticated
 from django.core.files.storage import default_storage
+import os
+from django.conf import settings
+from django.http import HttpResponse, Http404
 
 # Create your views here.
 # @csrf_exempt
@@ -29,36 +32,36 @@ class userAPI(generics.GenericAPIView):
         user_serializer = UserSerializer(data=user_data)
         if user_serializer.is_valid():
             user = user_serializer.save()
-            # return JsonResponse("Added Successfully!!" , safe=False)
-            token = 12
             return Response({
                 "user": UserSerializer(user,
                                        context=self.get_serializer_context()).data,
-                "token": token
             })
         return JsonResponse("Failed to Add.",safe=False)
     
-    # elif request.method=='PUT':
-    #     user_data = JSONParser().parse(request)
-    #     user=Users.objects.get(name=user_data['name'])
-    #     user_serializer=UserSerializer(user,data=user_data)
-    #     if user_serializer.is_valid():
-    #         user_serializer.save()
-    #         return JsonResponse("Updated Successfully!!", safe=False)
-    #     return JsonResponse("Failed to Update.", safe=False)
 
-    # elif request.method=='DELETE':
-    #     user=Users.objects.get(name=del_name)
-    #     user.delete()
-    #     return JsonResponse("Deleted Succeffully!!", safe=False)
+class fileAPI(generics.GenericAPIView):
+    # authentication_classes = [TokenAuthentication]
+    # permission_classes = [IsAuthenticated]
 
-@csrf_exempt
-def SaveFile(request):
-    file=request.FILES['uploadedFile']
-    file_name = default_storage.save(file.name,file)
+    def post(self, request):
+        files = Files(files = request.FILES['file'], username=request.user.username)
+        files.save()
+        file_name = files.files.name
+        # print(file_name)
+        return Response({
+            "file_name": file_name})
 
-    return JsonResponse(file_name,safe=False)
-
+    
+    def get(self, request):
+        file_path = os.path.join(settings.MEDIA_ROOT,request.path)
+        if os.path.exists(file_path):
+            with open(file_path, 'rb') as fh:
+                response = HttpResponse(
+                    fh.read())
+                response['Content-Disposition'] = 'inline; filename=' + \
+                    os.path.basename(file_path)
+                return response
+        raise Http404
 
 class loginAPI(generics.GenericAPIView):
     serializer_class = LoginSerializer
@@ -83,5 +86,5 @@ class logoutAPI(generics.GenericAPIView):
     def post(self, request, format=None):
         request.user.auth_token.delete()
         auth.logout(request)
-        return Response(status=status.HTTP_200_OK)
+        return Response({})
         

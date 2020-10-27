@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from rest_framework import serializers, viewsets
 import json
+from LoginDB.models import Files
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
