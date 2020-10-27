@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MessengerService, SharedService } from '../shared.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginUser } from '../User';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -21,7 +20,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(private service:SharedService, private router: Router, private messengerService: MessengerService) { }
 
   ngOnInit(): void {
-    // this.messageSubscription = this.messengerService.message.subscribe(m => { this.messages = m });
+    this.messageSubscription = this.messengerService.message.subscribe(m => { this.messages = m });
   }
 
   ngOnDestroy() {
@@ -32,9 +31,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.messengerService.setMessage(value);
   }
 
-  reroute_onLogin():void{
-    LoginUser.user = this.form_username.value;
-    this.setGlobalValue(this.form_username.value);
+  reroute_onLogin(value: string):void{
+    this.setGlobalValue(value);
     this.router.navigate(['/upload']);
   }
 
@@ -43,12 +41,12 @@ export class LoginComponent implements OnInit, OnDestroy {
           username: this.form_username.value,
           password: this.form_password.value
         }
-        if(LoginUser.user==""){
+      if(this.messages==''){
         this.service.login(data).subscribe(
           (res)=>{
           console.log(res);
           window.alert("Login Works!");
-          // this.reroute_onLogin();
+          this.reroute_onLogin(res.token);
         },
         (error) => {
           console.log("This is backend problem")
@@ -56,7 +54,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         );
       }
       else{
-        window.alert("You are already logged in as "+LoginUser.user+", please signout first.");
+        window.alert("You are already logged in, please signout first.");
       }
       
   }

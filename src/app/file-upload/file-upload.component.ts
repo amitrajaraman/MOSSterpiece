@@ -3,7 +3,10 @@ import { HttpEventType, HttpErrorResponse } from '@angular/common/http';
 import { of } from 'rxjs';  
 import { catchError, map } from 'rxjs/operators';  
 import { UploadService } from  '../file-upload.service';
-import {SharedService} from 'src/app/shared.service';
+import { SharedService } from 'src/app/shared.service';
+import { MessengerService } from '../shared.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-file-upload',
@@ -14,12 +17,14 @@ import {SharedService} from 'src/app/shared.service';
 
 export class FileUploadComponent implements OnInit {
 
-  zip:any;
+  zip: any;
+  messages: string;
 
-  constructor(private service:SharedService) { }
+  constructor(private service:SharedService, private messengerService: MessengerService, private router: Router) { }
 
   ngOnInit(): void {
     this.zip = undefined;
+    this.messengerService.message.subscribe(m => this.messages = m);
   }
 
   @Input() emp:any;

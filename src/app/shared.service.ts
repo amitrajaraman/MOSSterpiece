@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class MessengerService {
     constructor(){}
-    private messageSource: BehaviorSubject<string> = new BehaviorSubject('initialValue'); 
+    private messageSource: BehaviorSubject<string> = new BehaviorSubject(''); 
     public message = this.messageSource.asObservable();
 
     public setMessage(value: string) {
