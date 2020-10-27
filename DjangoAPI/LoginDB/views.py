@@ -70,7 +70,7 @@ class loginAPI(generics.GenericAPIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data
         # auth.login(request, user)
-        token, created = Token.objects.get_or_create(user=user)
+        token,  = Token.objects.get_or_create(user=user)
         # print(token.key)
         return Response({
             "user": UserSerializer(user,
