@@ -44,9 +44,16 @@ INSTALLED_APPS = [
     'corsheaders',
     'LoginDB.apps.LogindbConfig',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 CORS_ORIGN_ALLOW_ALL = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

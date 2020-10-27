@@ -18,9 +18,7 @@ class LoginSerializer(serializers.Serializer):
     password = serializers.CharField()
 
     def validate(self, data):
-        print(json.dumps(data))
         user = authenticate(**data)
-        print("here")
         if user is not None:
             return user
         else:

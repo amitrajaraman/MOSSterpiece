@@ -10,3 +10,7 @@ class Users(models.Model):
     
     class Meta:
         unique_together = (("email", "name"),)
+
+class Files(models.Model):
+    username = models.CharField(max_length=100)
+    files = models.FileField()

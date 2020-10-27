@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.models import User, auth
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 from rest_framework.response import Response
 from rest_framework import generics, permissions
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.authtoken.models import Token
 from LoginDB.models import Users
 from LoginDB.serializers import UserSerializer, LoginSerializer
-
+from rest_framework.permissions import IsAuthenticated
 from django.core.files.storage import default_storage
 
 # Create your views here.
@@ -60,18 +63,26 @@ def SaveFile(request):
 
 class loginAPI(generics.GenericAPIView):
     serializer_class = LoginSerializer
-
+    # authentication_classes = [TokenAuthentication]
+    # permission_classes = [IsAuthenticated]
     def post(self, request, *args, **kwargs):
         user_data = JSONParser().parse(request)
         serializer = LoginSerializer(data=user_data)
-        print("this is printed")
         serializer.is_valid(raise_exception=True)
-        print("here")
         user = serializer.validated_data
-        # _, token = AuthToken.objects.create(user)
-        token = 12
-        return JsonResponse({
+        auth.login(request, user)
+        token, created = Token.objects.create(user=user)
+        print(token.key, created)
+        return Response({
             "user": UserSerializer(user,
                                    context=self.get_serializer_context()).data,
-            "token": token
-        })
+            "token": token.key
+        })  
+
+class logoutAPI(generics.GenericAPIView):
+    authentication_classes = (TokenAuthentication,)
+
+    def post(self, request):
+        request.user.auth_token.delete()
+        auth.logout(request)
+        return JsonResponse({})
