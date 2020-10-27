@@ -1,27 +1,15 @@
-# Redplag
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" async></script>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.
+## The Theoretical Aspect
 
-## Development server
+The two strategies we have attempted to implement here are:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* Naïve Bag of Words strategy: For each document, a sorted vector of the word occurrences in the file are created. The cosine similarity between two vectors is returned as the degree of plagiarism.
 
-## Code scaffolding
+* Latent Semantic Analysis: This is slightly more polished than the Bag of Words strategy. First, an array is created where the $${i,j}$$th entry represents the occurrence of word $$j$$ in the $$i$$th document. LSA essentially works by detecting the latent similarities between two documents. For example, if the word "dog" and "hound" are used similarly in different documents (say we have the sentence "The dog barked at the car" in one document and "The hound barked at the car" in another document), then it inherently identifies that the two words might mean the same thing. A low-rank approximation of the original array is found by performing Singular Value Decomposition and then taking the appropriate rows/columns. When we do this, it clumps together dimensions (which are words here) that mean similar things. So if we had the words {(dog),(hound),(bed)} in the original document, a low-rank approximation of this could correspond to something like {(1.43\*dog + 0.39\*hound),(bed)}. That is, when words are clumped together, an appropriate weight is given to each word such that it carries latent similarities. After these words are grouped together, the cosine similarity between two vectors (in the low-rank approximation) is returned as the degree of plagiarism between them.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+For either method, we begin by creating the array used in LSA. In the first case, we just sort each column individually and find cosine similarity. For the second method, we perform the operations described above to get the degree of similarity.
 
-## Build
+## Stuff to Implement in the Future
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+As might be guessed from the name of the project, we plan to implement the algorithm used in the MOSS software (a modified simpler version in case it becomes too challenging to write the actual thing). We have started reading the paper that describes the ideas behind the MOSS algorithm and have also written a brief summary of what is be done as part of the algorithm [here](https://amitrajaraman.github.io/blog/moss)
