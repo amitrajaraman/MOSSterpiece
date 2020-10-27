@@ -29,7 +29,6 @@ class userAPI(generics.GenericAPIView):
         user_serializer = UserSerializer(data=user_data)
         if user_serializer.is_valid():
             user = user_serializer.save()
-            # _, token = AuthToken.objects.create(user)
             # return JsonResponse("Added Successfully!!" , safe=False)
             token = 12
             return Response({
@@ -70,19 +69,12 @@ class loginAPI(generics.GenericAPIView):
         serializer = LoginSerializer(data=user_data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data
-        auth.login(request, user)
-        token, created = Token.objects.create(user=user)
-        print(token.key, created)
+        # auth.login(request, user)
+        token, created = Token.objects.get_or_create(user=user)
+        # print(token.key)
         return Response({
             "user": UserSerializer(user,
                                    context=self.get_serializer_context()).data,
             "token": token.key
         })  
 
-class logoutAPI(generics.GenericAPIView):
-    authentication_classes = (TokenAuthentication,)
-
-    def post(self, request):
-        request.user.auth_token.delete()
-        auth.logout(request)
-        return JsonResponse({})

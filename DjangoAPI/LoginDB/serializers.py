@@ -22,5 +22,4 @@ class LoginSerializer(serializers.Serializer):
         if user is not None:
             return user
         else:
-            return "incorrect"
             raise serializers.ValidationError("Incorrect Credentials")

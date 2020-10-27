@@ -10,5 +10,4 @@ urlpatterns=[
 
     url(r'^SaveFile$', views.SaveFile),
     url(r'^api/login/', views.loginAPI.as_view()),
-    url(r'^api/logout/', views.logoutAPI.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
