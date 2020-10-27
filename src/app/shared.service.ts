@@ -23,8 +23,10 @@ export class MessengerService {
 export class SharedService {
   readonly APIUrl = "http://127.0.0.1:8000/";
   readonly ZipUrl = "http://127.0.0.1:8000/media/";
-
-  constructor(private http:HttpClient) { }
+  httpOptions = {
+    headers: new HttpHeaders({ 'Authorization': `Token ${btoa(AuthService.getToken())}` })
+  };
+  constructor(private http:HttpClient, private token: MessengerService) { }
 
   getUserList():Observable<any[]>{
     return this.http.get<any[]>(this.APIUrl + 'signupreq/');
@@ -38,6 +40,10 @@ export class SharedService {
     return this.http.post(this.APIUrl + 'api/login/', val);
   }
 
+  logout(val: any):Observable<any>{
+
+    return this.http.post(this.APIUrl + 'api/logout/', val);
+  }
   //Once working, add functionalities here for PUT,DELETE and the such!
 
   UploadZip(val:any){

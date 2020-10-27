@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MessengerService } from '../shared.service';
+import { MessengerService, SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-pre-header',
@@ -11,14 +11,24 @@ export class PreHeaderComponent implements OnInit {
 
   messages: string;
 
-  constructor(private messengerService: MessengerService, private router: Router) { }
+  constructor(private messengerService: MessengerService, private router: Router, private service: SharedService) { }
   
   setGlobalValue(value: string) {
     this.messengerService.setMessage(value);
   }
 
   reroute_onLogout():void{
-    this.setGlobalValue("");
+     this.service.logout().subscribe(
+          (res)=>{
+          console.log(res);
+           this.setGlobalValue("");
+        },
+        (error) => {
+          console.log("This is backend problem")
+          }
+        );
+      }
+   
   }
 
   ngOnInit(): void {

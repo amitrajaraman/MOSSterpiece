@@ -62,15 +62,13 @@ def SaveFile(request):
 
 class loginAPI(generics.GenericAPIView):
     serializer_class = LoginSerializer
-    # authentication_classes = [TokenAuthentication]
-    # permission_classes = [IsAuthenticated]
     def post(self, request, *args, **kwargs):
         user_data = JSONParser().parse(request)
         serializer = LoginSerializer(data=user_data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data
-        # auth.login(request, user)
-        token,  = Token.objects.get_or_create(user=user)
+        auth.login(request, user)
+        token, created  = Token.objects.get_or_create(user=user)
         # print(token.key)
         return Response({
             "user": UserSerializer(user,
@@ -78,3 +76,12 @@ class loginAPI(generics.GenericAPIView):
             "token": token.key
         })  
 
+class logoutAPI(generics.GenericAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, format=None):
+        request.user.auth_token.delete()
+        auth.logout(request)
+        return Response(status=status.HTTP_200_OK)
+        
