@@ -3,9 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MessengerService {
-
+    constructor(){}
     private messageSource: BehaviorSubject<string> = new BehaviorSubject('initialValue'); 
     public message = this.messageSource.asObservable();
 

@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(private service:SharedService, private router: Router, private messengerService: MessengerService) { }
 
   ngOnInit(): void {
-    this.messageSubscription = this.messengerService.message.subscribe(m => { this.messages = m });
+    // this.messageSubscription = this.messengerService.message.subscribe(m => { this.messages = m });
   }
 
   ngOnDestroy() {
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           (res)=>{
           console.log(res);
           window.alert("Login Works!");
-          this.reroute_onLogin();
+          // this.reroute_onLogin();
         },
         (error) => {
           console.log("This is backend problem")
