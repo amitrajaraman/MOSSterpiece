@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "redplag"
+  "defaultProject": "redplag",
+  "cli": {
+    "analytics": "06d8013a-db3a-4930-bec8-24c85bba2966"
+  }
 }

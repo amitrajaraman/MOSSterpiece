@@ -19,10 +19,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-
-/*const routes: Routes = [
-  { path: 'feedback', component: ContactFormComponent },
-  { path: 'contact', component: ContactPageComponent },
-  { path: '**', redirectTo: 'contact', pathMatch: 'prefix' },
-]; */

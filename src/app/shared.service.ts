@@ -1,6 +1,19 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+
+@Injectable()
+export class MessengerService {
+
+    private messageSource: BehaviorSubject<string> = new BehaviorSubject('initialValue'); 
+    public message = this.messageSource.asObservable();
+
+    public setMessage(value: string) {
+        this.messageSource.next(value);
+    }
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +41,7 @@ export class SharedService {
   UploadZip(val:any){
     return this.http.post(this.APIUrl+'SaveFile',val);
   }
+
+
 
 }

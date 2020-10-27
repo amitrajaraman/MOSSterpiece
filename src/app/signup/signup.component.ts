@@ -40,7 +40,7 @@ export class SignupComponent implements OnInit {
 
       this.service.addUser(data).subscribe(res=>{
         console.log(res);
-        window.alert("Registration Successfull!");
+        window.alert("Registration Successful!");
         this.form_firstname.reset();
         this.form_lastname.reset();
         this.form_username.reset();

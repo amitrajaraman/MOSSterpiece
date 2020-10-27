@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { SharedService } from 'src/app/shared.service'
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MessengerService, SharedService } from '../shared.service'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { LoginUser } from '../User'
-import {Router} from "@angular/router"
+import { Router } from '@angular/router'
+import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'app-login',
@@ -10,13 +11,28 @@ import {Router} from "@angular/router"
   styleUrls: ['./login.component.scss']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
-  constructor(private service:SharedService, private router: Router) { }
-    form_username = new FormControl('');
-    form_password = new FormControl('');
+  private messageSubscription: Subscription;
+  public messages: string;
+
+  constructor(private service:SharedService, private router: Router, private messengerService: MessengerService) { }
+  
+  form_username = new FormControl('');
+  form_password = new FormControl('');
 
   ngOnInit(): void {
+    this.messageSubscription = this.messengerService.message.subscribe(m => {
+      this.messages = m
+    });
+  }
+
+  ngOnDestroy() {
+    this.messageSubscription.unsubscribe();
+  }
+
+  setGlobalValue(value: string) {
+    this.messengerService.setMessage(value);
   }
 
   reroute_onLogin():void{
