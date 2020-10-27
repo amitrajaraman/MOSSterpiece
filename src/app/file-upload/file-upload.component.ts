@@ -1,8 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { HttpEventType, HttpErrorResponse } from '@angular/common/http';
-import { of } from 'rxjs';  
-import { catchError, map } from 'rxjs/operators';  
-import { UploadService } from  '../file-upload.service';
 import { SharedService } from 'src/app/shared.service';
 import { MessengerService } from '../shared.service';
 import { Router } from '@angular/router';
