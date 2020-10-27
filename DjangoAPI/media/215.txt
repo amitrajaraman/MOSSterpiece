@@ -1,0 +1,27 @@
+Lec 9 
+- Specificity of disease. Sample space - Set of all possible outcomes of an expirement.
+- A set is an unordered collection of element with each element occuring once. Countable infinite sets and uncountably infinite sets.
+- b<-a b is a subset of a. 
+- EVENT - any subset of a sample space is called an event. Composition of events. G=EF intersection. Mutually exclusive and mutually inclusive. VENN DIAGRAMS MAY NOT SUITABLE FOR MORE THAN 3 EVENTS/SETS. Mutual exclusivity -/> complements. 
+
+Lec 10
+
+When an experiments is repeated several times under the same conditions then the no of times a given event E occus reaches a limiting values. 
+- Boole inequality - Union is less than sum.
+- Boonferroni's inequality - P(ab)>P(a)+p(b)-1
+Proof - p((ab)^c)<=2-(P(a)+p(b))
+- Conditional probability - p(b|a)=p(ab)/P(a)
+- Joint probability - Other word for intersection.
+- Independent Events - p(a|b)=p(a)=p(ab)/p(b)
+N events are mutually indepensent if p(intersection)=prod(p(individual events))
+
+Lec 11
+- Independence vs Mutually exclusive. In mutually exclusive events, one event affects the other event.  
+- If A is independent of B then A is also independent of B^c.
+- Bayes Rule = p(ab)=p(a|b)p(b)
+p(a) = p(a|b)p(b)/p(a|b)p(b) +p(a|b^c)p(b^c)
+--> An individual testing positive for a test may not actually be infected. This is called the False posirive paradox.
+
+-- The birthday paradox 
+minimum no of people so that 2 people share the same bday is more than 99.9%. For 100% ->1*365/366*364/366*...1/366>0.999 -> 70
+Hashing in data structures.

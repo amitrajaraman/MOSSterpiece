@@ -56,12 +56,15 @@ export class SharedService {
     return this.http.post(this.APIUrl+'api/files/',val, httpOptions);
   }
 
-  downloadFile(path:string): Observable<Blob>{
+  downloadFile(path:string): any{
     const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
     const httpOptions = {
+          responseType: 'arraybuffer',
           headers: headers_object
         };
-    return this.http.get<Blob>(this.APIUrl+'api/files/?path=' + path, httpOptions);
+    const x= this.http.get(this.APIUrl+'api/files/?path=' + path, httpOptions);
+    console.log(x);
+    return x;
   }
 
 

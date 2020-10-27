@@ -53,15 +53,10 @@ class fileAPI(generics.GenericAPIView):
 
     
     def get(self, request):
-        file_path = os.path.join(settings.MEDIA_ROOT,request.path)
-        if os.path.exists(file_path):
-            with open(file_path, 'rb') as fh:
-                response = HttpResponse(
-                    fh.read())
-                response['Content-Disposition'] = 'inline; filename=' + \
-                    os.path.basename(file_path)
-                return response
-        raise Http404
+        file_name = request.GET.get('path')
+        path_to_file = settings.MEDIA_ROOT + "/" + file_name
+        return Response({
+            "file_name": path_to_file})
 
 class loginAPI(generics.GenericAPIView):
     serializer_class = LoginSerializer

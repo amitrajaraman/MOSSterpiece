@@ -34,9 +34,10 @@ export class FileUploadComponent implements OnInit {
   }
 
   Download(){
-    this.service.downloadFile(this.ZipPath).subscribe(
-      (blob)=> {
-        console.log("downloaded");
+    this.service.downloadFile(this.ZipFileName).subscribe(
+      (data)=> {
+         var blob = new Blob([data]);
+        console.log(blob);
         saveAs(blob, 'download.zip');
       },
       
