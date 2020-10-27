@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MessengerService, SharedService } from '../shared.service'
-import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { LoginUser } from '../User'
-import { Router } from '@angular/router'
-import { Subscription } from 'rxjs'
+import { MessengerService, SharedService } from '../shared.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginUser } from '../User';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -15,16 +15,13 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   private messageSubscription: Subscription;
   public messages: string;
-
-  constructor(private service:SharedService, private router: Router, private messengerService: MessengerService) { }
-  
   form_username = new FormControl('');
   form_password = new FormControl('');
 
+  constructor(private service:SharedService, private router: Router, private messengerService: MessengerService) { }
+
   ngOnInit(): void {
-    this.messageSubscription = this.messengerService.message.subscribe(m => {
-      this.messages = m
-    });
+    this.messageSubscription = this.messengerService.message.subscribe(m => { this.messages = m });
   }
 
   ngOnDestroy() {
@@ -37,6 +34,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   reroute_onLogin():void{
     LoginUser.user = this.form_username.value;
+    this.setGlobalValue(this.form_username.value);
     this.router.navigate(['/upload']);
   }
 
@@ -64,4 +62,3 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
 }
-
