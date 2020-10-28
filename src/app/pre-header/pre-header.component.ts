@@ -19,15 +19,13 @@ export class PreHeaderComponent implements OnInit {
 
   reroute_onLogout():void{
      this.service.logout().subscribe(
-          (res)=>{
-          console.log(res);
-           this.setGlobalValue("");
-        },
-        (error) => {
-          console.log("This is backend problem")
+       (res)=> {
+            window.alert("Logged out");
+           this.setGlobalValue(""); 
           }
         );
       }
+
 
   ngOnInit(): void {
     this.messengerService.message.subscribe(m => this.messages = m);

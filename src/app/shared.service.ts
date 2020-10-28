@@ -44,7 +44,7 @@ export class SharedService {
     const httpOptions = {
           headers: headers_object
         };
-    return this.http.post(this.APIUrl + 'api/logout/', httpOptions);
+    return this.http.post(this.APIUrl + 'api/logout/',"", httpOptions);
   }
   //Once working, add functionalities here for PUT,DELETE and the such!
 
@@ -59,11 +59,10 @@ export class SharedService {
   downloadFile(path:string): any{
     const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
     const httpOptions = {
-          responseType: 'arraybuffer',
           headers: headers_object
         };
     const x= this.http.get(this.APIUrl+'api/files/?path=' + path, httpOptions);
-    console.log(x);
+    // console.log(x);
     return x;
   }
 
