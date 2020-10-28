@@ -6,7 +6,9 @@
     </div>
 </div>
 <ng-template #loggedIn>
-    <input type="file" (change)="updateZip($event)"/>
+    <div class="section">
+        <input type="file" (change)="updateZip($event)"/>
+    </div>
     <button (click)="uploadZip()" > Upload! </button>
     <div *ngIf="this.download;" >
         <button (click)="Download()">Download</button>

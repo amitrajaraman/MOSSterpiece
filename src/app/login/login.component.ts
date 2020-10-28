@@ -45,11 +45,12 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.service.login(data).subscribe(
           (res)=>{
           console.log(res);
-          window.alert("Login Works!");
+          window.alert("Logged in Successfully!");
           this.reroute_onLogin(res.token);
         },
         (error) => {
-          console.log("This is backend problem")
+          window.alert("Incorrect Username/Password.");
+          console.log(error);
           }
         );
       }
