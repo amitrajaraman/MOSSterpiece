@@ -5,6 +5,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {path : '', component : LandingComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path : 'aboutus', component: AboutUsComponent },
   {path : 'signup', component: SignupComponent},
   {path: 'upload', component: FileUploadComponent},
+  {path: 'profile', component: ProfileComponent},
 ];
 
 @NgModule({

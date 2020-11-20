@@ -17,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SharedService } from './shared.service';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
     AboutUsComponent,
     SignupComponent,
     FileUploadComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

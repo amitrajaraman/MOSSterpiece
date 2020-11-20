@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   reroute_onLogin(value: string):void{
     this.setGlobalValue(value);
-    this.router.navigate(['/upload']);
+    this.router.navigate(['/profile']);
   }
 
   login():void{
