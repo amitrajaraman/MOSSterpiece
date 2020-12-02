@@ -1,0 +1,16 @@
+<div *ngIf="this.messages=='';else loggedIn">
+    <div class="container">
+        You are not logged in.
+
+        Click <a routerLink="/login" style="color:red">here</a> to log in and <a routerLink="/signup" style="color:red">here</a> to register.
+    </div>
+</div>
+<ng-template #loggedIn>
+    <div class="section">
+        <input type="file" (change)="updateZip($event)"/>
+    </div>
+    <button (click)="uploadZip()" > Upload! </button>
+    <div *ngIf="this.download;" >
+        <button (click)="Download()">Download</button>
+    </div>
+</ng-template>
