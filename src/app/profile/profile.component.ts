@@ -8,8 +8,13 @@ import { MessengerService, SharedService } from '../shared.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  //user:string;
+  constructor(private messengerService: MessengerService, private router: Router, private service: SharedService) {  }
 
-  constructor(private messengerService: MessengerService, private router: Router, private service: SharedService) { }
+  //A very bad way of getting the user's data; too bad!
+  ngOnInit():void{
+    //if all else fails, send a get req to backend and get username
+  }
 
   setGlobalValue(value: string) {
     this.messengerService.setMessage(value);
@@ -23,9 +28,5 @@ export class ProfileComponent implements OnInit {
          }
        );
      }
-  
-
-  ngOnInit(): void {
-  }
 
 }

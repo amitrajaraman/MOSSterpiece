@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { WaitingComponent } from './waiting/waiting.component';
+import { ViewCurrComponent } from './view-curr/view-curr.component';
 
 const routes: Routes = [
   {path : '', component : LandingComponent },
@@ -16,6 +18,8 @@ const routes: Routes = [
   {path: 'upload', component: FileUploadComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'changepassword', component: ChangepasswordComponent},
+  {path: 'upload/waiting', component: WaitingComponent},
+  {path: 'upload/view', component: ViewCurrComponent},
 ];
 
 @NgModule({
