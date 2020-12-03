@@ -59,31 +59,31 @@ if __name__ == "__main__":
 				print(cosine_similarity(sortedArray[:, i], sortedArray[:, j])),
 			print("")
 
-	if(algo == 1):
+	# if(algo == 1):
 
-		u, s, v = np.linalg.svd(baseArray, False)
+	# 	u, s, v = np.linalg.svd(baseArray, False)
 
-		lowRank = 20
-		# Pick optimal rank reduction; google!!!
+	# 	lowRank = 20
+	# 	# Pick optimal rank reduction; google!!!
 
-		uRed = u[:, :lowRank]
-		sRed = np.diag(s[:lowRank])
-		vRed = v[:, :lowRank]
-		print(u.shape, uRed.shape)
-		print(s.shape, sRed.shape)
-		print(v.shape, vRed.shape)
+	# 	uRed = u[:, :lowRank]
+	# 	sRed = np.diag(s[:lowRank])
+	# 	vRed = v[:, :lowRank]
+	# 	print(u.shape, uRed.shape)
+	# 	print(s.shape, sRed.shape)
+	# 	print(v.shape, vRed.shape)
 
-		arrRed = np.dot(np.dot(uRed, sRed), vRed.T)
+	# 	arrRed = np.dot(np.dot(uRed, sRed), vRed.T)
 
 
 
-		for i in range(numFiles):
-			print(filenames[i]),
-			for j in range(numFiles):
-				print(cosine_similarity(arrRed[:, i], arrRed[:, j])),
-			print("")
+	# 	for i in range(numFiles):
+	# 		print(filenames[i]),
+	# 		for j in range(numFiles):
+	# 			print(cosine_similarity(arrRed[:, i], arrRed[:, j])),
+	# 		print("")
 
-		# print(baseArray.shape, 	lowRankArr.shape)
+	# 	# print(baseArray.shape, 	lowRankArr.shape)
 
-		# for i in range(lowRankArr.shape[1]):
-		# 	for j in range(lowRankArr.shape[1]):
+	# 	# for i in range(lowRankArr.shape[1]):
+	# 	# 	for j in range(lowRankArr.shape[1]):
