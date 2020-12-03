@@ -11,7 +11,6 @@ import { HttpResponse } from '@angular/common/http';
   styleUrls: ['./file-upload.component.scss']
 })
 
-
 export class FileUploadComponent implements OnInit {
 
   zip: any;
@@ -28,6 +27,7 @@ export class FileUploadComponent implements OnInit {
   @Input() emp:any;
   ZipFileName:string;
   ZipPath:string;
+  ZipName:string;
 
   updateZip(event){
     this.zip = event;
@@ -44,7 +44,24 @@ export class FileUploadComponent implements OnInit {
       (error) => {console.log("failed")}
     )
   }
+
+  //For now, assume that the uploaded stuff is right. tl;dr open folder, take inputs, pass to Amit's .py file
+  Process(){
+    this.ZipPath = this.service.ZipUrl;
+    const formdata: FormData = new FormData();
+    formdata.append('file',this.ZipFileName);
+    this.service.processFile(formdata).subscribe(
+      (data:any)=>{
+        var blob = new Blob([data]);
+        console.log(blob);
+      },
+
+      (error)=>{console.log("error")}
+    )
+  }
+
   uploadZip(){
+    //This doesn't work! able to upload non-zip as well!
     if(this.zip==undefined){
       window.alert("Please upload a zip file.");
     }
@@ -57,8 +74,10 @@ export class FileUploadComponent implements OnInit {
         (data:any)=>{
         this.ZipFileName = data.file_name;
         this.ZipPath=this.service.ZipUrl+this.ZipFileName;
+        //Need to work on regex lol
+        this.ZipName = this.ZipFileName.replace(/(.*_\s*)[^_.]*(.[a-zA-Z0-9]*$)/,"");
         window.alert("Uploaded Successfully!");
-        console.log(this.ZipFileName);
+        console.log(this.ZipName);
         this.download = true;
       },
       (error) =>

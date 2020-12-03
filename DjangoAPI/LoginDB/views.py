@@ -12,8 +12,13 @@ from LoginDB.serializers import UserSerializer, LoginSerializer
 from rest_framework.permissions import IsAuthenticated
 from django.core.files.storage import default_storage
 import os
+import sys
 from django.conf import settings
 from django.http import HttpResponse, Http404
+import shutil
+import numpy as np
+import scipy.spatial.distance
+from zipfile import ZipFile
 
 # Create your views here.
 # @csrf_exempt
@@ -79,8 +84,19 @@ class logoutAPI(generics.GenericAPIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request, format=None):
-        print("here")
         request.user.auth_token.delete()
         auth.logout(request)
         return Response({})
         
+class processAPI(generics.GenericAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        print(os.getcwd())
+        #Get the needed file
+        req_file = Files.objects.filter(files=request.POST.get('file'))
+        path_to_zip = "../DjangoAPI/media/" + str(req_file[0].files)         #to be passed as an argument to Amit's file
+        path_to_an = "../backend_LSA/mainback.py"
+        os.system("python " + path_to_an + " " + path_to_zip)
+        return Response({"does it work": "Yes it does"})

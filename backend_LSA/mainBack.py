@@ -77,10 +77,12 @@ if __name__ == "__main__":
 	with open(outpFile, 'w') as f:
 		for i in range(numFiles):
 			f.write(filenames[i]+",")
+			print(filenames[i]+",")
 		f.write("\n")
 		for i in range(numFiles):
 			for j in range(numFiles):
 				f.write(str(cosine_similarity(arrRed[:, i], arrRed[:, j]))+","),
+				print(str(cosine_similarity(arrRed[:, i], arrRed[:, j]))+",")
 			f.write("\n")
 	
 	try:
