@@ -1,6 +1,9 @@
 import os
+import sys
+import shutil
 import numpy as np
 import scipy.spatial.distance
+from zipfile import ZipFile
 
 def cosine_similarity(c1, c2):
 	if(c1.shape != c2.shape):
@@ -10,13 +13,20 @@ def cosine_similarity(c1, c2):
 
 if __name__ == "__main__":
 
-	algo = 0
-	# 0 for the basic BoW, 1 for LSA
-
+	zipFilePath = ''
+	try:
+		zipFilePath = sys.argv[1]
+	except:
+		print("Usage: mainBack.py relative/path/to/filename.zip")
+		print("Quitting")
+		quit()
+	with ZipFile(zipFilePath, 'r') as zipObj:
+		zipObj.extractall('inputDir')
 	directory = 'inputDir'
+	outpFile = 'outpFile.csv'
 	filenames = [name for name in os.listdir(directory)]
 	numFiles = len(filenames)
-	baseDict = {}
+	baseDict = {}	
 
 	"""
 	Have to preprocess files
@@ -50,40 +60,31 @@ if __name__ == "__main__":
 	* Cosine normalization
 	"""
 
-	if(algo == 0):
-		sortedArray = np.sort(baseArray, 0, 'mergesort')
-		
+	# print(baseArray.shape)
+
+	u, s, v = np.linalg.svd(baseArray, False)
+	# print(baseArray.shape[0])
+	lowRank = 1+int(np.cbrt(baseArray.shape[0]))
+	# print(lowRank)
+	if(lowRank > 300):
+		lowRank = 300
+
+	uRed = u[:lowRank, :lowRank]
+	sRed = np.diag(s[:lowRank])
+	
+	arrRed = np.dot(np.dot(uRed, sRed), v)
+
+	with open(outpFile, 'w') as f:
 		for i in range(numFiles):
-			print(filenames[i]),
-			for j in range(numFiles):
-				print(cosine_similarity(sortedArray[:, i], sortedArray[:, j])),
-			print("")
-
-	if(algo == 1):
-
-		u, s, v = np.linalg.svd(baseArray, False)
-
-		lowRank = 20
-		# Pick optimal rank reduction; google!!!
-
-		uRed = u[:, :lowRank]
-		sRed = np.diag(s[:lowRank])
-		vRed = v[:, :lowRank]
-		print(u.shape, uRed.shape)
-		print(s.shape, sRed.shape)
-		print(v.shape, vRed.shape)
-
-		arrRed = np.dot(np.dot(uRed, sRed), vRed.T)
-
-
-
+			f.write(filenames[i]+",")
+		f.write("\n")
 		for i in range(numFiles):
-			print(filenames[i]),
 			for j in range(numFiles):
-				print(cosine_similarity(arrRed[:, i], arrRed[:, j])),
-			print("")
-
-		# print(baseArray.shape, 	lowRankArr.shape)
-
-		# for i in range(lowRankArr.shape[1]):
-		# 	for j in range(lowRankArr.shape[1]):
+				f.write(str(cosine_similarity(arrRed[:, i], arrRed[:, j]))+","),
+			f.write("\n")
+	
+	try:
+		shutil.rmtree('inputDir')
+	except OSError as error:
+		print("Directory does not exist.")
+	
