@@ -6,6 +6,7 @@ import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
 
 const routes: Routes = [
   {path : '', component : LandingComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path : 'signup', component: SignupComponent},
   {path: 'upload', component: FileUploadComponent},
   {path: 'profile', component: ProfileComponent},
+  {path: 'changepassword', component: ChangepasswordComponent},
 ];
 
 @NgModule({

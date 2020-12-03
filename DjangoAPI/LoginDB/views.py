@@ -8,7 +8,7 @@ from rest_framework import generics, permissions
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
 from LoginDB.models import Users, Files
-from LoginDB.serializers import UserSerializer, LoginSerializer 
+from LoginDB.serializers import UserSerializer, LoginSerializer, ChangePasswordSerializer 
 from rest_framework.permissions import IsAuthenticated
 from django.core.files.storage import default_storage
 import os
@@ -83,4 +83,32 @@ class logoutAPI(generics.GenericAPIView):
         request.user.auth_token.delete()
         auth.logout(request)
         return Response({})
+
+class changeAPI(generics.UpdateAPIView):
+        serializer_class = ChangePasswordSerializer
+        model = User
+        authentication_classes = (TokenAuthentication,)
+        permission_classes = (IsAuthenticated,)
+
+        def get_object(self, queryset=None):
+            obj = self.request.user
+            return obj
+
+        def update(self, request, *args, **kwargs):
+            self.object = self.get_object()
+            serializer = self.get_serializer(data=request.data)
+
+            if serializer.is_valid():
+                if not self.object.check_password(serializer.data.get("old_password")):
+                    return Response({"old_password": ["Wrong password."]}, status=status.HTTP_400_BAD_REQUEST)
+                self.object.set_password(serializer.data.get("new_password"))
+                self.object.save()
+                response = {
+                    'status': 'success',
+                    'code': HTTP_200_OK,
+                    'message': 'Password updated successfully',
+                    'data': []
+                }
+                return Response(response)
+            return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
         

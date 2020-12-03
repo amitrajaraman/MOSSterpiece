@@ -18,6 +18,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SharedService } from './shared.service';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ProfileComponent } from './profile/profile.component';
     SignupComponent,
     FileUploadComponent,
     ProfileComponent,
+    ChangepasswordComponent,
   ],
   imports: [
     BrowserModule,
