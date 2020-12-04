@@ -15,7 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { SharedService } from './shared.service';
+import { FileService, SharedService } from './shared.service';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
@@ -35,6 +35,7 @@ import { ViewCurrComponent } from './view-curr/view-curr.component';
     ChangepasswordComponent,
     WaitingComponent,
     ViewCurrComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -49,7 +50,7 @@ import { ViewCurrComponent } from './view-curr/view-curr.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [SharedService],
+  providers: [SharedService, FileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

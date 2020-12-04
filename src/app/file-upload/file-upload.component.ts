@@ -49,8 +49,8 @@ export class FileUploadComponent implements OnInit {
 
   //For now, assume that the uploaded stuff is right. tl;dr open folder, take inputs, pass to Amit's .py file
   Process(){
-    this.fileService.setMessage(this.ZipName);
-    this.router.navigate(['/']);
+    this.fileService.setMessage(this.ZipFileName);
+    this.router.navigate(['/upload/waiting']);
   }
 
   uploadZip(){
