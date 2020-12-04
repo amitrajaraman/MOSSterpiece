@@ -10,6 +10,16 @@ export class MessengerService {
     constructor(){}
     private messageSource: BehaviorSubject<string> = new BehaviorSubject(''); 
     public message = this.messageSource.asObservable();
+    private userSource: BehaviorSubject<string> = new BehaviorSubject(''); 
+    public userMessage = this.userSource.asObservable();
+
+    public setName(value: string){
+      this.userSource.next(value);
+    }
+
+    public getName(): string{
+      return this.userSource.value;
+    }
 
     public setMessage(value: string) {
         localStorage.setItem('token', value);
