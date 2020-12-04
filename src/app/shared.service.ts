@@ -66,5 +66,13 @@ export class SharedService {
     return x;
   }
 
+  processFile(filename:any):any{
+    const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
+    const httpOptions = {
+          headers: headers_object
+        };
+    const data = this.http.post(this.APIUrl+'api/process/',filename,httpOptions);
+    return data;
+  }
 
 }

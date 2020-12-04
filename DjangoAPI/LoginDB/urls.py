@@ -13,4 +13,6 @@ urlpatterns=[
     url(r'^api/logout/', views.logoutAPI.as_view()),
     url('^api/files/<str:path>', views.fileAPI.as_view(),
         {'document root': settings.MEDIA_ROOT}),
+    url(r'^api/password/', views.changeAPI.as_view()),    
+    url(r'^api/process/', views.processAPI.as_view()),
 ] 
