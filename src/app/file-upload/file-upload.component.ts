@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SharedService } from 'src/app/shared.service';
+import { FileService, SharedService } from 'src/app/shared.service';
 import { MessengerService } from '../shared.service';
 import { Router } from '@angular/router';
 import { saveAs } from 'file-saver';
@@ -16,7 +16,7 @@ export class FileUploadComponent implements OnInit {
   zip: any;
   messages: string;
   download : boolean;
-  constructor(private service:SharedService, private messengerService: MessengerService, private router: Router) { }
+  constructor(private service:SharedService, private messengerService: MessengerService, private router: Router, private fileService: FileService) { }
 
   ngOnInit(): void {
     this.zip = undefined;
@@ -49,17 +49,8 @@ export class FileUploadComponent implements OnInit {
 
   //For now, assume that the uploaded stuff is right. tl;dr open folder, take inputs, pass to Amit's .py file
   Process(){
-    this.ZipPath = this.service.ZipUrl;
-    const formdata: FormData = new FormData();
-    formdata.append('file',this.ZipFileName);
-    this.service.processFile(formdata).subscribe(
-      (data:any)=>{
-        var blob = new Blob([data]);
-        console.log(blob);
-      },
-
-      (error)=>{console.log("error")}
-    )
+    this.fileService.setMessage(this.ZipName);
+    this.router.navigate(['/']);
   }
 
   uploadZip(){

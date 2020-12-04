@@ -68,6 +68,7 @@ class fileAPI(generics.GenericAPIView):
 class loginAPI(generics.GenericAPIView):
     serializer_class = LoginSerializer
     def post(self, request, *args, **kwargs):
+        logged_in = request.user.username
         user_data = JSONParser().parse(request)
         serializer = LoginSerializer(data=user_data)
         serializer.is_valid(raise_exception=True)
@@ -76,6 +77,7 @@ class loginAPI(generics.GenericAPIView):
         token, created  = Token.objects.get_or_create(user=user)
         # print(token.key)
         return Response({
+            "name": logged_in,
             "user": UserSerializer(user,
                                    context=self.get_serializer_context()).data,
             "token": token.key
@@ -100,6 +102,12 @@ class changeAPI(generics.GenericAPIView):
         }
         return Response(response)
 
+class tokenAPI(generics.GenericAPIView):
+    def get(self, request):
+        user = request.user
+        token, created = Token.objects.get(user=user)
+        print(token.key)
+        return Response({"token": token.key})
 
 class logoutAPI(generics.GenericAPIView):
     authentication_classes = [TokenAuthentication]
