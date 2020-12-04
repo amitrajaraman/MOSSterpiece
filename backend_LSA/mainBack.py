@@ -4,6 +4,7 @@ import shutil
 import numpy as np
 import scipy.spatial.distance
 from zipfile import ZipFile
+import matplotlib.pyplot as plt
 
 def cosine_similarity(c1, c2):
 	if(c1.shape != c2.shape):
@@ -12,6 +13,14 @@ def cosine_similarity(c1, c2):
 	return (1 - scipy.spatial.distance.cosine(c1, c2))
 
 if __name__ == "__main__":
+
+	# Location of the (temporary) directory the zip file is unzipped to
+	directory = 'inputDir'
+	# Location of the output CSV file
+	outpFile = 'outpFile.csv'
+	# Location of the output image barh graph
+	outpPng = 'outpImg.png'
+
 
 	zipFilePath = ''
 	try:
@@ -22,8 +31,6 @@ if __name__ == "__main__":
 		quit()
 	with ZipFile(zipFilePath, 'r') as zipObj:
 		zipObj.extractall('inputDir')
-	directory = 'inputDir'
-	outpFile = 'outpFile.csv'
 	filenames = [name for name in os.listdir(directory)]
 	numFiles = len(filenames)
 	baseDict = {}	
@@ -74,14 +81,36 @@ if __name__ == "__main__":
 	
 	arrRed = np.dot(np.dot(uRed, sRed), v)
 
+	finalRes = np.zeros((numFiles,numFiles));
+
 	with open(outpFile, 'w') as f:
 		for i in range(numFiles):
 			f.write(filenames[i]+",")
 		f.write("\n")
 		for i in range(numFiles):
+			finalRes[i,i] = 1.0
 			for j in range(numFiles):
-				f.write(str(cosine_similarity(arrRed[:, i], arrRed[:, j]))+","),
+				if(i < j):
+					finalRes[i,j] = str(cosine_similarity(arrRed[:, i], arrRed[:, j]))
+					# finalRes[j,i] = finalRes[i,j]
+				f.write(str(finalRes[min(i,j),max(i,j)]) + ",")
 			f.write("\n")
+	
+
+	for i in range(numFiles):
+		finalRes[i,i] = 0
+
+	finalRes = np.reshape(finalRes, (numFiles*numFiles))
+	numDisp = min(5, numFiles*(numFiles-1)/2)
+	maxInd = np.argpartition(finalRes, -numDisp)[-numDisp:]
+	dicTop5 = dict((finalRes[elemPos] , (str(filenames[elemPos%numFiles]) + "\nand\n" + str(filenames[elemPos//numFiles]))) for elemPos in maxInd)
+	top5Names = [key for key in sorted(dicTop5)]
+	top5Coeffs = [dicTop5[key] for key in top5Names]
+	
+	plt.barh(range(len(dicTop5)), top5Names)
+	plt.yticks(range(len(dicTop5)), top5Coeffs)
+	plt.savefig(outpPng)
+	
 	
 	try:
 		shutil.rmtree('inputDir')
