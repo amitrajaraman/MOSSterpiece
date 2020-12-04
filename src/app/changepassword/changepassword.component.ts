@@ -26,7 +26,7 @@ export class ChangepasswordComponent implements OnInit {
     else{
       var data = {
         oldpassword: this.form_oldpassword.value,
-        password: this.form_password.value
+        newpassword: this.form_password.value
       }
 
       this.service.changepw(data).subscribe(res=>{

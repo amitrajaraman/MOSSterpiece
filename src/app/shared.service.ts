@@ -40,7 +40,11 @@ export class SharedService {
   }
 
   changepw(val: any):Observable<any>{
-    return this.http.put(this.APIUrl + 'api/login/', val);
+    const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
+    const httpOptions = {
+          headers: headers_object
+        };
+    return this.http.post(this.APIUrl + 'api/password/', val, httpOptions);
   }
 
 
