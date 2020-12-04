@@ -56,12 +56,14 @@ class fileAPI(generics.GenericAPIView):
         return Response({
             "file_name": file_name})
 
-    
     def get(self, request):
         file_name = request.GET.get('path')
         path_to_file = settings.MEDIA_ROOT + "/" + file_name
-        return Response({
-            "file_name": path_to_file})
+        zip_file = open(path_to_file, 'rb')
+        response = HttpResponse(zip_file, content_type='application/octet-stream')
+        response['Content-Disposition'] = 'attachment; filename="download.zip"'
+        
+        return response
 
 class loginAPI(generics.GenericAPIView):
     serializer_class = LoginSerializer
@@ -77,7 +79,25 @@ class loginAPI(generics.GenericAPIView):
             "user": UserSerializer(user,
                                    context=self.get_serializer_context()).data,
             "token": token.key
-        })  
+        })
+
+    def put(self, request, *args, **kwargs):
+        user = request.user
+        serializer = ChangePasswordSerializer(data=request.data)
+
+        if serializer.is_valid():
+            if not user.check_password(serializer.data.get("oldpassword")):
+                return JsonResponse("Failed to Add.", safe=False)
+            user.set_password(serializer.data.get("password"))
+            user.save()
+            response = {
+                'status': 'success',
+                'message': 'Password updated successfully',
+                'data': []
+            }
+            return Response(response)
+        return JsonResponse("Failed to Add.", safe=False)
+
 
 class logoutAPI(generics.GenericAPIView):
     authentication_classes = [TokenAuthentication]
@@ -87,35 +107,7 @@ class logoutAPI(generics.GenericAPIView):
         request.user.auth_token.delete()
         auth.logout(request)
         return Response({})
-
-class changeAPI(generics.UpdateAPIView):
-        serializer_class = ChangePasswordSerializer
-        model = User
-        authentication_classes = (TokenAuthentication,)
-        permission_classes = (IsAuthenticated,)
-
-        def get_object(self, queryset=None):
-            obj = self.request.user
-            return obj
-
-        def update(self, request, *args, **kwargs):
-            self.object = self.get_object()
-            serializer = self.get_serializer(data=request.data)
-
-            if serializer.is_valid():
-                if not self.object.check_password(serializer.data.get("old_password")):
-                    return Response({"old_password": ["Wrong password."]}, status=status.HTTP_400_BAD_REQUEST)
-                self.object.set_password(serializer.data.get("new_password"))
-                self.object.save()
-                response = {
-                    'status': 'success',
-                    'code': HTTP_200_OK,
-                    'message': 'Password updated successfully',
-                    'data': []
-                }
-                return Response(response)
-            return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
-        
+   
 class processAPI(generics.GenericAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
