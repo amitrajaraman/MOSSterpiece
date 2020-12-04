@@ -177,7 +177,7 @@ if __name__ == "__main__":
 
 	finalRes = np.reshape(finalRes, (numFiles*numFiles))
 	numDisp = min(barGraphParam, numFiles*(numFiles-1)/2)
-	maxInd = [None] * numDisp
+	maxInd = [0 for x in range(numDisp)]
 	dicTop5 = {}
 	# for x in filenames:
 	# 	print(x)
