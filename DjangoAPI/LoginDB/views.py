@@ -68,6 +68,7 @@ class fileAPI(generics.GenericAPIView):
 class loginAPI(generics.GenericAPIView):
     serializer_class = LoginSerializer
     def post(self, request, *args, **kwargs):
+        logged_in = request.user.username
         user_data = JSONParser().parse(request)
         serializer = LoginSerializer(data=user_data)
         serializer.is_valid(raise_exception=True)
@@ -76,28 +77,37 @@ class loginAPI(generics.GenericAPIView):
         token, created  = Token.objects.get_or_create(user=user)
         # print(token.key)
         return Response({
+            "name": logged_in,
             "user": UserSerializer(user,
                                    context=self.get_serializer_context()).data,
             "token": token.key
         })
 
-    def put(self, request, *args, **kwargs):
+class changeAPI(generics.GenericAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    serializer_class = ChangePasswordSerializer
+
+    def post(self, request):
         user = request.user
-        serializer = ChangePasswordSerializer(data=request.data)
+    
+        if not user.check_password(request.data.get("oldpassword")):
+            return JsonResponse("Failed to Add.", safe=False)
+        user.set_password(request.data.get("newpassword"))
+        user.save()
+        response = {
+            'status': 'success',
+            'message': 'Password updated successfully',
+            'data': []
+        }
+        return Response(response)
 
-        if serializer.is_valid():
-            if not user.check_password(serializer.data.get("oldpassword")):
-                return JsonResponse("Failed to Add.", safe=False)
-            user.set_password(serializer.data.get("password"))
-            user.save()
-            response = {
-                'status': 'success',
-                'message': 'Password updated successfully',
-                'data': []
-            }
-            return Response(response)
-        return JsonResponse("Failed to Add.", safe=False)
-
+class tokenAPI(generics.GenericAPIView):
+    def get(self, request):
+        user = request.user
+        token, created = Token.objects.get(user=user)
+        print(token.key)
+        return Response({"token": token.key})
 
 class logoutAPI(generics.GenericAPIView):
     authentication_classes = [TokenAuthentication]
