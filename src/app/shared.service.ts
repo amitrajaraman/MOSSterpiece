@@ -12,11 +12,28 @@ export class MessengerService {
     public message = this.messageSource.asObservable();
 
     public setMessage(value: string) {
+        localStorage.setItem('token', value);
         this.messageSource.next(value);
+        console.log(localStorage.getItem('token'));
+      }
+    public getMessage(): string{
+      this.setMessage(localStorage.getItem('token'));
+      return this.messageSource.value;
     }
-    public getMessage(): string{ return this.messageSource.value}
 }
 
+export class FileService {
+  constructor(){}
+    private fileSource: BehaviorSubject<string> = new BehaviorSubject(''); 
+    public file = this.fileSource.asObservable();
+
+    public setMessage(value: string) {
+        this.fileSource.next(value);
+      }
+    public getMessage(): string{
+      return this.fileSource.value;
+    }
+}
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +57,11 @@ export class SharedService {
   }
 
   changepw(val: any):Observable<any>{
-    return this.http.put(this.APIUrl + 'api/login/', val);
+    const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
+    const httpOptions = {
+          headers: headers_object
+        };
+    return this.http.post(this.APIUrl + 'api/password/', val, httpOptions);
   }
 
 
