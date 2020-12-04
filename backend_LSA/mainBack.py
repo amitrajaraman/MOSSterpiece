@@ -69,6 +69,8 @@ if __name__ == "__main__":
 	outpFile = 'outpFile.csv'
 	# Location of the output image barh graph
 	outpPng = 'outpImg.png'
+	# n such that top n results are displayed in the bar graph
+	barGraphParam = 5
 
 
 	zipFilePath = ''
@@ -174,9 +176,20 @@ if __name__ == "__main__":
 		finalRes[i,i] = 0
 
 	finalRes = np.reshape(finalRes, (numFiles*numFiles))
-	numDisp = min(5, numFiles*(numFiles-1)/2)
-	maxInd = np.argpartition(finalRes, -numDisp)[-numDisp:]
-	dicTop5 = dict((finalRes[elemPos] , (str(filenames[elemPos%numFiles]) + "\nand\n" + str(filenames[elemPos//numFiles]))) for elemPos in maxInd)
+	numDisp = min(barGraphParam, numFiles*(numFiles-1)/2)
+	maxInd = [None] * numDisp
+	dicTop5 = {}
+	# for x in filenames:
+	# 	print(x)
+	# print("Size is "+str(numFiles))
+	for pos in range(numDisp):
+		dicTop5[finalRes[np.argmax(finalRes)]] = str(filenames[np.argmax(finalRes) % numFiles]) + " and\n" + str(filenames[np.argmax(finalRes) // numFiles])
+		# dicTop5[finalRes[np.argmax(finalRes)]] = str(np.argmax(finalRes) % numFiles) + " and\n" + str(np.argmax(finalRes) // numFiles)
+		# print(np.argmax(finalRes), finalRes[np.argmax(finalRes)], dicTop5[finalRes[np.argmax(finalRes)]])
+		finalRes[np.argmax(finalRes)] = 0
+	# print(dicTop5)
+	# for key in dicTop5:
+	# 	print(key, dicTop5[key])
 	top5Names = [key for key in sorted(dicTop5)]
 	top5Coeffs = [dicTop5[key] for key in top5Names]
 	
