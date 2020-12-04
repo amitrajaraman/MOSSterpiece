@@ -19,6 +19,8 @@ import { SharedService } from './shared.service';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { WaitingComponent } from './waiting/waiting.component';
+import { ViewCurrComponent } from './view-curr/view-curr.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { ChangepasswordComponent } from './changepassword/changepassword.compone
     FileUploadComponent,
     ProfileComponent,
     ChangepasswordComponent,
+    WaitingComponent,
+    ViewCurrComponent,
   ],
   imports: [
     BrowserModule,
