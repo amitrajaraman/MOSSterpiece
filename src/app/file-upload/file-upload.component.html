@@ -7,7 +7,7 @@
 </div>
 <ng-template #loggedIn>
     <div class="section">
-        <input type="file" (change)="updateZip($event)"/>
+        <input type="file" (change)="updateZip($event)" accept="application/zip"/>
     </div>
     <button (click)="uploadZip()" > Upload! </button>
     <!--Add ngIfs here after it starts to work-->
