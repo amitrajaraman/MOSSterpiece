@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           console.log(res);
           window.alert("Logged in Successfully!");
           this.reroute_onLogin(res.token);
+          this.messengerService.setName(res.user.first_name);
         },
         (error) => {
           window.alert("Incorrect Username/Password.");

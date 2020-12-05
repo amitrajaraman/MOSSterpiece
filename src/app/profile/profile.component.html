@@ -7,7 +7,7 @@
     </div>
 </div>
 <ng-template #loggedIn>
-<h1>Welcome, //Find a way to make the username visible here// </h1>
+<h1>Welcome, {{user}} </h1>
 
 <a routerLink="/">
 <button (click)="reroute_onLogout()">Logout</button>
