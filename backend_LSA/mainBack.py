@@ -66,9 +66,9 @@ if __name__ == "__main__":
 	# Location of the (temporary) directory the zip file is unzipped to
 	directory = 'inputDir'
 	# Location of the output CSV file
-	outpFile = 'outpFile.csv'
+	outpFile = '../src/assets/results/outpFile.csv'
 	# Location of the output image barh graph
-	outpPng = 'outpImg.png'
+	outpPng = '../src/assets/results/outpImg.png'
 	# n such that top n results are displayed in the bar graph
 	barGraphParam = 5
 
@@ -157,7 +157,7 @@ if __name__ == "__main__":
 
 	finalRes = np.zeros((numFiles,numFiles));
 
-	with open("../src/assets/results/outpFile.csv", 'w') as f:
+	with open(outpFile, 'w') as f:
 		for i in range(numFiles):
 			f.write(filenames[i]+",")
 			# print(filenames[i]+",")
@@ -203,7 +203,7 @@ if __name__ == "__main__":
 	right_side.set_visible(False)
 
 	plt.tight_layout()
-	plt.savefig("../src/assets/results/outpImg.png")
+	plt.savefig(outpPng)
 	
 	
 	try:
