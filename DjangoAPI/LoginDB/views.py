@@ -97,7 +97,12 @@ class changeAPI(generics.GenericAPIView):
         user = request.user
     
         if not user.check_password(request.data.get("oldpassword")):
-            return JsonResponse("Failed to Add.", safe=False)
+            response = {
+                'status': 'failure',
+                'message': 'Old password does not match',
+                'data': []
+            }
+            return Response(response)
         user.set_password(request.data.get("newpassword"))
         user.save()
         response = {
