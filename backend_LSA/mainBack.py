@@ -157,7 +157,7 @@ if __name__ == "__main__":
 
 	finalRes = np.zeros((numFiles,numFiles));
 
-	with open(outpFile, 'w') as f:
+	with open("../src/assets/results/outpFile.csv", 'w') as f:
 		for i in range(numFiles):
 			f.write(filenames[i]+",")
 			# print(filenames[i]+",")
