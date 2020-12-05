@@ -7,17 +7,16 @@
     </div>
 </div>
 <ng-template #loggedIn>
-<h1>Welcome, {{user}} </h1>
-
-<a routerLink="/">
-<button (click)="reroute_onLogout()">Logout</button>
-</a>
-
+<div class="h1">Welcome, {{user}}! </div>
+<div style="font-size: 35px; padding-top: 50px; color: grey; text-align: center;">What would you like to do?</div>
+<form class="form">
+<div class="section">
 <a routerLink="/upload">
-    <button>Upload</button>
+    <button style="height: 50px;">Upload Files</button>
 </a>
 
 <a routerLink="/changepassword">
-    <button>Change Password</button>
+    <button style="width: 60%; font-size: 20px;">Change Password</button>
 </a>
+</div></form>
 </ng-template>

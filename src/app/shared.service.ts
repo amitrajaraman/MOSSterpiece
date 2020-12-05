@@ -55,6 +55,23 @@ export class FileService {
 @Injectable({
   providedIn: 'root'
 })
+export class ResultService {
+  constructor(){}
+    private fileSource: BehaviorSubject<Blob> = new BehaviorSubject(new Blob());     
+    public file = this.fileSource.asObservable();
+
+    public setMessage(value: Blob) {
+        this.fileSource.next(value);
+      }
+    public getMessage(): Blob{
+      return this.fileSource.value;
+    }
+}
+
+
+@Injectable({
+  providedIn: 'root'
+})
 export class SharedService {
   readonly APIUrl = "http://127.0.0.1:8000/";
   readonly ZipUrl = "http://127.0.0.1:8000/media/";

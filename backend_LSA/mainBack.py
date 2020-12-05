@@ -66,9 +66,9 @@ if __name__ == "__main__":
 	# Location of the (temporary) directory the zip file is unzipped to
 	directory = 'inputDir'
 	# Location of the output CSV file
-	outpFile = 'outpFile.csv'
+	outpFile = '../src/assets/results/outpFile.csv'
 	# Location of the output image barh graph
-	outpPng = 'outpImg.png'
+	outpPng = '../src/assets/results/outpImg.png'
 	# n such that top n results are displayed in the bar graph
 	barGraphParam = 5
 
