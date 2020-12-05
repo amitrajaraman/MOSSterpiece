@@ -12,7 +12,41 @@
 <hr>
 <h3>1) Overview</h3>
 The pairs of files with the most similarity are: <br>
-...add ngFor loop here... <br>
+
+<li *ngFor="let i of rep;">
+    {{files[i]}} :- {{values[i]}}
+</li>
+
+Here's a graph visualizing the data.
 
 <img src="../../assets/results/outpImg.png">
+
+<!--Add two drop down lists here to display similarity between any two files-->
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+    <div class="form-group">
+        <label for="file1">Choose first file:</label>
+        <select formControlName="file1" class="form-control">
+            <option disabled>Select file</option>
+            <option>Choose File</option>
+            <option *ngFor="let file of all_files">{{file}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="file2">Choose second file:</label>
+        <select formControlName="file2" class="form-control">
+            <option disabled>Select file</option>
+            <option>Choose File</option>
+            <option *ngFor="let file of all_files">{{file}}</option>
+        </select>
+    </div>
+
+    <button class="btn btn-primary" on_click="submit()">Submit</button>
+</form>
+
+<div *ngIf="show;">
+    {{show_val}}
+</div>
+
 </ng-template>
