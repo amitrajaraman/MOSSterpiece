@@ -168,7 +168,7 @@ if __name__ == "__main__":
 				if(i < j):
 					finalRes[i,j] = str(cosine_similarity(arrRed[:, i], arrRed[:, j]))
 					# finalRes[j,i] = finalRes[i,j]
-				f.write(str(finalRes[min(i,j),max(i,j)]) + ",")
+				f.write(str(abs(round(finalRes[min(i,j),max(i,j)],6))) + ",")
 			f.write("\n")
 	
 
