@@ -1,8 +1,6 @@
-Vigna is thope <br>
-{{this.messages}} <br>
 <div class="header">
 
-<div *ngIf="this.messages=='';else loggedIn">
+<div *ngIf="messengerService.getMessage()=='';else loggedIn">
         <div class="container">
                 <a routerLink="/aboutus">About Us</a>
                 <a routerLink='/signup'>Sign Up</a>

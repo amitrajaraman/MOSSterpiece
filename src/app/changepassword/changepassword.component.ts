@@ -16,7 +16,6 @@ export class ChangepasswordComponent implements OnInit {
   constructor(private service:SharedService, private router: Router, private messengerService: MessengerService) { }
 
   ngOnInit(): void {
-    
   }
   update():void{
 

@@ -1,3 +1,12 @@
+<div *ngIf="messengerService.getMessage()=='';else loggedIn">
+    <div class="container">
+        You are not logged in.
+
+        Click <a routerLink="/login" style="color:red">here</a> to log in and <a routerLink="/signup"
+            style="color:red">here</a> to register.
+    </div>
+</div>
+<ng-template #loggedIn>
 <h1>Welcome, //Find a way to make the username visible here// </h1>
 
 <a routerLink="/">
@@ -11,4 +20,4 @@
 <a routerLink="/changepassword">
     <button>Change Password</button>
 </a>
-
+</ng-template>

@@ -20,33 +20,29 @@ import numpy as np
 import scipy.spatial.distance
 from zipfile import ZipFile
 
-# Create your views here.
-# @csrf_exempt
-# def userApi(request,del_name=""):
-#     if request.method=='GET':
-#         users = Users.objects.all()
-#         user_serializer = UserSerializer(users, many=True)
-#         return JsonResponse(user_serializer.data, safe=False)
-
-
 class userAPI(generics.GenericAPIView):
     serializer_class = UserSerializer
 
     def post(self, request, *args, **kwargs):
         user_data=JSONParser().parse(request)
         user_serializer = UserSerializer(data=user_data)
+
         if user_serializer.is_valid():
             user = user_serializer.save()
             return Response({
-                "user": UserSerializer(user,
-                                       context=self.get_serializer_context()).data,
+                "user": UserSerializer(user,context=self.get_serializer_context()).data,
+                "safe": True 
             })
+        if User.objects.filter(username=user_serializer.data['username']).exists():
+            return JsonResponse("Username already exists", safe=False)
+        elif User.objects.filter(email=user_serializer.data['email']).exists():
+            return JsonResponse("Email already exists", safe=False)
         return JsonResponse("Failed to Add.",safe=False)
     
 
 class fileAPI(generics.GenericAPIView):
-    # authentication_classes = [TokenAuthentication]
-    # permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def post(self, request):
         files = Files(files = request.FILES['file'], username=request.user.username)

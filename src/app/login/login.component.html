@@ -1,3 +1,9 @@
+<div *ngIf="messengerService.getMessage()!='';else loggedIn">
+    <div class="container">
+        Please logout before logging in
+    </div>
+</div>
+<ng-template #loggedIn>
 <div class="h1">Welcome back!</div>
 <form action="login" method="post" class="form">
     <div class = "section">
@@ -8,3 +14,4 @@
         <button (click)="login()">Login</button>
     </div>
 </form>
+</ng-template>

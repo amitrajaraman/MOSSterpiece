@@ -1,3 +1,9 @@
+<div *ngIf="messengerService.getMessage()!='';else loggedIn">
+    <div class="container">
+        Please logout before registering
+    </div>
+</div>
+<ng-template #loggedIn>
 <div class="h1">Sign Up Today!</div>
             <form action="register" method="post" class="form">
                 <div class="section">
@@ -16,3 +22,4 @@
                     <button (click)="register()">Register</button>
                 </div>
             </form>
+</ng-template>
