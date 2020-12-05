@@ -34,10 +34,19 @@ class userAPI(generics.GenericAPIView):
                 "safe": True 
             })
         if User.objects.filter(username=user_serializer.data['username']).exists():
-            return JsonResponse("Username already exists", safe=False)
+            return Response({
+                "message":"Username already exists", 
+                "safe":False}
+                )
         elif User.objects.filter(email=user_serializer.data['email']).exists():
-            return JsonResponse("Email already exists", safe=False)
-        return JsonResponse("Failed to Add.",safe=False)
+            return Response({
+                "message": "Email already exists",
+                "safe":False}
+            )
+        return Response({
+            "message": "Failed to add",
+            "safe":False}
+        )
     
 
 class fileAPI(generics.GenericAPIView):
