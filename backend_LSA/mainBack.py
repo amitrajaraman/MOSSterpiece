@@ -66,11 +66,13 @@ if __name__ == "__main__":
 	# Location of the (temporary) directory the zip file is unzipped to
 	directory = 'inputDir'
 	# Location of the output CSV file
-	outpFile = '../src/assets/results/outpFile.csv'
+	outpFile = "../src/assets/results/outpFile.txt"
 	# Location of the output image barh graph
-	outpPng = '../src/assets/results/outpImg.png'
+	outpPng = "../src/assets/results/outpImg.png"
 	# n such that top n results are displayed in the bar graph
 	barGraphParam = 5
+	# Storing the top n results in txt file
+	outpMax = "../src/assets/results/top.txt"
 
 
 	zipFilePath = ''
@@ -179,11 +181,12 @@ if __name__ == "__main__":
 	numDisp = int(min(barGraphParam, numFiles*(numFiles-1)/2))
 	maxInd = [0 for x in range(numDisp)]
 	dicTop5 = {}
+	dictTop5 = {}
 	# for x in filenames:
 	# 	print(x)
 	# print("Size is "+str(numFiles))
 	for pos in range(numDisp):
-		dicTop5[finalRes[np.argmax(finalRes)]] = str(filenames[np.argmax(finalRes) % numFiles]) + " and\n" + str(filenames[np.argmax(finalRes) // numFiles])
+		dicTop5[finalRes[np.argmax(finalRes)]] = str(filenames[np.argmax(finalRes) % numFiles]) + " and " + str(filenames[np.argmax(finalRes) // numFiles])
 		# dicTop5[finalRes[np.argmax(finalRes)]] = str(np.argmax(finalRes) % numFiles) + " and\n" + str(np.argmax(finalRes) // numFiles)
 		# print(np.argmax(finalRes), finalRes[np.argmax(finalRes)], dicTop5[finalRes[np.argmax(finalRes)]])
 		finalRes[np.argmax(finalRes)] = 0
@@ -192,6 +195,22 @@ if __name__ == "__main__":
 	# 	print(key, dicTop5[key])
 	top5Names = [key for key in sorted(dicTop5)]
 	top5Coeffs = [dicTop5[key] for key in top5Names]
+
+	with open(outpMax, 'w') as f:
+		for x in top5Names:
+			print(x)
+			if x != top5Names[-1]:
+				f.write(str(x) + ",")
+			else:
+				f.write(str(x))
+		f.write("\n")
+		for x in top5Coeffs:
+			print(x)
+			if x != top5Coeffs[-1]:
+				f.write(str(x) + ",")
+			else:
+				f.write(str(x))
+		
 	
 	fig, ax = plt.subplots()
 	ax.barh(range(len(dicTop5)), top5Names)
