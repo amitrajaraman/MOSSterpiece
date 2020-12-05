@@ -6,9 +6,10 @@
     </div>
 </div>
 <ng-template #loggedIn>
+    <form class="form" style="padding-top: 50px">
     <div class="section">
         <input type="file" (change)="updateZip($event)" accept="application/zip"/>
-    </div>
+    
     <button (click)="uploadZip()" > Upload! </button>
     <!--Add ngIfs here after it starts to work-->
     {{ this.ZipFileName }}    <button (click)="Process()">Process this Zipfile</button>
@@ -19,5 +20,6 @@
         <button (click)="Download()">Download</button>
     </div>
     -->
-    
+    </div>
+    </form>
 </ng-template>
