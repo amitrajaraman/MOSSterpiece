@@ -14,13 +14,11 @@ import { HttpResponse } from '@angular/common/http';
 export class FileUploadComponent implements OnInit {
 
   zip: any;
-  messages: string;
   download : boolean;
   constructor(private service:SharedService, private messengerService: MessengerService, private router: Router, private fileService: FileService) { }
 
   ngOnInit(): void {
     this.zip = undefined;
-    this.messengerService.message.subscribe(m => this.messages = m);
     this.download = false;
   }
 

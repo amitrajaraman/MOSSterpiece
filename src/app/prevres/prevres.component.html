@@ -1,4 +1,4 @@
-<div *ngIf="this.messages=='';else loggedIn">
+<div *ngIf="messengerService.getMessage()=='';else loggedIn">
     <div class="container">
         You are not logged in.
 
@@ -7,5 +7,5 @@
     </div>
 </div>
 <ng-template #loggedIn>
-Your file is being processed...
+    Prev res to be implemented
 </ng-template>

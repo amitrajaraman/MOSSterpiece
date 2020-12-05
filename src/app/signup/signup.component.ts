@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { SharedService } from 'src/app/shared.service'
+import { MessengerService, SharedService } from 'src/app/shared.service'
 
 @Component({
   selector: 'app-signup',
@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
   form_password = new FormControl('');
   form_confirmpw = new FormControl('');
 
-  constructor(private service:SharedService) { }
+  constructor(private service:SharedService, private messengerService:MessengerService) { }
 
   ngOnInit(): void {
     
@@ -39,15 +39,25 @@ export class SignupComponent implements OnInit {
       }
 
       this.service.addUser(data).subscribe(res=>{
-        console.log(res);
-        window.alert("Registration Successful!");
+        if(res.safe)
+        {
+          console.log(res);
+          window.alert("Registration Successful!");
+        }
+        else
+        {
+          const data = JSON.stringify(res);
+          window.alert(data);
+        }
         this.form_firstname.reset();
         this.form_lastname.reset();
         this.form_username.reset();
         this.form_email.reset();
         this.form_password.reset();
         this.form_confirmpw.reset();
-      });
+      }
+
+      );
       
     }
   }

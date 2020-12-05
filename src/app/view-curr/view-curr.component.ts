@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessengerService } from '../shared.service';
 
 @Component({
   selector: 'app-view-curr',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewCurrComponent implements OnInit {
 
-  constructor() { }
+  constructor(private messengerService: MessengerService) { }
 
   ngOnInit(): void {
   }
