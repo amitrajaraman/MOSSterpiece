@@ -13,12 +13,10 @@ export class MessengerService {
 
     public setMessage(value: string) {
         localStorage.setItem('token', value);
-        this.messageSource.next(value);
         console.log(localStorage.getItem('token'));
       }
     public getMessage(): string{
-      this.setMessage(localStorage.getItem('token'));
-      return this.messageSource.value;
+      return localStorage.getItem('token');
     }
 }
 
