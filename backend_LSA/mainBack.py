@@ -203,7 +203,7 @@ if __name__ == "__main__":
 	right_side.set_visible(False)
 
 	plt.tight_layout()
-	plt.savefig(outpPng)
+	plt.savefig("../src/assets/results/outpImg.png")
 	
 	
 	try:
