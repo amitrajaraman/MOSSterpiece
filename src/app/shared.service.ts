@@ -20,9 +20,12 @@ export class MessengerService {
     }
 }
 
+@Injectable({
+  providedIn: 'root'
+})
 export class FileService {
   constructor(){}
-    private fileSource: BehaviorSubject<string> = new BehaviorSubject(''); 
+    private fileSource: BehaviorSubject<string> = new BehaviorSubject('');     
     public file = this.fileSource.asObservable();
 
     public setMessage(value: string) {

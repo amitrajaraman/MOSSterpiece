@@ -5,7 +5,7 @@
 |      Member Name      |                 Contribution to the Project                  |
 | :-------------------: | :----------------------------------------------------------: |
 |    Amit Rajaraman     | Frontend contributions, read-up for core logic implementation |
-| Sudhansh Peddabomma |    Heavy Backend Contribution, login and download     |
+| Sudhansh Peddabomma |    Heavy Backend Contribution; login, download and merge conflicts     |
 | Sai Vigna Surapaneni  |  Front end implementation, Styling the website   |
 |    Akash Cherukuri    | Initial Backend and Frontend implementations, Read-up on papers |
 
