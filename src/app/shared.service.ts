@@ -7,26 +7,32 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class MessengerService {
-    constructor(){}
+    constructor()
+    {
+
+    }
     private messageSource: BehaviorSubject<string> = new BehaviorSubject(''); 
     public message = this.messageSource.asObservable();
     private userSource: BehaviorSubject<string> = new BehaviorSubject(''); 
     public userMessage = this.userSource.asObservable();
 
     public setName(value: string){
-      this.userSource.next(value);
+      sessionStorage.setItem('name',value);
     }
 
     public getName(): string{
-      return this.userSource.value;
+      // console.log(sessionStorage.getItem("token"));
+      if (sessionStorage.getItem("name") === null) return "";
+      return sessionStorage.getItem('name');
     }
 
     public setMessage(value: string) {
-        localStorage.setItem('token', value);
-        console.log(localStorage.getItem('token'));
+        sessionStorage.setItem('token', value);
       }
     public getMessage(): string{
-      return localStorage.getItem('token');
+      // console.log(sessionStorage.getItem("token"));
+      if (sessionStorage.getItem("token") === null) return "";
+      return sessionStorage.getItem('token');
     }
 }
 

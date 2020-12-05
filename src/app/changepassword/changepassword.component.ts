@@ -13,7 +13,7 @@ export class ChangepasswordComponent implements OnInit {
   form_password = new FormControl('');
   form_confirmpw = new FormControl('');
 
-  constructor(private service:SharedService, private router: Router, private messengerService: MessengerService) { }
+  constructor(private service:SharedService, private router: Router, public messengerService: MessengerService) { }
 
   ngOnInit(): void {
   }

@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   form_username = new FormControl('');
   form_password = new FormControl('');
 
-  constructor(private service:SharedService, private router: Router, private messengerService: MessengerService) { }
+  constructor(private service:SharedService, private router: Router, public messengerService: MessengerService) { }
 
   ngOnInit(): void {
     this.messageSubscription = this.messengerService.message.subscribe(m => { this.messages = m });

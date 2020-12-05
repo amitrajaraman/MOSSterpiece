@@ -11,7 +11,7 @@ export class PreHeaderComponent implements OnInit {
 
   messages: string;
 
-  constructor(private messengerService: MessengerService, private router: Router, private service: SharedService) { }
+  constructor(public messengerService: MessengerService, private router: Router, private service: SharedService) { }
   
   setGlobalValue(value: string) {
     this.messengerService.setMessage(value);

@@ -8,7 +8,7 @@ import { MessengerService } from '../shared.service';
 })
 export class ViewCurrComponent implements OnInit {
 
-  constructor(private messengerService: MessengerService) { }
+  constructor(public messengerService: MessengerService) { }
 
   ngOnInit(): void {
   }

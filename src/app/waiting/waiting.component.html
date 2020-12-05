@@ -1,4 +1,4 @@
-<div *ngIf="this.messages=='';else loggedIn">
+<div *ngIf="this.messengerService.getMessage()=='';else loggedIn">
     <div class="container">
         You are not logged in.
 

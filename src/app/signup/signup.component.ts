@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
   form_password = new FormControl('');
   form_confirmpw = new FormControl('');
 
-  constructor(private service:SharedService, private messengerService:MessengerService) { }
+  constructor(private service:SharedService, public messengerService:MessengerService) { }
 
   ngOnInit(): void {
     
@@ -38,17 +38,17 @@ export class SignupComponent implements OnInit {
         password: this.form_password.value
       }
 
-      this.service.addUser(data).subscribe(res=>{
-        if(res.safe)
-        {
-          console.log(res);
-          window.alert("Registration Successful!");
-        }
-        else
-        {
-          const data = JSON.stringify(res);
-          window.alert(data);
-        }
+      this.service.addUser(data).subscribe(
+        (res)=>{
+          if(res["safe"])
+          {
+            console.log(res);
+            window.alert("Registration Successful!");
+          }
+          else
+          {
+            window.alert(res["message"]);
+          }
         this.form_firstname.reset();
         this.form_lastname.reset();
         this.form_username.reset();

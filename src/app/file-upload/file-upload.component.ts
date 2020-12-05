@@ -15,7 +15,7 @@ export class FileUploadComponent implements OnInit {
 
   zip: any;
   download : boolean;
-  constructor(private service:SharedService, private messengerService: MessengerService, private router: Router, private fileService: FileService) { }
+  constructor(private service:SharedService, public messengerService: MessengerService, private router: Router, private fileService: FileService) { }
 
   ngOnInit(): void {
     this.zip = undefined;

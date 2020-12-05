@@ -9,7 +9,7 @@ import { MessengerService, SharedService } from '../shared.service';
 })
 export class ProfileComponent implements OnInit {
   user:string;
-  constructor(private messengerService: MessengerService, private router: Router, private service: SharedService) {  }
+  constructor(public messengerService: MessengerService, private router: Router, private service: SharedService) {  }
 
   //A very bad way of getting the user's data; too bad!
   ngOnInit():void{
@@ -25,7 +25,8 @@ export class ProfileComponent implements OnInit {
     this.service.logout().subscribe(
       (res)=> {
            window.alert("Logged out");
-          this.setGlobalValue(""); 
+          this.setGlobalValue("");
+          // sessionStorage. 
          }
        );
      }

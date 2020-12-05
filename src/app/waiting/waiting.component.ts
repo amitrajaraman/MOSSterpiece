@@ -11,7 +11,7 @@ import { Router } from '@angular/router'
 export class WaitingComponent implements OnInit {
   filename:string;
   
-  constructor(private service:SharedService, private messengerService: MessengerService, private router: Router, private fileService: FileService) {
+  constructor(private service:SharedService, public messengerService: MessengerService, private router: Router, private fileService: FileService) {
     this.filename="default";
     console.log(this.filename);
   }
