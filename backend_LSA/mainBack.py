@@ -268,8 +268,6 @@ if __name__ == "__main__":
 	if(lowRank > 300):
 		lowRank = 300
 
-	# print(baseArray.shape[0], lowRank)
-
 	uRed = u[:lowRank, :]
 	sRed = np.diag(s[:lowRank])
 	arrRed = np.dot(np.dot(uRed, sRed), v)
