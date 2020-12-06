@@ -26,7 +26,6 @@ export class ProfileComponent implements OnInit {
       (res)=> {
            window.alert("Logged out");
           this.setGlobalValue("");
-          // sessionStorage. 
          }
        );
      }

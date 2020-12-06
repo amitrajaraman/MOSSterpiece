@@ -125,6 +125,7 @@ class logoutAPI(generics.GenericAPIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request, format=None):
+        print("printttt")
         request.user.auth_token.delete()
         auth.logout(request)
         return Response({})
