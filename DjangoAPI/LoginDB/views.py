@@ -19,6 +19,7 @@ import shutil
 import numpy as np
 import scipy.spatial.distance
 from zipfile import ZipFile
+import subprocess
 
 class userAPI(generics.GenericAPIView):
     serializer_class = UserSerializer
@@ -137,6 +138,7 @@ class processAPI(generics.GenericAPIView):
         #Get the needed file
         print(request.data)
         req_file = Files.objects.get(files=request.data["file"])
+        print(os.getcwd())
         path_to_zip = "../DjangoAPI/media/" + str(req_file.files)         #to be passed as an argument to Amit's file
         path_to_an = "../backend_LSA/mainBack.py"
         os.system("python " + path_to_an + " " + path_to_zip)

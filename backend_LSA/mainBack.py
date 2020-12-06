@@ -7,6 +7,7 @@ import scipy.spatial.distance
 from zipfile import ZipFile
 import matplotlib
 import matplotlib.pyplot as plt
+import subprocess
 # import ast
 
 def heatmap(data, row_labels, col_labels, ax=None, cbar_kw={}, cbarlabel="", **kwargs):
@@ -159,7 +160,7 @@ def comment_remover_py(fname):
 		last_lineno = elineno
 
 
-	# os.system('if [ -f '+dest+' ]; then echo '+dest+' found; fi')
+	# subprocess.call('if [ -f '+dest+' ]; then echo '+dest+' found; fi')
 	# with open(fname,'wb') as wfd:
 	# 	with open('temp','rb') as fd:
 	# 		shutil.copyfileobj(fd, wfd)
@@ -184,9 +185,13 @@ def cosine_similarity(c1, c2):
 	return (1 - scipy.spatial.distance.cosine(c1, c2))
 
 if __name__ == "__main__":
-
+	print(sys.argv[1])
+	print(os.getcwd())
+	# subprocess.call('cd ../backend_LSA')
 	# Location of the (temporary) directory the zip file is unzipped to
-	directory = 'inputDir'
+	directory = '../backend_LSA/inputDir'
+	bashLoc = '../backend_LSA/bashTest.sh'
+	# subprocess.call('if [[ -d '+directory+' ]]; then rm -r '+directory+'; fi')
 	# Location of the output CSV file
 	outpFile = '../src/assets/results/outpFile.csv'
 	# Location of the output images
@@ -199,12 +204,12 @@ if __name__ == "__main__":
 	zipFilePath = ''
 	try:
 		zipFilePath = sys.argv[1]
+		with ZipFile(zipFilePath, 'r') as zipObj:
+			zipObj.extractall(directory)
 	except:
 		print("Usage: mainBack.py relative/path/to/filename.zip")
 		print("Quitting")
 		quit()
-	with ZipFile(zipFilePath, 'r') as zipObj:
-		zipObj.extractall('inputDir')
 	filenames = [name for name in os.listdir(directory)]
 	numFiles = len(filenames)
 	baseDict = {}	
@@ -215,25 +220,16 @@ if __name__ == "__main__":
 
 		### PREPROCESSING
 		if(fileExt == '.py'):
-			# try:
-			# 	with open(tempF,'r') as f:
-			# 		python_code = f.read()
-			# 		# root = ast.parse(python_code)
-			# 		# names = sorted({node.id for node in ast.walk(root) if isinstance(node, ast.Name)})
-			# 		line = re.sub('\w+(?=\()', 'fnCall', python_code)
-			# 	with open(tempF,'w') as f:
-			# 		f.write(line)
-			# except:
-			# 	print(tempF + " does not compile.")
 			comment_remover_py(tempF)
-			os.system('cat temp > '+tempF)
+			subprocess.call('cat temp > '+tempF)
 							
 		elif(fileExt == '.cpp' or fileExt == '.java'):
 			try:
-				os.system('bash bashTest.sh ' + tempF)
-				os.system('cat temp > ' + tempF)
-				os.system('rm temp')
+				subprocess.call('bash ' + bashLoc + ' ' + tempF, shell = True)
+				subprocess.call('cat temp > ' + tempF, shell = True)
+				subprocess.call('rm temp', shell = True)
 			except Exception as e:
+				print(e)
 				print(tempF + " does not compile.")
 			with open(tempF, 'r') as readF:
 				f = readF.read()
@@ -330,7 +326,7 @@ if __name__ == "__main__":
 	# print(top5Coeffs)
 	
 	try:
-		os.system('rm -r inputDir')
-		os.system('if [ -f temp ]; then rm temp; fi')
+		subprocess.call('rm -r '+directory, shell = True)
+		subprocess.call('if [ -f temp ]; then rm temp; fi', shell = True)
 	except OSError as error:
 		print("Directory does not exist.")
