@@ -1,5 +1,5 @@
 import os
-import sys
+import sys, token, tokenize
 import shutil
 import re
 import numpy as np
@@ -7,7 +7,7 @@ import scipy.spatial.distance
 from zipfile import ZipFile
 import matplotlib.pyplot as plt
 
-def do_file(fname):
+def comment_remover_py(fname):
     """ Run on just one file.
     """
     source = open(fname)
@@ -66,13 +66,12 @@ if __name__ == "__main__":
 	# Location of the (temporary) directory the zip file is unzipped to
 	directory = 'inputDir'
 	# Location of the output CSV file
-	outpFile = "../src/assets/results/outpFile.txt"
-	# Location of the output image barh graph
-	outpPng = "../src/assets/results/outpImg.png"
+	outpFile = '../src/assets/results/outpFile.csv'
+	# Location of the output images
+	outpPng = '../src/assets/results/outpImg.png'
+	outpHeatmap = '../src/assets/results/outpHeatmap.png'
 	# n such that top n results are displayed in the bar graph
 	barGraphParam = 5
-	# Storing the top n results in txt file
-	outpMax = "../src/assets/results/top.txt"
 
 
 	zipFilePath = ''
@@ -88,26 +87,24 @@ if __name__ == "__main__":
 	numFiles = len(filenames)
 	baseDict = {}	
 
-	"""
-	Have to preprocess files
-	* Remove things with only numeric characters
-	* Remove syntactic tokens like ; for C++
-	* Remove comments
-	"""
 	for i in range(numFiles):
 		tempF = os.path.join(directory, filenames[i])
 		fileExt = (os.path.splitext(tempF))[1]
+
 		if(fileExt == '.py'):
-			do_file(tempF)
+			comment_remover_py(tempF)
+		
+		if(fileExt == '.cpp'):
+			os.system('bash bashTest.sh ' + tempF)
+			os.system('cat temp > ' + tempF)
+			os.system('rm temp')
+		
 		with open(tempF,'r') as readF:
+
 			f = readF.read()
-			# print(f)
-			# print()
-			if(fileExt == '.cpp'):
-				f = comment_remover_cpp(f)
-			f = f.replace('\n', '').replace('\r', '').replace('\t', '')
-			re.sub(' +',' ',f)
-			# print(f)
+			f = f.replace(';', ' ')
+			f = re.sub(r"\s\s+", ' ', f);
+			# print(tempF)
 			# print(f)
 			for word in f.split():
 				if(word not in baseDict.keys()):
@@ -115,117 +112,96 @@ if __name__ == "__main__":
 				baseDict[word][i] += 1
 
 	baseArray = np.array(list(baseDict.values()))
-	# print(baseArray)
-
-	#Do some weighting to the matrix
-	"""
-	Term-weighting algorithms are then applied to matrix A.
-	The purpose of applying weighting algorithms is to increase or decrease
-	the importance of terms using local and global weights in order to improve
-	detection performance.
-	With document length normalization the term values are adjusted 
-	depending on the length of each file in the corpus.
-
-	* Term-frequency local weighting
-	* Normal global weighting
-	* Cosine normalization
-	"""
-
-	# print(baseArray.shape)
-
-	u, s, v = np.linalg.svd(baseArray, False)
-	# print(baseArray.shape[0])
-	lowRank = 1+int(np.sqrt(baseArray.shape[0]))
 	
-	if (lowRank < numFiles):
+	u, s, v = np.linalg.svd(baseArray, False)
+	lowRank = 1+int((baseArray.shape[0])/5)
+
+	if(lowRank < numFiles):
 		lowRank = numFiles+1
 
-
-	# print(lowRank)
 	if(lowRank > 300):
 		lowRank = 300
 
 	uRed = u[:lowRank, :]
 	sRed = np.diag(s[:lowRank])
-
-	# print(baseArray.shape)
-	# print(lowRank)
-
-	# print(uRed.shape)
-	# print(sRed.shape)
-	# print(v.shape)
-	
 	arrRed = np.dot(np.dot(uRed, sRed), v)
 
 	finalRes = np.zeros((numFiles,numFiles));
 
+	arrRed = np.round(arrRed, 7)
+	
 	with open(outpFile, 'w') as f:
 		for i in range(numFiles):
 			f.write(filenames[i]+",")
-			# print(filenames[i]+",")
 		f.write("\n")
 		for i in range(numFiles):
 			finalRes[i,i] = 1.0
 			for j in range(numFiles):
 				if(i < j):
-					finalRes[i,j] = str(cosine_similarity(arrRed[:, i], arrRed[:, j]))
-					# finalRes[j,i] = finalRes[i,j]
-				f.write(str(finalRes[min(i,j),max(i,j)]) + ",")
+					finalRes[i,j] = str(cosine_similarity(arrRed[:, i], arrRed[:, j]))	
+				f.write(str(abs(round(finalRes[min(i,j),max(i,j)],3))) + ",")
 			f.write("\n")
 	
+	tempRes = np.array(finalRes, copy=True)
+	tempRes = np.maximum(tempRes, tempRes.transpose())
 
 	for i in range(numFiles):
 		finalRes[i,i] = 0
 
+	
 	finalRes = np.reshape(finalRes, (numFiles*numFiles))
 	numDisp = int(min(barGraphParam, numFiles*(numFiles-1)/2))
 	maxInd = [0 for x in range(numDisp)]
 	dicTop5 = {}
-	dictTop5 = {}
-	# for x in filenames:
-	# 	print(x)
-	# print("Size is "+str(numFiles))
 	for pos in range(numDisp):
-		dicTop5[finalRes[np.argmax(finalRes)]] = str(filenames[np.argmax(finalRes) % numFiles]) + " and " + str(filenames[np.argmax(finalRes) // numFiles])
-		# dicTop5[finalRes[np.argmax(finalRes)]] = str(np.argmax(finalRes) % numFiles) + " and\n" + str(np.argmax(finalRes) // numFiles)
-		# print(np.argmax(finalRes), finalRes[np.argmax(finalRes)], dicTop5[finalRes[np.argmax(finalRes)]])
+		dicTop5[finalRes[np.argmax(finalRes)]] = str(filenames[np.argmax(finalRes) % numFiles]) + " and\n" + str(filenames[np.argmax(finalRes) // numFiles])
 		finalRes[np.argmax(finalRes)] = 0
-	# print(dicTop5)
-	# for key in dicTop5:
-	# 	print(key, dicTop5[key])
 	top5Names = [key for key in sorted(dicTop5)]
 	top5Coeffs = [dicTop5[key] for key in top5Names]
-
-	with open(outpMax, 'w') as f:
-		for x in top5Names:
-			print(x)
-			if x != top5Names[-1]:
-				f.write(str(x) + ",")
-			else:
-				f.write(str(x))
-		f.write("\n")
-		for x in top5Coeffs:
-			print(x)
-			if x != top5Coeffs[-1]:
-				f.write(str(x) + ",")
-			else:
-				f.write(str(x))
-		
 	
 	fig, ax = plt.subplots()
 	ax.barh(range(len(dicTop5)), top5Names)
 	plt.yticks(range(len(dicTop5)), top5Coeffs)
 
 	for index, value in enumerate(top5Names):
-	    plt.text(value, index, str(round(value,3)))
+	    plt.text(value, index, str(round(value,2)))
 	right_side = ax.spines["right"]
 	right_side.set_visible(False)
 
 	plt.tight_layout()
 	plt.savefig(outpPng)
 	
+	# finalRes = np.reshape(finalRes, (numFiles,numFiles))
+	# print(finalRes)
+
+	fig, ax = plt.subplots()
+	# print(finalRes.shape)
+	im = ax.imshow(tempRes)
+
+	# We want to show all ticks...
+	ax.set_xticks(np.arange(len(filenames)))
+	ax.set_yticks(np.arange(len(filenames)))
+	# ... and label them with the respective list entries
+	ax.set_xticklabels(filenames)
+	ax.set_yticklabels(filenames)
+
+	# Rotate the tick labels and set their alignment.
+	plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
+	         rotation_mode="anchor")
+
+	# Loop over data dimensions and create text annotations.
+	if(numFiles < 15):
+		for i in range(numFiles):
+		    for j in range(numFiles):
+		        text = ax.text(j, i, round(tempRes[i, j],2),
+		                       ha="center", va="center", color="w")
+
+	ax.set_title("Heatmap of degree of plagiarism")
+	fig.tight_layout()
+	plt.savefig(outpHeatmap)
 	
 	try:
-		shutil.rmtree('inputDir')
+		os.system('rm -r inputDir')
+		# os.system('rm temp')
 	except OSError as error:
 		print("Directory does not exist.")
