@@ -230,6 +230,7 @@ if __name__ == "__main__":
 
 	ax.set_title("Heatmap of degree of plagiarism")
 	fig.tight_layout()
+	plt.colorbar(plt.pcolor(tempRes))
 	plt.savefig(outpHeatmap)
 	# print(top5Coeffs)
 	
