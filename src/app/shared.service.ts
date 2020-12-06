@@ -57,14 +57,23 @@ export class FileService {
 })
 export class ResultService {
   constructor(){}
-    private fileSource: BehaviorSubject<Blob> = new BehaviorSubject(new Blob());     
-    public file = this.fileSource.asObservable();
+    private resSource: BehaviorSubject<string> = new BehaviorSubject('');     
+    public res = this.resSource.asObservable();
 
-    public setMessage(value: Blob) {
-        this.fileSource.next(value);
+    public setres(value: string) {
+        this.resSource.next(value);
       }
-    public getMessage(): Blob{
-      return this.fileSource.value;
+    public getres(): string{
+      return this.resSource.value;
+    }
+    private maxSource: BehaviorSubject<string> = new BehaviorSubject('');     
+    public max = this.maxSource.asObservable();
+
+    public setmax(value: string) {
+        this.maxSource.next(value);
+      }
+    public getmax(): string{
+      return this.maxSource.value;
     }
 }
 

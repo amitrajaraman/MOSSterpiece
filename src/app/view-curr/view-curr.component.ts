@@ -3,6 +3,7 @@ import { MessengerService } from '../shared.service';
 import { ResultService } from '../shared.service';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { Router,NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-view-curr',
@@ -19,17 +20,17 @@ export class ViewCurrComponent implements OnInit {
   rep:any;
   show:boolean;
   show_val:any;
-  constructor(public messengerService: MessengerService, public resultservice: ResultService, private http:HttpClient) { }
-
+  constructor(private router: Router, public messengerService: MessengerService, public resultservice: ResultService, private http:HttpClient) 
+  {}
+  // ngOnInit(): void{}
   async ngOnInit() {
     //Get the results from the data
     //this.result = this.resultservice.getMessage();
     //console.log(this.result);
 
     //Read the results csv file
-    this.result = await this.http.get('../../assets/results/outpFile.txt', {responseType: 'text'}).toPromise();
-    this.max = await this.http.get('../../assets/results/top.txt', {responseType: 'text'}).toPromise();
-    
+    this.result = this.resultservice.getres();
+    this.max = this.resultservice.getmax();
     this.proc();
   }
 

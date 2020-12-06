@@ -135,8 +135,9 @@ class processAPI(generics.GenericAPIView):
     def post(self, request):
         print(os.getcwd())
         #Get the needed file
-        req_file = Files.objects.filter(files=request.POST.get('file'))
-        path_to_zip = "../DjangoAPI/media/" + str(req_file[0].files)         #to be passed as an argument to Amit's file
-        path_to_an = "../backend_LSA/mainback.py"
+        req_file = Files.objects.get(files=request.POST.get('file'))
+        print(request.POST.get('file'))
+        path_to_zip = "../DjangoAPI/media/" + str(req_file.files)         #to be passed as an argument to Amit's file
+        path_to_an = "../backend_LSA/mainBack.py"
         os.system("python " + path_to_an + " " + path_to_zip)
         return Response({"does it work": "Yes it does"})
