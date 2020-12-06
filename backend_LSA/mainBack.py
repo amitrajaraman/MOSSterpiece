@@ -186,14 +186,14 @@ def cosine_similarity(c1, c2):
 
 if __name__ == "__main__":
 	print(sys.argv[1])
-	print(os.getcwd())
 	# subprocess.call('cd ../backend_LSA')
 	# Location of the (temporary) directory the zip file is unzipped to
 	directory = '../backend_LSA/inputDir'
 	bashLoc = '../backend_LSA/bashTest.sh'
 	# subprocess.call('if [[ -d '+directory+' ]]; then rm -r '+directory+'; fi')
 	# Location of the output CSV file
-	outpFile = '../src/assets/results/outpFile.csv'
+	outpFile = '../src/assets/results/outpFile.txt'
+	top = '../src/assets/results/top.txt'
 	# Location of the output images
 	outpPng = '../src/assets/results/outpImg.png'
 	outpHeatmap = '../src/assets/results/outpHeatmap.png'
@@ -221,7 +221,7 @@ if __name__ == "__main__":
 		### PREPROCESSING
 		if(fileExt == '.py'):
 			comment_remover_py(tempF)
-			subprocess.call('cat temp > '+tempF)
+			subprocess.call('cat temp > '+tempF, shell=True)
 							
 		elif(fileExt == '.cpp' or fileExt == '.java'):
 			try:
@@ -298,7 +298,7 @@ if __name__ == "__main__":
 	maxInd = [0 for x in range(numDisp)]
 	dicTop5 = {}
 	for pos in range(numDisp):
-		dicTop5[finalRes[np.argmax(finalRes)]] = str(filenames[np.argmax(finalRes) % numFiles]) + " and\n" + str(filenames[np.argmax(finalRes) // numFiles])
+		dicTop5[finalRes[np.argmax(finalRes)]] = str(filenames[np.argmax(finalRes) % numFiles]) + " and " + str(filenames[np.argmax(finalRes) // numFiles])
 		finalRes[np.argmax(finalRes)] = 0
 	top5Coeffs = [key for key in sorted(dicTop5)]
 	top5Names = [dicTop5[key] for key in top5Coeffs]
@@ -306,6 +306,14 @@ if __name__ == "__main__":
 	fig, ax = plt.subplots()
 	ax.barh(range(len(dicTop5)), top5Coeffs)
 	plt.yticks(range(len(dicTop5)), top5Names)
+
+	with open(top, 'w') as f:
+		for i in top5Coeffs:
+			f.write(str(i)+",")
+		f.write("\n")
+		for i in top5Names:
+			f.write(str(i)+",")
+		f.write("\n")
 
 	for index, value in enumerate(top5Coeffs):
 	    plt.text(value, index, str(round(value,2)))
