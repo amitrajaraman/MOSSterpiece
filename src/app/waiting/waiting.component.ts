@@ -10,27 +10,26 @@ import { Router } from '@angular/router'
 })
 export class WaitingComponent implements OnInit {
   filename:string;
+  done:boolean;
   
   constructor(private service:SharedService, private resultservice:ResultService, public messengerService: MessengerService, private router: Router, private fileService: FileService) {
     this.filename="default";
+    this.done = false;
     console.log(this.filename);
   }
 
   async ngOnInit(){
-    this.filename = this.fileService.getMessage();
     // Waits for the processing to be completed
-    await this.Process();
+    if(!this.done){await this.Process();}
   }
 
   async Process(){
+    this.filename = this.fileService.getMessage();
     const formdata = {"file": this.filename};
     const t = await this.service.processFile(formdata).toPromise();
-    var blob = new Blob([t]);
-    //Set obtained data in messenger service
-    this.resultservice.setMessage(blob);
     //reroute after process is done
     this.router.navigate(['/upload/view']);
-      
+    this.done=true;
   }
 
 }
