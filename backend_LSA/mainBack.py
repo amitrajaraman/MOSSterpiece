@@ -314,7 +314,7 @@ if __name__ == "__main__":
 		for i in top5Names:
 			f.write(str(i)+",")
 		f.write("\n")
-
+	print("owheofi")
 	for index, value in enumerate(top5Coeffs):
 	    plt.text(value, index, str(round(value,2)))
 	right_side = ax.spines["right"]

@@ -19,8 +19,11 @@ export class WaitingComponent implements OnInit {
 
   async Process(){
     this.filename = this.fileService.getMessage();
+    if(this.filename!="")
+    {
     const formdata = {"file": this.filename};
-    const t = await this.service.processFile(formdata);
+    const t = await this.service.processFile(formdata).toPromise();
+    }
     //reroute after process is done
     this.router.navigate(['/upload/view']);
   }
