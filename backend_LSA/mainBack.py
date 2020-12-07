@@ -194,6 +194,7 @@ if __name__ == "__main__":
 	# subprocess.call('if [[ -d '+directory+' ]]; then rm -r '+directory+'; fi')
 	# Location of the output CSV file
 	outpFile = '../src/assets/results/outpFile.txt'
+	outpCSV = '../src/assets/results/outpFile.csv'
 	top = '../src/assets/results/top.txt'
 	# Location of the output images
 	outpPng = '../src/assets/results/outpImg.png'
@@ -302,8 +303,16 @@ if __name__ == "__main__":
 			for j in range(numFiles):
 				f.write(str(abs(round(finalRes[min(i,j),max(i,j)],3))) + ",")
 			f.write("\n")
-
-	
+		
+	with open(outpCSV, 'w') as f:
+		for i in range(numFiles):
+			f.write(filenames[i]+",")
+		f.write("\n")
+		for i in range(numFiles):
+			finalRes[i,i] = 1.0
+			for j in range(numFiles):
+				f.write(str(abs(round(finalRes[min(i,j),max(i,j)],3))) + ",")
+			f.write("\n")
 
 
 	tempRes = np.array(finalRes, copy=True)
