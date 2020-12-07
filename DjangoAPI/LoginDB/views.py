@@ -138,7 +138,7 @@ class processAPI(generics.GenericAPIView):
         print(os.getcwd())
         #Get the needed file
         print(request.data)
-        req_file = Files.objects.get(files=request.data["file"])
+        req_file = Files.objects.get(files=request.data["file"],username=request.user.username)
         print(os.getcwd())
         path_to_zip = "../DjangoAPI/media/" + str(req_file.files)         #to be passed as an argument to Amit's file
         path_to_an = "../backend_LSA/mainBack.py"

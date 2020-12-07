@@ -186,6 +186,7 @@ def cosine_similarity(c1, c2):
 
 if __name__ == "__main__":
 	print(sys.argv[1])
+	print("RUNNING MY CODE NOW!!!")
 	# subprocess.call('cd ../backend_LSA')
 	# Location of the (temporary) directory the zip file is unzipped to
 	directory = '../backend_LSA/inputDir'
@@ -220,10 +221,12 @@ if __name__ == "__main__":
 
 		### PREPROCESSING
 		if(fileExt == '.py'):
+			print("Processing "+tempF)
 			comment_remover_py(tempF)
 			subprocess.call('cat temp > '+tempF, shell=True)
 							
-		elif(fileExt == '.cpp' or fileExt == '.java'):
+		elif(fileExt == '.cpp'):
+			print("Processing "+tempF)
 			try:
 				subprocess.call('bash ' + bashLoc + ' ' + tempF, shell = True)
 				subprocess.call('cat temp > ' + tempF, shell = True)
@@ -236,7 +239,14 @@ if __name__ == "__main__":
 				f = comment_remover_cpp(f);
 				with open(tempF, 'w') as writeF:
 					writeF.write(f)	
-		
+		elif(fileExt == '.java'):
+			print("Processing "+tempF)
+			with open(tempF, 'r') as readF:
+				f = readF.read()
+				f = comment_remover_cpp(f);
+				with open(tempF, 'w') as writeF:
+					writeF.write(f)	
+
 		with open(tempF,'r') as readF:
 
 			f = readF.read()
@@ -331,6 +341,7 @@ if __name__ == "__main__":
 
 	fig.tight_layout()
 	plt.savefig(outpHeatmap)
+	# plt.show()
 	# print(top5Coeffs)
 	
 	try:

@@ -112,7 +112,7 @@ if __name__ == "__main__":
 			comment_remover_py(tempF)
 			os.system('cat temp > '+tempF)
 							
-		elif(fileExt == '.cpp' or fileExt == '.java'):
+		elif(fileExt == '.cpp'):
 			try:
 				os.system('bash bashTest.sh ' + tempF)
 				os.system('cat temp > ' + tempF)
@@ -124,6 +124,13 @@ if __name__ == "__main__":
 					f = comment_remover_cpp(f);
 					tempF.write(f)
 
+		elif(fileExt == '.java'):
+			print("Processing "+tempF)
+			with open(tempF, 'r') as readF:
+				f = readF.read()
+				f = comment_remover_cpp(f);
+				with open(tempF, 'w') as writeF:
+					writeF.write(f)	
 			
 		
 		with open(tempF,'r') as readF:
