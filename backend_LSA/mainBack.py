@@ -407,10 +407,16 @@ if __name__ == "__main__":
 	
 	with open(top, 'w') as f:
 		for i in top5Coeffs:
-			f.write(str(i)+",")
+			if(i==top5Coeffs[-1]):
+				f.write(str(i))
+			else:
+				f.write(str(i)+",")
 		f.write("\n")
 		for i in top5Names:
-			f.write(str(i)+",")
+			if(i==top5Names[-1]):
+				f.write(str(i))
+			else:
+				f.write(str(i)+",")
 		f.write("\n")
 
 	# Plot the horizontal bar graph of the top barGraphParam(=10) most similar pairs

@@ -33,7 +33,7 @@ export class FileUploadComponent implements OnInit {
 
   //For now, assume that the uploaded stuff is right. tl;dr open folder, take inputs, pass to Amit's .py file
   Process(){
-    if(this.zip==undefined){
+    if(this.ZipFileName==undefined){
       window.alert("Please upload a zip file.")
     }
     else{

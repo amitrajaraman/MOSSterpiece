@@ -7,7 +7,6 @@
     </div>
 </div>
 <ng-template #loggedIn>
-<button class="btn btn-primary" (click)="Download()">Download results</button>
     <div class="h1">Results</div>
 <div style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2); padding-left: 70px; align-self: center; margin: 40px;"> 
 <div style="font-size: 25px; padding-bottom: 20px; padding-top: 20px;">The pairs of files with the most similarity are: </div>
@@ -53,5 +52,14 @@
         </div>
     </form>    
 </div>
+<form class="form">
+    <div class="section">
+        <span style="font-size: 25px; line-height: 25px;">You can download the results here</span>
+    <button class="btn btn-primary" (click)="Download()" >Download results</button>
+    </div>
+</form>
 </div>
 </ng-template>
+
+<!--style="background-color:white; color: rgb(20, 16, 56);"-->
+<!-- style="background-color:  rgb(20, 16, 56); color: white;"-->
