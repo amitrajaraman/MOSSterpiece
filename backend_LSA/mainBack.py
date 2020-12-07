@@ -186,18 +186,22 @@ def cosine_similarity(c1, c2):
 
 if __name__ == "__main__":
 	print(sys.argv[1])
-	print("RUNNING MY CODE NOW!!!")
+	print(os.getcwd())
 	# subprocess.call('cd ../backend_LSA')
 	# Location of the (temporary) directory the zip file is unzipped to
 	directory = '../backend_LSA/inputDir'
 	bashLoc = '../backend_LSA/bashTest.sh'
+	dir = 'media/results'
+	if os.path.exists(dir):
+		shutil.rmtree(dir)
+	os.makedirs(dir)
 	# subprocess.call('if [[ -d '+directory+' ]]; then rm -r '+directory+'; fi')
 	# Location of the output CSV file
-	outpFile = '../src/assets/results/outpFile.txt'
-	top = '../src/assets/results/top.txt'
+	outpFile = 'media/results/outpFile.txt'
+	top = 'media/results/top.txt'
 	# Location of the output images
-	outpPng = '../src/assets/results/outpImg.png'
-	outpHeatmap = '../src/assets/results/outpHeatmap.png'
+	outpPng = 'media/results/outpImg.png'
+	outpHeatmap = 'media/results/outpHeatmap.png'
 	# n such that top n results are displayed in the bar graph
 	barGraphParam = 10
 
@@ -283,7 +287,7 @@ if __name__ == "__main__":
 	arrRed = np.round(arrRed, 7)
 
 
-	with open(outpFile, 'w') as f:
+	with open(outpFile, 'w+') as f:
 		for i in range(numFiles):
 			finalRes[i,i] = 1.0
 			for j in range(numFiles):
@@ -293,7 +297,7 @@ if __name__ == "__main__":
 	if(fileExt == '.cpp' or fileExt == '.java'):
 		finalRes = np.power(finalRes, 6)
 
-	with open(outpFile, 'w') as f:
+	with open(outpFile, 'w+') as f:
 		for i in range(numFiles):
 			f.write(filenames[i]+",")
 		f.write("\n")
@@ -334,7 +338,7 @@ if __name__ == "__main__":
 		for i in top5Names:
 			f.write(str(i)+",")
 		f.write("\n")
-	print("owheofi")
+
 	for index, value in enumerate(top5Coeffs):
 	    plt.text(value, index, str(round(value,2)))
 	right_side = ax.spines["right"]

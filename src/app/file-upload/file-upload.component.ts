@@ -38,8 +38,26 @@ export class FileUploadComponent implements OnInit {
       window.alert("Please upload a zip file.")
     }
     else{
-    this.fileService.setMessage(this.ZipFileName);
-    this.router.navigate(['/upload/waiting']);
+      this.fileService.setMessage(this.ZipFileName);
+      const formdata = {"file": this.ZipFileName};
+      this.service.processFile(formdata).subscribe(
+        (res)=>
+        {
+          if(res["safe"])
+          {
+            //reroute after process is done
+            this.router.navigate(['/upload/view']);
+          }
+          else
+          {
+            window.alert("There was an error processing your files");
+          }
+        },
+        (error)=>
+        {
+          console.log("There was an error while processing")
+        }
+      );
     }
   }
 
@@ -58,9 +76,9 @@ export class FileUploadComponent implements OnInit {
         this.ZipFileName = data.file_name;
         this.ZipPath=this.service.ZipUrl+this.ZipFileName;
         //Need to work on regex lol
-        this.ZipName = this.ZipFileName.replace(/(.*_\s*)[^_.]*(.[a-zA-Z0-9]*$)/,"");
+        // this.ZipName = this.ZipFileName.replace(/(.*_\s*)[^_.]*(.[a-zA-Z0-9]*$)/,"");
         window.alert("Uploaded Successfully!");
-        console.log(this.ZipName);
+        // console.log(this.ZipName);
         this.download = true;
       },
       (error) =>

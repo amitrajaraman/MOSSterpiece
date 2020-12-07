@@ -14,6 +14,8 @@ export class ViewCurrComponent implements OnInit {
   max:any;
   values:string[];
   files:string[];
+  pic1: string;
+  pic2: string;
   all_files:string[];
   all_values:any;
   rep:any;
@@ -24,14 +26,15 @@ export class ViewCurrComponent implements OnInit {
   async ngOnInit() {
     //Get the results from the data
     //this.result = this.resultservice.getMessage();
-    //console.log(this.result);
-
-    //Read the results csv file
-    console.log("cammmmeeee heerereee");
-    this.result = await this.http.get('../../assets/results/outpFile.txt', {responseType: 'text'}).toPromise();
-    this.max = await this.http.get('../../assets/results/top.txt', {responseType: 'text'}).toPromise();
-    
-    this.proc();
+    let res = await this.service.viewFile("/results/outpImg.png").toPromise();
+    this.pic1 = res.path
+    res = await this.service.viewFile("/results/outpHeatmap.png").toPromise();
+    this.pic2 = res.path;
+    console.log(this.pic2);
+    this.result = await this.http.get("../../../DjangoAPI/media/results/outpFile.txt");
+    this.max = await this.http.get("../../../DjangoAPI/media/results/top.txt");
+    console.log(this.max);
+    // this.proc();
   }
 
   form = new FormGroup({
@@ -44,17 +47,17 @@ export class ViewCurrComponent implements OnInit {
   }
   Download(){
     console.log("downloading...");
+    console.log(this.fileService.getMessage());
     this.service.downloadFile(this.fileService.getMessage()).subscribe(
-      (data)=> {
+      (data:any)=> {
         // This is hack
-        window.open(data, "_blank");
+        console.log("here");
         //  var blob = new Blob([data]);
         // console.log(blob);
         // saveAs(blob, 'download.zip');
-      },
-      
-      (error) => {console.log("failed")}
-    )
+      }
+
+    );
   }
   submit(){
     console.log(this.form.value.file1);

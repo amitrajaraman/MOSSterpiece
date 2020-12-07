@@ -19,7 +19,6 @@ import { FileService, SharedService } from './shared.service';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
-import { WaitingComponent } from './waiting/waiting.component';
 import { ViewCurrComponent } from './view-curr/view-curr.component';
 import { PrevresComponent } from './prevres/prevres.component';
 
@@ -34,7 +33,6 @@ import { PrevresComponent } from './prevres/prevres.component';
     FileUploadComponent,
     ProfileComponent,
     ChangepasswordComponent,
-    WaitingComponent,
     ViewCurrComponent,
   ],
   imports: [

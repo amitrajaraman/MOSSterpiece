@@ -48,7 +48,49 @@ class userAPI(generics.GenericAPIView):
             "message": "Failed to add",
             "safe":False}
         )
-    
+
+class resultsAPI(generics.GenericAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    def get(self, request):
+        print(request)
+        path = settings.MEDIA_ROOT + request.GET.get('path')
+        print("Path is "+ path)
+        # if(path.split('.')[1]=='txt'):
+        #     content = open(path).read()
+        #     print(content)
+        #     response = Response({
+        #         "message": content
+        #         })
+        #     return response
+        # else:
+        #     response = Response({
+        #         "path": path
+        #     })
+        #     return response
+        response = Response({
+                "path": path
+            })
+        return response
+    def post(self,request):
+        path = settings.MEDIA_ROOT + "/" + request.GET.get('path')
+        print("Path is "+ path)
+
+        archive_from = settings.MEDIA_ROOT + "/results"
+        name = "results_" + request.GET.get('path').split('/')[-1].split('.')[0] 
+        archive_to = os.path.abspath(settings.MEDIA_ROOT + "/")
+        print("archive_from is", archive_from)
+        print("archive_to is ", archive_to)
+        shutil.make_archive(name, 'zip', archive_from)
+        name = name+".zip"
+        shutil.move(name, archive_to)
+        zip_file = open(archive_to + "/" + name, 'rb')
+        response = HttpResponse(zip_file, content_type='application/octet-stream')
+        s = 'attachment; filename={name}'.format(name = name)
+        print(s)
+        response['Content-Disposition'] = 'attachment; filename=name'
+        
+        return response
 
 class fileAPI(generics.GenericAPIView):
     authentication_classes = [TokenAuthentication]
@@ -63,18 +105,21 @@ class fileAPI(generics.GenericAPIView):
             "file_name": file_name})
 
     def get(self, request):
-        print(request.GET.get('path'))
-        source = "../src/assets/results"
-        source = os.path.abspath(source)
-        archive_from = os.path.dirname(source)
-        name = request.GET.get('path') + "_results"
+        path = settings.MEDIA_ROOT + "/" + request.GET.get('path')
+        print("Path is "+ path)
+
+        archive_from = settings.MEDIA_ROOT + "/results"
+        name = "results_" + request.GET.get('path').split('/')[-1].split('.')[0] 
         archive_to = os.path.abspath(settings.MEDIA_ROOT + "/")
+        print("archive_from is", archive_from)
         print("archive_to is ", archive_to)
         shutil.make_archive(name, 'zip', archive_from)
         name = name+".zip"
         shutil.move(name, archive_to)
         zip_file = open(archive_to + "/" + name, 'rb')
         response = HttpResponse(zip_file, content_type='application/octet-stream')
+        s = 'attachment; filename={name}'.format(name = name)
+        print(s)
         response['Content-Disposition'] = 'attachment; filename=name'
         
         return response
@@ -133,7 +178,6 @@ class logoutAPI(generics.GenericAPIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request, format=None):
-        print("printttt")
         request.user.auth_token.delete()
         auth.logout(request)
         return Response({})
@@ -145,10 +189,13 @@ class processAPI(generics.GenericAPIView):
     def post(self, request):
         print(os.getcwd())
         #Get the needed file
-        print(request.data)
+
         req_file = Files.objects.get(files=request.data["file"],username=request.user.username)
-        print(os.getcwd())
         path_to_zip = "../DjangoAPI/media/" + str(req_file.files)         #to be passed as an argument to Amit's file
         path_to_an = "../backend_LSA/mainBack.py"
-        os.system("python3 " + path_to_an + " " + path_to_zip)
-        return Response({"does it work": "Yes it does"})
+        try:
+            os.system("python3 " + path_to_an + " " + path_to_zip)
+        except err:
+            print("There was an error while processing")
+            return Response({"safe":False})
+        return Response({"safe":True})
