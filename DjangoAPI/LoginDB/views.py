@@ -51,8 +51,8 @@ class userAPI(generics.GenericAPIView):
     
 
 class fileAPI(generics.GenericAPIView):
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [TokenAuthentication]
+    # permission_classes = [IsAuthenticated]
 
     def post(self, request):
         files = Files(files = request.FILES['file'], username=request.user.username)
@@ -63,12 +63,21 @@ class fileAPI(generics.GenericAPIView):
             "file_name": file_name})
 
     def get(self, request):
-        file_name = request.GET.get('path')
-        path_to_file = settings.MEDIA_ROOT + "/" + file_name
-        zip_file = open(path_to_file, 'rb')
-        response = HttpResponse(zip_file, content_type='application/octet-stream')
-        response['Content-Disposition'] = 'attachment; filename="download.zip"'
-        
+        archive_from = "../src/assets/results"
+        name = "download"
+        # archive_to = "../src/assets/"
+        # print("archive_from is", archive_from)
+        shutil.make_archive(name, 'zip', archive_from)
+
+        path = "media/download.zip"
+        if os.path.exists(path):
+            os.remove(path)
+        shutil.move("download.zip", path)
+
+        zip_file = open(path, 'rb')
+        response = HttpResponse(
+            zip_file, content_type='application/octet-stream')
+        response['Content-Disposition'] = 'attachment; filename=download.zip'
         return response
 
 class loginAPI(generics.GenericAPIView):

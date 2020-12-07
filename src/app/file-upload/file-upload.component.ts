@@ -31,20 +31,6 @@ export class FileUploadComponent implements OnInit {
     this.zip = event;
   }
 
-  Download(){
-    this.service.downloadFile(this.ZipFileName).subscribe(
-      (data)=> {
-        // This is hack
-        window.open(data, "_blank");
-        //  var blob = new Blob([data]);
-        // console.log(blob);
-        // saveAs(blob, 'download.zip');
-      },
-      
-      (error) => {console.log("failed")}
-    )
-  }
-
   //For now, assume that the uploaded stuff is right. tl;dr open folder, take inputs, pass to Amit's .py file
   Process(){
     if(this.zip==undefined){
