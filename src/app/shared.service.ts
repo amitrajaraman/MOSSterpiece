@@ -121,6 +121,7 @@ export class SharedService {
     const httpOptions = {
           headers: headers_object
         };
+    console.log(path);
     const x= this.http.get(this.APIUrl+'api/files/?path=' + path, httpOptions);
     // console.log(x);
     return x;

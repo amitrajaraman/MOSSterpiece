@@ -63,11 +63,19 @@ class fileAPI(generics.GenericAPIView):
             "file_name": file_name})
 
     def get(self, request):
-        file_name = request.GET.get('path')
-        path_to_file = settings.MEDIA_ROOT + "/" + file_name
-        zip_file = open(path_to_file, 'rb')
+        print(request.GET.get('path'))
+        source = "../src/assets/results"
+        source = os.path.abspath(source)
+        archive_from = os.path.dirname(source)
+        name = request.GET.get('path') + "_results"
+        archive_to = os.path.abspath(settings.MEDIA_ROOT + "/")
+        print("archive_to is ", archive_to)
+        shutil.make_archive(name, 'zip', archive_from)
+        name = name+".zip"
+        shutil.move(name, archive_to)
+        zip_file = open(archive_to + "/" + name, 'rb')
         response = HttpResponse(zip_file, content_type='application/octet-stream')
-        response['Content-Disposition'] = 'attachment; filename="download.zip"'
+        response['Content-Disposition'] = 'attachment; filename=name'
         
         return response
 

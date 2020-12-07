@@ -13,18 +13,21 @@ export class WaitingComponent implements OnInit {
   
   constructor(private service:SharedService, private resultservice:ResultService, public messengerService: MessengerService, private router: Router, private fileService: FileService) {  }
 
-  async ngOnInit(){
+  ngOnInit(){
     this.Process();
   }
 
-  async Process(){
+  Process(){
     this.filename = this.fileService.getMessage();
-    if(this.filename!="")
-    {
     const formdata = {"file": this.filename};
-    const t = await this.service.processFile(formdata).toPromise();
+    console.log(formdata);
+    this.service.processFile(formdata).subscribe(
+    (t)=>
+    {
+      console.log(t);
+      //reroute after process is done
+      // this.router.navigate(['/upload/view']);
     }
-    //reroute after process is done
-    this.router.navigate(['/upload/view']);
+    );
   }
 }

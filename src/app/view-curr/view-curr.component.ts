@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MessengerService } from '../shared.service';
+import { FileService, MessengerService, SharedService } from '../shared.service';
 import { ResultService } from '../shared.service';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
@@ -19,7 +19,7 @@ export class ViewCurrComponent implements OnInit {
   rep:any;
   show:boolean;
   show_val:any;
-  constructor(public messengerService: MessengerService, public resultservice: ResultService, private http:HttpClient) { }
+  constructor(public messengerService: MessengerService,public fileService: FileService, public resultservice: ResultService, private http:HttpClient, private service: SharedService) { }
 
   async ngOnInit() {
     //Get the results from the data
@@ -27,6 +27,7 @@ export class ViewCurrComponent implements OnInit {
     //console.log(this.result);
 
     //Read the results csv file
+    console.log("cammmmeeee heerereee");
     this.result = await this.http.get('../../assets/results/outpFile.txt', {responseType: 'text'}).toPromise();
     this.max = await this.http.get('../../assets/results/top.txt', {responseType: 'text'}).toPromise();
     
@@ -41,7 +42,20 @@ export class ViewCurrComponent implements OnInit {
   get f(){
     return this.form.controls;
   }
-
+  Download(){
+    console.log("downloading...");
+    this.service.downloadFile(this.fileService.getMessage()).subscribe(
+      (data)=> {
+        // This is hack
+        window.open(data, "_blank");
+        //  var blob = new Blob([data]);
+        // console.log(blob);
+        // saveAs(blob, 'download.zip');
+      },
+      
+      (error) => {console.log("failed")}
+    )
+  }
   submit(){
     console.log(this.form.value.file1);
     console.log(this.form.value.file2);
