@@ -201,6 +201,15 @@ button
 		margin-top: 70px;
 	}
 }
-
+a:hover {
+    color: rgb(141, 141, 145);
+    font-style: initial;
+    font-size: 19px;
+  }
+button:hover{
+    color:  rgb(20, 16, 56); 
+    font-size: 28px;
+    background-color:white;
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
