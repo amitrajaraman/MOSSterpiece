@@ -116,13 +116,13 @@ export class SharedService {
     return this.http.post(this.APIUrl+'api/files/',val, httpOptions);
   }
 
-  downloadFile(path:string): any{
+  downloadFile(): any{
     const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
     const httpOptions = {
           headers: headers_object
         };
-    const x= this.http.get(this.APIUrl+'api/files/?path=' + path, httpOptions);
-    // console.log(x);
+    const x = this.http.get(this.APIUrl+'api/files/', httpOptions);
+    console.log(x);
     return x;
   }
 

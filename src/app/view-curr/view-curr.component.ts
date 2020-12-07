@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MessengerService } from '../shared.service';
+import { FileService, MessengerService, SharedService } from '../shared.service';
 import { ResultService } from '../shared.service';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
@@ -19,7 +19,7 @@ export class ViewCurrComponent implements OnInit {
   rep:any;
   show:boolean;
   show_val:any;
-  constructor(public messengerService: MessengerService, public resultservice: ResultService, private http:HttpClient) { }
+  constructor(public fileService: FileService,public service: SharedService, public messengerService: MessengerService, public resultservice: ResultService, private http:HttpClient) { }
 
   async ngOnInit() {
     //Get the results from the data
@@ -40,6 +40,9 @@ export class ViewCurrComponent implements OnInit {
 
   get f(){
     return this.form.controls;
+  }
+  Download(){
+    window.open("http://127.0.0.1:8000/api/files/", "_blank");
   }
 
   submit(){
