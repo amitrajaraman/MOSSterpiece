@@ -281,7 +281,18 @@ if __name__ == "__main__":
 	finalRes = np.zeros((numFiles,numFiles));
 
 	arrRed = np.round(arrRed, 7)
+
+
+	with open(outpFile, 'w') as f:
+		for i in range(numFiles):
+			finalRes[i,i] = 1.0
+			for j in range(numFiles):
+				if(i < j):
+					finalRes[i,j] = str(cosine_similarity(arrRed[:, i], arrRed[:, j]))	
 	
+	if(fileExt == '.cpp' or fileExt == '.java'):
+		finalRes = np.power(finalRes, 6)
+
 	with open(outpFile, 'w') as f:
 		for i in range(numFiles):
 			f.write(filenames[i]+",")
@@ -289,12 +300,11 @@ if __name__ == "__main__":
 		for i in range(numFiles):
 			finalRes[i,i] = 1.0
 			for j in range(numFiles):
-				if(i < j):
-					finalRes[i,j] = str(cosine_similarity(arrRed[:, i], arrRed[:, j]))	
 				f.write(str(abs(round(finalRes[min(i,j),max(i,j)],3))) + ",")
 			f.write("\n")
+
 	
-	finalRes = np.power(finalRes, 6)
+
 
 	tempRes = np.array(finalRes, copy=True)
 	tempRes = np.maximum(tempRes, tempRes.transpose())
