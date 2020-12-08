@@ -21,7 +21,7 @@ import scipy.spatial.distance
 from zipfile import ZipFile
 import subprocess
 
-
+## API that manages registration of a user
 class userAPI(generics.GenericAPIView):
     """
     UserAPI's post request is used for registering the user.
@@ -32,28 +32,32 @@ class userAPI(generics.GenericAPIView):
     def post(self, request, *args, **kwargs):
         user_data=JSONParser().parse(request)
         user_serializer = UserSerializer(data=user_data)
-
+        ## Check for valid serializer
         if user_serializer.is_valid():
             user = user_serializer.save()
             return Response({
                 "user": UserSerializer(user,context=self.get_serializer_context()).data,
                 "safe": True 
             })
+        ## Check if the username is already present in the database, and raise error if so
         if User.objects.filter(username=user_serializer.data['username']).exists():
             return Response({
                 "message":"Username already exists", 
                 "safe":False}
                 )
+        ##Check for existence of email in the database
         elif User.objects.filter(email=user_serializer.data['email']).exists():
             return Response({
                 "message": "Email already exists",
                 "safe":False}
             )
+
         return Response({
             "message": "Failed to add",
             "safe":False}
         )
 
+##API managing upload and download of the files.
 class fileAPI(generics.GenericAPIView):
     """
     fileAPI contains requests for download and uplaod of the zipfiles.
@@ -61,6 +65,7 @@ class fileAPI(generics.GenericAPIView):
     # authentication_classes = [TokenAuthentication]
     # permission_classes = [IsAuthenticated]
 
+    ## Used for upload
     def post(self, request):
         """
         POST request saves the name of the uploaded file, hashing it if there's a repetition.
@@ -73,10 +78,12 @@ class fileAPI(generics.GenericAPIView):
         return Response({
             "file_name": file_name})
 
+    ## Used for downloading the file
     def get(self, request):
         """
         GET request downloads the target folder, after the processing of the zip file is done.
         """
+        ##Store the source folder where the zip is supposed to be created from
         archive_from = "../src/assets/results"
         name = "download"
         # archive_to = "../src/assets/"
@@ -94,11 +101,13 @@ class fileAPI(generics.GenericAPIView):
         response['Content-Disposition'] = 'attachment; filename=download.zip'
         return response
 
+##API managing login and authentication
 class loginAPI(generics.GenericAPIView):
     """
     Authenticates the user and logs the person.
     """
     serializer_class = LoginSerializer
+    ## This request logs the person in, using sessions.
     def post(self, request, *args, **kwargs):
         logged_in = request.user.username
         user_data = JSONParser().parse(request)
@@ -115,21 +124,27 @@ class loginAPI(generics.GenericAPIView):
             "token": token.key
         })
 
-
+##API taking care of password change
 class changeAPI(generics.GenericAPIView):
     """
     changeAPI is used for changing the password
     """
+
+    ## Token Authenticator
     authentication_classes = [TokenAuthentication]
+    ## Permission classes for the token
     permission_classes = [IsAuthenticated]
+    ## Serializer for the password
     serializer_class = ChangePasswordSerializer
 
+    ## POST takes the request and verifies the validity, raising error appropriately.
     def post(self, request):
         """
         Check the authentication of the user, and if the passwords match, change the user's password accordingly.
         """
         user = request.user
-    
+        
+        ## Return error if the password doesn't match with the old password
         if not user.check_password(request.data.get("oldpassword")):
             response = {
                 'status': 'failure',
@@ -146,6 +161,7 @@ class changeAPI(generics.GenericAPIView):
         }
         return Response(response)
 
+##API takes care of tokens
 class tokenAPI(generics.GenericAPIView):
     """
     Generates tokens for security reasons
@@ -156,15 +172,17 @@ class tokenAPI(generics.GenericAPIView):
         print(token.key)
         return Response({"token": token.key})
 
+## API taking care of logging out a user
 class logoutAPI(generics.GenericAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
-
+    ## This function checks the authenticity of the user before logging out
     def post(self, request, format=None):
         request.user.auth_token.delete()
         auth.logout(request)
         return Response({})
 
+## API responsible for integrating website logic with the core logic.
 class processAPI(generics.GenericAPIView): 
     """
     processAPI integrates the website with the core logic
@@ -172,6 +190,7 @@ class processAPI(generics.GenericAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
+    ## This POST request gets the filename from the frontend and passes it to core logic for processing. 
     def post(self, request):
         """
         POST runs the core logic by passing the data obtained from the frontend as arguments.

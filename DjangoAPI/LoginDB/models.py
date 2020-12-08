@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+## User model, for storing the user's data in database
 class Users(models.Model):
     """
     Model for storing user data
@@ -13,6 +13,8 @@ class Users(models.Model):
     
     # class Meta:
     #     unique_together = (("email", "name"),)
+
+## Model for storing data regarding files; originally implemented for creating a previous results page.
 class Files(models.Model):
     """
     Model for storing the files uploaded by the user, can be used to implement previous results.
