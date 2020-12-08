@@ -4,6 +4,7 @@ from rest_framework import serializers, viewsets
 import json
 from LoginDB.models import Files
 
+## UserSerializers declared here
 class UserSerializer(serializers.ModelSerializer):
     """
     Serializers for storing user's data
@@ -19,7 +20,7 @@ class UserSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
-
+## Serializers for storing the data of the logged in user for validation and authentication
 class LoginSerializer(serializers.Serializer):
     """
     Stored the logged in user's data
@@ -27,7 +28,7 @@ class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField()
     
-
+    ## this function is used for validating the user
     def validate(self, data):
         """
         validate() authenticates the user and is used to check whether the person is valid or not.
@@ -38,10 +39,10 @@ class LoginSerializer(serializers.Serializer):
         else:
             raise serializers.ValidationError("Incorrect Credentials")
 
-
+## As the name suggests, this is used for changing passwords.
 class ChangePasswordSerializer(serializers.Serializer):
     """
-    Used for changing the passowords.
+    Used for changing the passwords.
     """
     model = User
     oldpassword = serializers.CharField(required=True)

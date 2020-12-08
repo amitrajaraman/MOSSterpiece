@@ -4,10 +4,9 @@ from . import views
 from django.conf.urls.static import static
 from django.conf import settings
 
+## Stores all the urls used for calling functions in the backend.
 urlpatterns=[
     url(r'signupreq/$',views.userAPI.as_view()),
-    # url(r'signupreq/([\w{}.-]+)',views.userApi),
-
     url(r'^api/files/', views.fileAPI.as_view()),
     url(r'^api/login/', views.loginAPI.as_view()),
     url(r'^api/logout/', views.logoutAPI.as_view()),
