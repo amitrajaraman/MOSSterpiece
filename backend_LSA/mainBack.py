@@ -205,7 +205,8 @@ if __name__ == "__main__":
 	# Location of the (temporary) directory the zip file is unzipped to
 	directory = '../backend_LSA/inputDir'
 	# Location of the Bash code used for C++ pre-processing
-	bashLoc = '../backend_LSA/bashTest.sh'
+	bashCPP = '../backend_LSA/CPPpreproc.sh'
+	bashC = '../backend_LSA/Cpreproc.sh'
 	# Location of the output file(s) which store the raw data
 	outpFile = '../src/assets/results/outpFile.txt'
 	outpCSV = '../src/assets/results/outpFile.csv'
@@ -255,7 +256,7 @@ if __name__ == "__main__":
 			print("Processing "+tempF)
 			try:
 				# Process the CPP file (assuming it compiles) to remove all macros and comments with the output in the file temp
-				subprocess.call('bash ' + bashLoc + ' ' + tempF, shell = True)
+				subprocess.call('bash ' + bashCPP + ' ' + tempF, shell = True)
 				# Since the output of the function is stored in the file temp, we pipe it back to the normal .cpp file
 				# to make future processing easier and more uniform
 				subprocess.call('cat temp > ' + tempF, shell = True)
@@ -270,7 +271,30 @@ if __name__ == "__main__":
 				f = comment_remover_cpp(f);
 				# Write the output back to the cpp file to make future processing more uniform
 				with open(tempF, 'w') as writeF:
-					writeF.write(f)	
+					writeF.write(f)
+
+		elif(fileExt == '.c'):
+			print("Processing "+tempF)
+			try:
+				# Process the C file (assuming it compiles) to remove all macros and comments with the output in the file temp
+				subprocess.call('bash ' + bashC + ' ' + tempF, shell = True)
+				# Since the output of the function is stored in the file temp, we pipe it back to the normal .cpp file
+				# to make future processing easier and more uniform
+				subprocess.call('cat temp > ' + tempF, shell = True)
+				# Remove the temporary file (not necessary but we do it anyway)
+				subprocess.call('rm temp', shell = True)
+			except Exception as e:
+				print(e)
+				print(tempF + " does not compile.")
+			with open(tempF, 'r') as readF:
+				f = readF.read()
+				# Although unnecessary if it compiles, we remove all comments once again for safety's sake
+				f = comment_remover_cpp(f);
+				# Write the output back to the c file to make future processing more uniform
+				with open(tempF, 'w') as writeF:
+					writeF.write(f)
+
+
 		elif(fileExt == '.java'):
 			print("Processing "+tempF)
 			with open(tempF, 'r') as readF:
