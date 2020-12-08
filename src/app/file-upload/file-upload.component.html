@@ -12,14 +12,11 @@
     
     <button (click)="uploadZip()" > Upload! </button>
     <!--Add ngIfs here after it starts to work-->
-    {{ this.ZipFileName }}    <button (click)="Process()">Process this Zipfile</button>
-
-    <!--
-    This needs to be in view results page, and not here.   
-    <div *ngIf="this.download;" >
-        <button (click)="Download()">Download</button>
+    {{ this.ZipFileName }}   
+    <div *ngIf="this.download;">
+        <button (click)="Process()">Process this Zipfile</button>
     </div>
-    -->
+
     </div>
     </form>
 </ng-template>

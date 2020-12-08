@@ -34,28 +34,10 @@ export class FileUploadComponent implements OnInit {
 
   //For now, assume that the uploaded stuff is right. tl;dr open folder, take inputs, pass to Amit's .py file
   Process(){
+    if(this.zip==undefined){
+      window.alert("Please upload a zip file.");
+    }
     this.router.navigate(['/upload/waiting']);
-    // if(this.zip==undefined){
-    //   window.alert("Please upload a zip file.")
-    // }
-    // else{
-    //   this.fileService.setMessage(this.ZipFileName);
-    //   const formdata = {"file": this.ZipFileName};
-    //   this.service.processFile(formdata).subscribe(
-    //     (res)=>
-    //     {
-    //       const blob = new Blob([res], {
-    //         type: 'application/zip'
-    //       });
-    //       this.resultService.setMessage(blob);
-    //       // console.log(blob);
-    //       // const file = res["body"];
-    //       // console.log(file);
-    //       this.router.navigate(['/upload/view']);
-    //     },
-    //   );
-
-    // }
   }
 
   uploadZip(){

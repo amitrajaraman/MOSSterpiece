@@ -38,8 +38,7 @@ export class ViewCurrComponent implements OnInit {
     const promises = [];
     let counter = 0;
     jsZip.loadAsync(this.resultservice.getMessage()).then((zip) => {
-    const numberOfCallbacks = Object.keys(zip.files).length - 1;
-    console.log(numberOfCallbacks);
+    
     zip.files["outpImg.png"].async('base64').then((fileData) => { 
           this.pic1 = this.sanitizer.bypassSecurityTrustUrl(
             'data:image/png;base64,' + fileData);
