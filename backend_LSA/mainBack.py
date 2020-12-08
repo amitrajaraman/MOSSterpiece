@@ -428,7 +428,10 @@ if __name__ == "__main__":
 		finalRes[np.argmax(finalRes)] = 0
 	top5Coeffs = [key for key in sorted(dicTop5)]
 	top5Names = [dicTop5[key] for key in top5Coeffs]
-	
+
+	# Reverse order so it appears correctly on website
+	top5Coeffs = top5Coeffs[::-1]
+	top5Names = top5Names[::-1]	
 	with open(top, 'w') as f:
 		for i in top5Coeffs:
 			if(i==top5Coeffs[-1]):
@@ -443,6 +446,10 @@ if __name__ == "__main__":
 				f.write(str(i)+",")
 		f.write("\n")
 
+	# Reverse order once again so it appears correctly in the bar graph
+	top5Coeffs = top5Coeffs[::-1]
+	top5Names = top5Names[::-1]
+	
 	# Plot the horizontal bar graph of the top barGraphParam(=10) most similar pairs
 	fig, ax = plt.subplots()
 	ax.barh(range(len(dicTop5)), top5Coeffs)
