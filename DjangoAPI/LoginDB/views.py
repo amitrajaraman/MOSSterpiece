@@ -56,10 +56,10 @@ class userAPI(generics.GenericAPIView):
 
 class fileAPI(generics.GenericAPIView):
     """
-    fileAPI contains requests for download and uplaod of the zipfiles.
+    fileAPI contains requests for download and upload of the zipfiles.
     """
-    # authentication_classes = [TokenAuthentication]
-    # permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def post(self, request):
         """
@@ -72,27 +72,6 @@ class fileAPI(generics.GenericAPIView):
         # print(file_name)
         return Response({
             "file_name": file_name})
-
-    def get(self, request):
-        """
-        GET request downloads the target folder, after the processing of the zip file is done.
-        """
-        archive_from = "../src/assets/results"
-        name = "download"
-        # archive_to = "../src/assets/"
-        # print("archive_from is", archive_from)
-        shutil.make_archive(name, 'zip', archive_from)
-
-        path = "media/download.zip"
-        if os.path.exists(path):
-            os.remove(path)
-        shutil.move("download.zip", path)
-
-        zip_file = open(path, 'rb')
-        response = HttpResponse(
-            zip_file, content_type='application/octet-stream')
-        response['Content-Disposition'] = 'attachment; filename=download.zip'
-        return response
 
 class loginAPI(generics.GenericAPIView):
     """
