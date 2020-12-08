@@ -32,7 +32,7 @@ export class ViewCurrComponent implements OnInit {
     this.fileData = '';
     this.unzipping();
   }
-
+  /**method for unzipping the zip file */
   unzipping()
   {
     const jsZip = require('jszip');
@@ -76,6 +76,7 @@ export class ViewCurrComponent implements OnInit {
   get f(){
     return this.form.controls;
   }
+  /**method for downloading the results after processing */
   Download(){
     console.log("downloading...");
     let data = this.resultService.getMessage();
@@ -84,7 +85,7 @@ export class ViewCurrComponent implements OnInit {
     const file = new File([blob], 'data.zip');
     saveAs(file); 
   }
-
+  /**submit method for showing the percentage similarity between two files */
   submit(){
     console.log(this.form.value.file1);
     console.log(this.form.value.file2);
@@ -99,7 +100,7 @@ export class ViewCurrComponent implements OnInit {
       this.show_val = this.all_values[i][j];
     }
   }
-
+  /**for making csv type files */
   proc():void{
     var val = this.max.split("\n");
     this.values = val[0].split(",");

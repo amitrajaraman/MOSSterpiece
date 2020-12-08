@@ -52,6 +52,7 @@ The main strategy (among other alternate strategies) we have implemented here is
 - While not in use, we have also implemented other strategies, namely
   - **tf-idf**: The _term frequency-inverse document frequency_ algorithm gives a measure of the similarity as follows. If a word occurs multiple times in a single file, then it is probably of relatively higher importance. However, if the word occurs in a large number of documents, then it is probably of less importance (words like ```if``` might occur in high numbers in each individual file, but they also occur in nearly every file and are of less importance). We multiply a measure of these two together to get a reduced vector, using which we take cosine similarities.
   - **Bag-of-words**: This is a very naïve wherein we just get a vector for each file with the word frequencies in decreasing order and take the cosine similarity.
+  - **Winnowing**: While we haven't implemented it due to lack of time, we _have_ read up on the paper and [prepared a write-up on the same](https://amitrajaraman.github.io/blog/moss).
 
 We begin by creating the array used in LSA. In the first case, we just sort each column individually and find cosine similarity. For the second method, we perform the operations described above to get the degree of similarity.
 

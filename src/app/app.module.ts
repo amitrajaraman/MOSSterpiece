@@ -20,7 +20,6 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { ViewCurrComponent } from './view-curr/view-curr.component';
-import { PrevresComponent } from './prevres/prevres.component';
 import { WaitingComponent } from './waiting/waiting.component';
 
 @NgModule({
