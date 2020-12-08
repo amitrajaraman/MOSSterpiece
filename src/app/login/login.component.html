@@ -1,0 +1,17 @@
+<div *ngIf="messengerService.getMessage()!='';else loggedIn">
+    <div class="container">
+        Please logout before logging in
+    </div>
+</div>
+<ng-template #loggedIn>
+<div class="h1">Welcome back!</div>
+<form action="login" method="post" class="form">
+    <div class = "section">
+        <label> Username </label>
+        <input type="text" [formControl]="form_username" name="username" placeholder="Username" required/>
+        <label> Password </label>
+        <input type="password" [formControl]="form_password" name="password" placeholder="Password" required/><br/>
+        <button (click)="login()">Login</button>
+    </div>
+</form>
+</ng-template>

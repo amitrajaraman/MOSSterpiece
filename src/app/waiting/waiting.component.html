@@ -1,0 +1,12 @@
+<div *ngIf="this.messengerService.getMessage()=='';else loggedIn">
+    <div class="container">
+        You are not logged in.
+
+        Click <a routerLink="/login" style="color:red">here</a> to log in and <a routerLink="/signup"
+            style="color:red">here</a> to register.
+    </div>
+</div>
+<ng-template #loggedIn>
+<div class="h1">Your file is being processed...</div>
+<div style="font-size: 40px;text-align: center;color: grey; padding-top: 50px;">File being processed: {{zip}}</div>
+</ng-template>
