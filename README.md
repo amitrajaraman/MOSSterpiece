@@ -25,23 +25,23 @@ This section is dedicated to explain how to run start the website and the backen
 *Steps to run the code:*
 
 - Clone the repo to your local machine either by doing `git clone <url-of-the-repo>`, or by downloading it directly from github.
-- Navigate to the project folder, and open up the terminal (for Ubuntu) or command prompt (for Windows). Create/Activate a virtual environment (optional), and download Django from `requirements.txt`.
+- Navigate to the project folder, and open up the terminal (for Ubuntu) or command prompt (for Windows). Create/Activate a virtual environment (optional), and download Django from `requirements.txt` (see the last step).
 - Navigate to "DjangoAPI" folder through the virtual-environment-activated-console, and type in the command `python manage.py runserver` to get the Django backend up and running.
 - Open another console at the project directory, and type in `npm install all` to make sure that all the required packages are present. Once it is done installing and verifying the packages, do `ng serve --open` to start the frontend. This will start the compilation process of the frontend, and open up the website in your default web browser.
 - Install [this](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf/related?hl=en) extension for chrome and activate it, to allow CORS requests to be passed.
+- Finally, to get the various required Python libraries run ```pip3 install -r requirements.txt``` from your terminal while in the MOSSterpiece directory.
 
+You should be all set up now!
 
 ## What has been implemented
 
-- A basic framework for the website has been created. 
-- Implementation of Logging in and Registering has been done.
-- Logging in has been done using sessions, so that refreshing the page doesn't log the user out.
-- Functionality for change password has been implemented.
+- A basic framework for the website has been created.
+- Implementation of logging in and registering. Logging in is done using sessions, so that refreshing the page does not log the user out.
+- Functionality to changing one's password has been implemented.
 - Implemented uploading of files for a user who has logged in. 
 - Core logic-wise, the latent semantic analysis strategy has been used. There is also a good amount of pre-processing done if the language of the code is C++, Java, C, or Python.
-- The reults are displayed after the processing is done, and the overall data is represented using a heatmap and a bargraph. The similarity of any two files can be shown by using the drop down lists.
-- The results can be downloaded as a zip file.
-
+- The results are displayed after the processing is done, and the overall data is represented using a heatmap and a bargraph. The similarity of any two files can be shown by choosing the appropriate pair using the drop down lists.
+- The results (a CSV file with all the similarities, the bar graph, and the heatmap) can be downloaded as a zip file.
 
 ## The Theoretical Aspect
 
@@ -64,16 +64,16 @@ However, before passing the file to the main LSA part of the code, we pre-proces
 * Common pre-processing: We replace contiguous blocks of spaces with a single space and remove all ```;```s.
 
 ## Using the Website
- - If you have an account, skip this step. If this is the first time using the website, first register yourself using the `REGISTER` tab, and follow the instructions presented on screen.
- - Login using the `LOGIN` tab, and enter your credentials. If the entered values are correct, you'll be logged in and get redirected to your profile page.
+ - If you have an account, skip this step. If this is the first time using the website, first register yourself using the `Sign Up` tab, and follow the instructions presented on screen.
+ - Login using the `Login` tab, and enter your credentials. If the entered values are correct, you'll be logged in and get redirected to your profile page.
  - On the profile page, you'll be able to:
- 	- **Change your Password :-** This is to change your password, pretty self-explanatory.
- 	- **Process the file :-** Click on this button to be taken to the `PROCESS` tab.
- - Upload a **ZIP File** in which the files to be processed are in the first level. The code **WILL NOT** be able to process the zip file if there are folders in it. The code assumes that the zip file is correct, and no sanity check for the zip file has been implemented.
- - Assuming that the format is correct, after the zipfile has been uploaded, click on process. This will redirect you to a page where you'll have to wait until your files have finished processing. **DO NOT REFRESH THE PAGE HERE**
- - After the files have been processed, you'll be taken to view the results. Here, you'll have four sections:
- 	- The top ten pairs of files with the highest correlation are displayed in descending order.
- 	- A bargraph and a heatmap of the data is shown for easy visualization of the data.
- 	- Selecting any two files from the dropdown list, and clicking on `Submit` shows the correlation between the correspondng files.
- 	- `Download` button, which downloads a zip file containing the graphs and the csv of the entire dataset.
- - After viewing and/or downloading the data, click on `PROCESS` button on the header if you'd like to process another zip file.
+ 	- **Change your Password:** This is to change your password, pretty self-explanatory.
+ 	- **Process the file :-** Click on this button to be taken to the `Process` tab.
+ - Upload a **ZIP File** in which the files to be processed are in the first level. The code will NOT be able to process the zip file if there are folders in it. The code assumes that the zip file is correct, and no sanity check for the zip file has been implemented.
+ - Assuming that the format is correct, click on `Process` after the zipfile has been uploaded. This will redirect you to a page where you have to wait until your files have finished processing. **DO NOT REFRESH THE PAGE HERE**
+ - After the files have been processed, you will be taken to view the results. Here, there are four sections:
+ 	- The top ten pairs of files with the highest correlation are displayed (in descending order).
+ 	- A bargraph and a heatmap of the data is shown for easy visualization of the data (if there are not too many files, then the heatmap is also annotated with the degree of similarity).
+ 	- Selecting any two files using the dropdown lists and clicking on `Submit` shows the degree of similarity between the files.
+ 	- The `Download` butto downloads a zip file that containing the graphs and a CSV file (with all the data).
+ - After viewing and/or downloading the data, click on the `Process` button on the header if you want to process another zip file.
