@@ -10,20 +10,34 @@ import { Router } from '@angular/router'
 })
 export class WaitingComponent implements OnInit {
   filename:string;
-  
-  constructor(private service:SharedService, private resultservice:ResultService, public messengerService: MessengerService, private router: Router, private fileService: FileService) {  }
+  zip: string;
+  constructor(private service:SharedService, private resultService:ResultService, public messengerService: MessengerService, private router: Router, private fileService: FileService) {  }
 
   async ngOnInit(){
     this.Process();
   }
 
-  async Process(){
-    this.filename = this.fileService.getMessage();
-    if(this.filename!=""){
-      const formdata = {"file": this.filename};
-      const t = await this.service.processFile(formdata).toPromise();
+  Process(){
+    this.zip = this.fileService.getMessage();
+    if(this.zip==undefined){
+      window.alert("Please upload a zip file.")
     }
-    //reroute after process is done
-    this.router.navigate(['/upload/view']);
+    else{
+      const formdata = {"file": this.zip};
+      this.service.processFile(formdata).subscribe(
+        (res)=>
+        {
+          const blob = new Blob([res], {
+            type: 'application/zip'
+          });
+          this.resultService.setMessage(blob);
+          // console.log(blob);
+          // const file = res["body"];
+          // console.log(file);
+          this.router.navigate(['/upload/view']);
+        },
+      );
+
+    }
   }
 }

@@ -34,27 +34,28 @@ export class FileUploadComponent implements OnInit {
 
   //For now, assume that the uploaded stuff is right. tl;dr open folder, take inputs, pass to Amit's .py file
   Process(){
-    if(this.zip==undefined){
-      window.alert("Please upload a zip file.")
-    }
-    else{
-      this.fileService.setMessage(this.ZipFileName);
-      const formdata = {"file": this.ZipFileName};
-      this.service.processFile(formdata).subscribe(
-        (res)=>
-        {
-          const blob = new Blob([res], {
-            type: 'application/zip'
-          });
-          this.resultService.setMessage(blob);
-          // console.log(blob);
-          // const file = res["body"];
-          // console.log(file);
-          this.router.navigate(['/upload/view']);
-        },
-      );
+    this.router.navigate(['/upload/waiting']);
+    // if(this.zip==undefined){
+    //   window.alert("Please upload a zip file.")
+    // }
+    // else{
+    //   this.fileService.setMessage(this.ZipFileName);
+    //   const formdata = {"file": this.ZipFileName};
+    //   this.service.processFile(formdata).subscribe(
+    //     (res)=>
+    //     {
+    //       const blob = new Blob([res], {
+    //         type: 'application/zip'
+    //       });
+    //       this.resultService.setMessage(blob);
+    //       // console.log(blob);
+    //       // const file = res["body"];
+    //       // console.log(file);
+    //       this.router.navigate(['/upload/view']);
+    //     },
+    //   );
 
-    }
+    // }
   }
 
   uploadZip(){
@@ -71,10 +72,8 @@ export class FileUploadComponent implements OnInit {
         (data:any)=>{
         this.ZipFileName = data.file_name;
         this.ZipPath=this.service.ZipUrl+this.ZipFileName;
-        //Need to work on regex lol
-        // this.ZipName = this.ZipFileName.replace(/(.*_\s*)[^_.]*(.[a-zA-Z0-9]*$)/,"");
+        this.fileService.setMessage(this.ZipFileName);
         window.alert("Uploaded Successfully!");
-        // console.log(this.ZipName);
         this.download = true;
       },
       (error) =>
