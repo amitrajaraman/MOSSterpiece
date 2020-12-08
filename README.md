@@ -38,8 +38,9 @@ This section is dedicated to explain how to run start the website and the backen
 - Logging in has been done using sessions, so that refreshing the page doesn't log the user out.
 - Functionality for change password has been implemented.
 - Implemented uploading of files for a user who has logged in. 
-- Core logic-wise, a bag-of-words strategy has been used as placeholder logic, which will be replaced later. Rudimentary Latent Semantic Analysis has been implemented as well (debugging is required, some parts don't work as intended).
+- Core logic-wise, the latent semantic analysis strategy has been used. There is also a good amount of pre-processing done if the language of the code is C++, Java, C, or Python.
 - The reults are displayed after the processing is done, and the overall data is represented using a heatmap and a bargraph. The similarity of any two files can be shown by using the drop down lists.
+- The results can be downloaded as a zip file.
 
 
 ## The Theoretical Aspect

@@ -9,10 +9,11 @@ import matplotlib
 import matplotlib.pyplot as plt
 import subprocess
 
-"""
+
+def heatmap(data, row_labels, col_labels, ax=None, cbar_kw={}, cbarlabel="", **kwargs):
+	"""
 Code for creating heatmap taken from https://matplotlib.org/3.1.1/gallery/images_contours_and_fields/image_annotated_heatmap.html
 """
-def heatmap(data, row_labels, col_labels, ax=None, cbar_kw={}, cbarlabel="", **kwargs):
     """
     Create a heatmap from a numpy array and two lists of labels.
 
@@ -71,10 +72,11 @@ def heatmap(data, row_labels, col_labels, ax=None, cbar_kw={}, cbarlabel="", **k
 
     return im, cbar
 
-"""
+
+def annotate_heatmap(im, data=None, valfmt="{x:.2f}", textcolors=["black", "white"], threshold=None, **textkw):
+	"""
 Code for annotating heatmap taken from https://matplotlib.org/3.1.1/gallery/images_contours_and_fields/image_annotated_heatmap.html
 """
-def annotate_heatmap(im, data=None, valfmt="{x:.2f}", textcolors=["black", "white"], threshold=None, **textkw):
     """
     A function to annotate a heatmap.
 
@@ -130,11 +132,12 @@ def annotate_heatmap(im, data=None, valfmt="{x:.2f}", textcolors=["black", "whit
 
     return texts
 
-"""
+
+def comment_remover_py(fname):
+	"""
 Code for removing comments (from a py file) taken from  https://gist.github.com/BroHui/aca2b8e6e6bdf3cb4af4b246c9837fa3
 with minor changes done to bring it into the format we require
 """
-def comment_remover_py(fname):
 	source = open(fname)
 	dest = 'temp'
 	mod = open(dest, 'w')
@@ -168,13 +171,21 @@ def comment_remover_py(fname):
 		last_col = ecol
 		last_lineno = elineno
 
-"""
+
+def comment_remover_cpp(text):
+	"""
 Code for removing comments (from a CPP file) taken from https://stackoverflow.com/questions/241327/remove-c-and-c-comments-using-python
 Note that we do not necessarily require this due to the code of bashTest.sh, but we keep it in the case that
 the code does not compile (so g++ won't work).
 Since comments in Java files are similar, we use the same function there as well.
 """
-def comment_remover_cpp(text):
+	"""
+		What we noticed is that for CPP or Java files, the general value returned seems to be somewhat high.
+		However, there is still a reasonably large divide (~0.1) between actually plagiarised files and files that
+		are not plagiarised but return a high value nevertheless.
+		This issue is mitigated by raising each element to the 6th power so smaller numbers rapidly dwindle
+		whereas the actual plagiarised documents' values remain reasonably high
+		"""
     def replacer(match):
         s = match.group(0)
         if s.startswith('/'):
@@ -187,18 +198,31 @@ def comment_remover_cpp(text):
     )
     return re.sub(pattern, replacer, text)
 
-"""
+
+def cosine_similarity(c1, c2):
+	"""
 This function merely returns the cosine similarity of two vectors (stored as numpy.ndarrays)
 We use scipy.spatial distance tosimplify the process
 """
-def cosine_similarity(c1, c2):
 	if(c1.shape != c2.shape):
 		print("ERROR"),
 		return ""
 	return (1 - scipy.spatial.distance.cosine(c1, c2))
 
 if __name__ == "__main__":
-
+		"""
+	First, an array is created where the *i,j*th entry represents the occurrence of word *j* in the *i*th document.
+	LSA essentially works by detecting the latent similarities between two documents. For example, if the word "dog"
+	and "hound" are used similarly in different documents (say we have the sentence "The dog barked at the car" in one
+	document and "The hound barked at the car" in another document), then it inherently identifies that the two words
+	might mean the same thing. A low-rank approximation of the original array is found by performing Singular Value
+	Decomposition and then taking the appropriate rows/columns. When we do this, it clumps together dimensions (which
+	are words here) that mean similar things. So if we had the words {(dog),(hound),(bed)} in the original document, a
+	low-rank approximation of this could correspond to something like {(1.43*dog + 0.39*hound),(bed)}. That is, when words
+	are clumped together, an appropriate weight is given to each word such that it carries latent similarities. After
+	these words are grouped together, the cosine similarity between two vectors (in the low-rank approximation) is
+	returned as the degree of plagiarism between them.
+	"""
 	# Output for the purpose of debugging to ensure that everything works as intended
 	print(sys.argv[1])
 	print("RUNNING AMIT'S CODE NOW!!!")
@@ -325,19 +349,7 @@ if __name__ == "__main__":
 	# Convert it into a numpy array to make future processing simpler
 	baseArray = np.array(list(baseDict.values()))
 	
-	"""
-	First, an array is created where the *i,j*th entry represents the occurrence of word *j* in the *i*th document.
-	LSA essentially works by detecting the latent similarities between two documents. For example, if the word "dog"
-	and "hound" are used similarly in different documents (say we have the sentence "The dog barked at the car" in one
-	document and "The hound barked at the car" in another document), then it inherently identifies that the two words
-	might mean the same thing. A low-rank approximation of the original array is found by performing Singular Value
-	Decomposition and then taking the appropriate rows/columns. When we do this, it clumps together dimensions (which
-	are words here) that mean similar things. So if we had the words {(dog),(hound),(bed)} in the original document, a
-	low-rank approximation of this could correspond to something like {(1.43*dog + 0.39*hound),(bed)}. That is, when words
-	are clumped together, an appropriate weight is given to each word such that it carries latent similarities. After
-	these words are grouped together, the cosine similarity between two vectors (in the low-rank approximation) is
-	returned as the degree of plagiarism between them.
-	"""
+
 	# This particular line performs the SVD part of the algorithm
 	u, s, v = np.linalg.svd(baseArray, False)
 	# While there is no clear-cut method to pick an optimal rank immediately, we tested quite a bit and this seems to
@@ -371,13 +383,7 @@ if __name__ == "__main__":
 				if(i < j):
 					# The degree of plagiarism is just the cosine similarity between the reduced vectors
 					finalRes[i,j] = str(cosine_similarity(arrRed[:, i], arrRed[:, j]))	
-	"""
-	What we noticed is that for CPP or Java files, the general value returned seems to be somewhat high.
-	However, there is still a reasonably large divide (~0.1) between actually plagiarised files and files that
-	are not plagiarised but return a high value nevertheless.
-	This issue is mitigated by raising each element to the 6th power so smaller numbers rapidly dwindle
-	whereas the actual plagiarised documents' values remain reasonably high
-	"""
+		
 	if(fileExt == '.cpp' or fileExt == '.java'):
 		finalRes = np.power(finalRes, 6)
 
