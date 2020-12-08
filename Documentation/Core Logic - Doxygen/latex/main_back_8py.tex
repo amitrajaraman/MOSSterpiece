@@ -1,0 +1,103 @@
+\hypertarget{main_back_8py}{}\section{backend\+\_\+\+L\+S\+A/main\+Back.py File Reference}
+\label{main_back_8py}\index{backend\+\_\+\+L\+S\+A/main\+Back.\+py@{backend\+\_\+\+L\+S\+A/main\+Back.\+py}}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespacemain_back}{main\+Back}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacemain_back_a6e34e76908b8cfd5fda4efaaf6737d55}{main\+Back.\+heatmap} (data, row\+\_\+labels, col\+\_\+labels, ax=None, cbar\+\_\+kw=\{\}, cbarlabel=\char`\"{}\char`\"{}, kwargs)
+\begin{DoxyCompactList}\small\item\em Function that creates and returns a heatmap of the given data. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_back_a7ad3aabd2ea6412049ac675944201dfa}{main\+Back.\+annotate\+\_\+heatmap} (im, data=None, valfmt=\char`\"{}\{x\+:.\+2f\}\char`\"{}, textcolors=\mbox{[}\char`\"{}black\char`\"{}, white, threshold=None, textkw)
+\begin{DoxyCompactList}\small\item\em Function that annotates the input heatmap with the given data. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_back_a143f8fc662e5d0efc0118244031af2e1}{main\+Back.\+comment\+\_\+remover\+\_\+py} (fname)
+\begin{DoxyCompactList}\small\item\em Function that removes all comments from an input .py file. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_back_a35b3762c7d4ae120ebcb9140f21ab99e}{main\+Back.\+comment\+\_\+remover\+\_\+cpp} (text)
+\begin{DoxyCompactList}\small\item\em Function that removes all comments from an input string following the C++ format. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_back_a5dcd803071bf0623d43c399c733f233e}{main\+Back.\+cosine\+\_\+similarity} (c1, c2)
+\begin{DoxyCompactList}\small\item\em Function that calculates the cosine similarity between two vectors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{namespacemain_back_a1c89e94124b1c6fedb3a2c9fe2d299c4}{main\+Back.\+directory} = \textquotesingle{}../backend\+\_\+\+L\+SA/input\+Dir\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Location of the (temporary) directory that the zipfile is unzipped to. \end{DoxyCompactList}\item 
+string \hyperlink{namespacemain_back_a926b9a8bc31c40a32db4d060aeb2a6ef}{main\+Back.\+bash\+C\+PP} = \textquotesingle{}../backend\+\_\+\+L\+SA/C\+P\+Ppreproc.\+sh\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Path to the Bash file that pre-\/processes code that is in C++ (or Java) \end{DoxyCompactList}\item 
+string \hyperlink{namespacemain_back_a0b5af764dbf53bd6ff0203d136bba033}{main\+Back.\+bashC} = \textquotesingle{}../backend\+\_\+\+L\+SA/Cpreproc.\+sh\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Path to the Bash file that pre-\/processes code that is in C. \end{DoxyCompactList}\item 
+string \hyperlink{namespacemain_back_a3373b5f631222030da4d68399961e046}{main\+Back.\+dir} = \textquotesingle{}media/results\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Path to the directory that the final output (the bar graphs and .txt file) are sent to. \end{DoxyCompactList}\item 
+string \hyperlink{namespacemain_back_ad40247629e5684702dc93dd647dfd608}{main\+Back.\+outp\+File} = \textquotesingle{}media/results/outp\+File.\+txt\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Path to the file that the .txt output is written into. \end{DoxyCompactList}\item 
+string \hyperlink{namespacemain_back_abeb9019342053389159ea0497b6b89d2}{main\+Back.\+top} = \textquotesingle{}media/results/top.\+txt\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Path to the file that the names/scores of the most similar files are written into. \end{DoxyCompactList}\item 
+string \hyperlink{namespacemain_back_ab8f29ba9b782a6e91e215a59bc597ce8}{main\+Back.\+outp\+Png} = \textquotesingle{}media/results/outp\+Img.\+png\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Path to the file with the output bar graph. \end{DoxyCompactList}\item 
+string \hyperlink{namespacemain_back_abb2932e94ac86ec3fe6f83a26cd15271}{main\+Back.\+outp\+Heatmap} = \textquotesingle{}media/results/outp\+Heatmap.\+png\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Path to the file with the output heatmap. \end{DoxyCompactList}\item 
+int \hyperlink{namespacemain_back_a37d9bf68cddbfd68b167647d790ffe9a}{main\+Back.\+bar\+Graph\+Param} = 10
+\begin{DoxyCompactList}\small\item\em n such that top n results are displayed in the bar graph \end{DoxyCompactList}\item 
+string \hyperlink{namespacemain_back_adf7077a22f3e33482f58fd6d892c112e}{main\+Back.\+zip\+File\+Path} = \textquotesingle{}\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Path to the input zip file that is to be processed. \end{DoxyCompactList}\item 
+list \hyperlink{namespacemain_back_ac066274638425ed709610bda61383714}{main\+Back.\+filenames} = \mbox{[}name for name in os.\+listdir(directory)\mbox{]}
+\begin{DoxyCompactList}\small\item\em List containing the names of every single file that is in the input zip file. \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_a5a0d1ff5b5d2f3a4bec2f88ef04385b3}{main\+Back.\+num\+Files} = len(filenames)
+\begin{DoxyCompactList}\small\item\em Number of files in the input zip file. \end{DoxyCompactList}\item 
+dictionary \hyperlink{namespacemain_back_a522d29412adaea9af5a5f622a084f3d7}{main\+Back.\+base\+Dict} = \{\}
+\begin{DoxyCompactList}\small\item\em Dictionary that stores the frequency of each word in each document. \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_afe5cb30123edd8f4ce029bd8dc01a015}{main\+Back.\+tempF} = os.\+path.\+join(directory, filenames\mbox{[}i\mbox{]})
+\begin{DoxyCompactList}\small\item\em Path to the current file that is being processed. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespacemain_back_a9176897b1308459712e81dc0f702d167}{main\+Back.\+file\+Ext} = (os.\+path.\+splitext(tempF))\mbox{[}1\mbox{]}
+\begin{DoxyCompactList}\small\item\em Extension of the current file that is being processed (so we know what pre-\/processing to apply) \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_a30f0d83c5715d2fa96d14b3fd6a7fbd0}{main\+Back.\+shell}
+\item 
+\hyperlink{namespacemain_back_a70be22d9dd8cbf946f881a6372fba10a}{main\+Back.\+f} = read\+F.\+read()
+\begin{DoxyCompactList}\small\item\em String obtained on reading the current file that is being processed. \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_ab3e90b2d4ac29c0647e746d41ea35ec6}{main\+Back.\+base\+Array} = np.\+array(list(base\+Dict.\+values()))
+\begin{DoxyCompactList}\small\item\em numpy.\+ndarray where the (i,j)th (i $<$ j) element is the frequency of the (i)th word in the (j)th document \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_acf43846c5a893d78f9a0e7fccf1ba489}{main\+Back.\+u}
+\begin{DoxyCompactList}\small\item\em numpy.\+ndarrays that store the singular value decomposition of the given array \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_a6b0f2224c369d3ec5bf6a3c7bcf3b60d}{main\+Back.\+s}
+\item 
+\hyperlink{namespacemain_back_a92b2e5bb31556f8f2634ccb0d66c3fa3}{main\+Back.\+v}
+\item 
+int \hyperlink{namespacemain_back_aee2ac20a3d81f9f6762e47cad7268a32}{main\+Back.\+low\+Rank} = 1+int((base\+Array.\+shape\mbox{[}0\mbox{]})/5)
+\begin{DoxyCompactList}\small\item\em The lower dimension that we wish to approximate the input data to. \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_a5219f1f00f1e13deec736f49b9019c11}{main\+Back.\+u\+Red} = u\mbox{[}\+:low\+Rank, \+:\mbox{]}
+\begin{DoxyCompactList}\small\item\em numpy.\+ndarray that stores the required columns of u after dimension reduction \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_a00584a33a7cf37843fda73a71092ef9d}{main\+Back.\+s\+Red} = np.\+diag(s\mbox{[}\+:low\+Rank\mbox{]})
+\begin{DoxyCompactList}\small\item\em numpy.\+ndarray that stores the required singular values after dimension reduction \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_ae39c5f6bff104ca56fdeaac54c183913}{main\+Back.\+arr\+Red} = np.\+dot(np.\+dot(u\+Red, s\+Red), v)
+\begin{DoxyCompactList}\small\item\em numpy.\+ndarray that represents the low-\/rank approximation of base\+Array. \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_a864d25dd2821f3c46a914ace51562000}{main\+Back.\+final\+Res} = np.\+zeros((num\+Files,num\+Files));
+\begin{DoxyCompactList}\small\item\em numpy.\+ndarray that stores the final degrees of plagiarism. \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_affa4e447c02fd00737e9a39a8a84a3d1}{main\+Back.\+temp\+Res} = np.\+array(final\+Res, copy=True)
+\begin{DoxyCompactList}\small\item\em Copy of the array final\+Res that is made symmetric -\/ this helps in easier input to the heatmap. \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_a0d55fd754fd8cc428c87d89b69beaa7c}{main\+Back.\+num\+Disp} = int(min(bar\+Graph\+Param, num\+Files$\ast$(num\+Files-\/1)/2))
+\begin{DoxyCompactList}\small\item\em Number of most similar pairs that are to be displayed on the website. \end{DoxyCompactList}\item 
+list \hyperlink{namespacemain_back_ad13243d6c872360e7fb0b363e7a1d3ee}{main\+Back.\+max\+Ind} = \mbox{[}0 for x in range(num\+Disp)\mbox{]}
+\begin{DoxyCompactList}\small\item\em Positions of the most similar pairs of files. \end{DoxyCompactList}\item 
+dictionary \hyperlink{namespacemain_back_a14e7fa3decf3555d9fd28beaae5657fc}{main\+Back.\+dic\+Top} = \{\}
+\begin{DoxyCompactList}\small\item\em Dictionary that has the pairs of files that are most similar along with the degree of similarity. \end{DoxyCompactList}\item 
+list \hyperlink{namespacemain_back_a23114ee3f0a053386332a41a4bfc8107}{main\+Back.\+top\+Coeffs} = \mbox{[}key for key in sorted(dic\+Top)\mbox{]}
+\begin{DoxyCompactList}\small\item\em List that stores the highest degrees of similarity. \end{DoxyCompactList}\item 
+list \hyperlink{namespacemain_back_adb3e6c6208b05db53a12bcb112a675b6}{main\+Back.\+top\+Names} = \mbox{[}dic\+Top\mbox{[}key\mbox{]} for key in top\+Coeffs\mbox{]}
+\begin{DoxyCompactList}\small\item\em List that stores the names of the most similar pairs of files. \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_ae2547d943b7148a0226f3c43b2cbe697}{main\+Back.\+fig}
+\begin{DoxyCompactList}\small\item\em pyplot parameters \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_a38c2a7421333f3468e902a87b6e93173}{main\+Back.\+ax}
+\item 
+\hyperlink{namespacemain_back_a89f7ed0e1ede7fd343133ceeede73230}{main\+Back.\+right\+\_\+side} = ax.\+spines\mbox{[}\char`\"{}right\char`\"{}\mbox{]}
+\item 
+\hyperlink{namespacemain_back_a2aabdc9357aa71da0c092014593e643e}{main\+Back.\+im}
+\begin{DoxyCompactList}\small\item\em Heatmap parameters. \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_ad1570e07f6c2172680fb6e795e7004c4}{main\+Back.\+cbar}
+\item 
+\hyperlink{namespacemain_back_aa2bb4cddc5109d85e75c990ec1246cfc}{main\+Back.\+cmap}
+\item 
+\hyperlink{namespacemain_back_ae03335898c52325fcc32d469cb1a3222}{main\+Back.\+cbarlabel}
+\item 
+def \hyperlink{namespacemain_back_a562674cbc45c1f945d00bcde6607f2e7}{main\+Back.\+texts} = annotate\+\_\+heatmap(im, valfmt=\char`\"{}\{x\+:.\+2f\}\char`\"{})
+\end{DoxyCompactItemize}

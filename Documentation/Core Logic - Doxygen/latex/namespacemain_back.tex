@@ -1,0 +1,584 @@
+\hypertarget{namespacemain_back}{}\section{main\+Back Namespace Reference}
+\label{namespacemain_back}\index{main\+Back@{main\+Back}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacemain_back_a6e34e76908b8cfd5fda4efaaf6737d55}{heatmap} (data, row\+\_\+labels, col\+\_\+labels, \hyperlink{namespacemain_back_a38c2a7421333f3468e902a87b6e93173}{ax}=None, cbar\+\_\+kw=\{\}, \hyperlink{namespacemain_back_ae03335898c52325fcc32d469cb1a3222}{cbarlabel}=\char`\"{}\char`\"{}, kwargs)
+\begin{DoxyCompactList}\small\item\em Function that creates and returns a heatmap of the given data. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_back_a7ad3aabd2ea6412049ac675944201dfa}{annotate\+\_\+heatmap} (\hyperlink{namespacemain_back_a2aabdc9357aa71da0c092014593e643e}{im}, data=None, valfmt=\char`\"{}\{x\+:.\+2f\}\char`\"{}, textcolors=\mbox{[}\char`\"{}black\char`\"{}, white, threshold=None, textkw)
+\begin{DoxyCompactList}\small\item\em Function that annotates the input heatmap with the given data. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_back_a143f8fc662e5d0efc0118244031af2e1}{comment\+\_\+remover\+\_\+py} (fname)
+\begin{DoxyCompactList}\small\item\em Function that removes all comments from an input .py file. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_back_a35b3762c7d4ae120ebcb9140f21ab99e}{comment\+\_\+remover\+\_\+cpp} (text)
+\begin{DoxyCompactList}\small\item\em Function that removes all comments from an input string following the C++ format. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_back_a5dcd803071bf0623d43c399c733f233e}{cosine\+\_\+similarity} (c1, c2)
+\begin{DoxyCompactList}\small\item\em Function that calculates the cosine similarity between two vectors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{namespacemain_back_a1c89e94124b1c6fedb3a2c9fe2d299c4}{directory} = \textquotesingle{}../backend\+\_\+\+L\+SA/input\+Dir\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Location of the (temporary) directory that the zipfile is unzipped to. \end{DoxyCompactList}\item 
+string \hyperlink{namespacemain_back_a926b9a8bc31c40a32db4d060aeb2a6ef}{bash\+C\+PP} = \textquotesingle{}../backend\+\_\+\+L\+SA/C\+P\+Ppreproc.\+sh\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Path to the Bash file that pre-\/processes code that is in C++ (or Java) \end{DoxyCompactList}\item 
+string \hyperlink{namespacemain_back_a0b5af764dbf53bd6ff0203d136bba033}{bashC} = \textquotesingle{}../backend\+\_\+\+L\+SA/Cpreproc.\+sh\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Path to the Bash file that pre-\/processes code that is in C. \end{DoxyCompactList}\item 
+string \hyperlink{namespacemain_back_a3373b5f631222030da4d68399961e046}{dir} = \textquotesingle{}media/results\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Path to the directory that the final output (the bar graphs and .txt file) are sent to. \end{DoxyCompactList}\item 
+string \hyperlink{namespacemain_back_ad40247629e5684702dc93dd647dfd608}{outp\+File} = \textquotesingle{}media/results/outp\+File.\+txt\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Path to the file that the .txt output is written into. \end{DoxyCompactList}\item 
+string \hyperlink{namespacemain_back_abeb9019342053389159ea0497b6b89d2}{top} = \textquotesingle{}media/results/top.\+txt\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Path to the file that the names/scores of the most similar files are written into. \end{DoxyCompactList}\item 
+string \hyperlink{namespacemain_back_ab8f29ba9b782a6e91e215a59bc597ce8}{outp\+Png} = \textquotesingle{}media/results/outp\+Img.\+png\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Path to the file with the output bar graph. \end{DoxyCompactList}\item 
+string \hyperlink{namespacemain_back_abb2932e94ac86ec3fe6f83a26cd15271}{outp\+Heatmap} = \textquotesingle{}media/results/outp\+Heatmap.\+png\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Path to the file with the output heatmap. \end{DoxyCompactList}\item 
+int \hyperlink{namespacemain_back_a37d9bf68cddbfd68b167647d790ffe9a}{bar\+Graph\+Param} = 10
+\begin{DoxyCompactList}\small\item\em n such that top n results are displayed in the bar graph \end{DoxyCompactList}\item 
+string \hyperlink{namespacemain_back_adf7077a22f3e33482f58fd6d892c112e}{zip\+File\+Path} = \textquotesingle{}\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Path to the input zip file that is to be processed. \end{DoxyCompactList}\item 
+list \hyperlink{namespacemain_back_ac066274638425ed709610bda61383714}{filenames} = \mbox{[}name for name in os.\+listdir(\hyperlink{namespacemain_back_a1c89e94124b1c6fedb3a2c9fe2d299c4}{directory})\mbox{]}
+\begin{DoxyCompactList}\small\item\em List containing the names of every single file that is in the input zip file. \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_a5a0d1ff5b5d2f3a4bec2f88ef04385b3}{num\+Files} = len(\hyperlink{namespacemain_back_ac066274638425ed709610bda61383714}{filenames})
+\begin{DoxyCompactList}\small\item\em Number of files in the input zip file. \end{DoxyCompactList}\item 
+dictionary \hyperlink{namespacemain_back_a522d29412adaea9af5a5f622a084f3d7}{base\+Dict} = \{\}
+\begin{DoxyCompactList}\small\item\em Dictionary that stores the frequency of each word in each document. \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_afe5cb30123edd8f4ce029bd8dc01a015}{tempF} = os.\+path.\+join(\hyperlink{namespacemain_back_a1c89e94124b1c6fedb3a2c9fe2d299c4}{directory}, \hyperlink{namespacemain_back_ac066274638425ed709610bda61383714}{filenames}\mbox{[}i\mbox{]})
+\begin{DoxyCompactList}\small\item\em Path to the current file that is being processed. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespacemain_back_a9176897b1308459712e81dc0f702d167}{file\+Ext} = (os.\+path.\+splitext(\hyperlink{namespacemain_back_afe5cb30123edd8f4ce029bd8dc01a015}{tempF}))\mbox{[}1\mbox{]}
+\begin{DoxyCompactList}\small\item\em Extension of the current file that is being processed (so we know what pre-\/processing to apply) \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_a30f0d83c5715d2fa96d14b3fd6a7fbd0}{shell}
+\item 
+\hyperlink{namespacemain_back_a70be22d9dd8cbf946f881a6372fba10a}{f} = read\+F.\+read()
+\begin{DoxyCompactList}\small\item\em String obtained on reading the current file that is being processed. \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_ab3e90b2d4ac29c0647e746d41ea35ec6}{base\+Array} = np.\+array(list(base\+Dict.\+values()))
+\begin{DoxyCompactList}\small\item\em numpy.\+ndarray where the (i,j)th (i $<$ j) element is the frequency of the (i)th word in the (j)th document \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_acf43846c5a893d78f9a0e7fccf1ba489}{u}
+\begin{DoxyCompactList}\small\item\em numpy.\+ndarrays that store the singular value decomposition of the given array \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_a6b0f2224c369d3ec5bf6a3c7bcf3b60d}{s}
+\item 
+\hyperlink{namespacemain_back_a92b2e5bb31556f8f2634ccb0d66c3fa3}{v}
+\item 
+int \hyperlink{namespacemain_back_aee2ac20a3d81f9f6762e47cad7268a32}{low\+Rank} = 1+int((base\+Array.\+shape\mbox{[}0\mbox{]})/5)
+\begin{DoxyCompactList}\small\item\em The lower dimension that we wish to approximate the input data to. \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_a5219f1f00f1e13deec736f49b9019c11}{u\+Red} = \hyperlink{namespacemain_back_acf43846c5a893d78f9a0e7fccf1ba489}{u}\mbox{[}\+:\hyperlink{namespacemain_back_aee2ac20a3d81f9f6762e47cad7268a32}{low\+Rank}, \+:\mbox{]}
+\begin{DoxyCompactList}\small\item\em numpy.\+ndarray that stores the required columns of u after dimension reduction \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_a00584a33a7cf37843fda73a71092ef9d}{s\+Red} = np.\+diag(\hyperlink{namespacemain_back_a6b0f2224c369d3ec5bf6a3c7bcf3b60d}{s}\mbox{[}\+:\hyperlink{namespacemain_back_aee2ac20a3d81f9f6762e47cad7268a32}{low\+Rank}\mbox{]})
+\begin{DoxyCompactList}\small\item\em numpy.\+ndarray that stores the required singular values after dimension reduction \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_ae39c5f6bff104ca56fdeaac54c183913}{arr\+Red} = np.\+dot(np.\+dot(\hyperlink{namespacemain_back_a5219f1f00f1e13deec736f49b9019c11}{u\+Red}, \hyperlink{namespacemain_back_a00584a33a7cf37843fda73a71092ef9d}{s\+Red}), \hyperlink{namespacemain_back_a92b2e5bb31556f8f2634ccb0d66c3fa3}{v})
+\begin{DoxyCompactList}\small\item\em numpy.\+ndarray that represents the low-\/rank approximation of base\+Array. \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_a864d25dd2821f3c46a914ace51562000}{final\+Res} = np.\+zeros((\hyperlink{namespacemain_back_a5a0d1ff5b5d2f3a4bec2f88ef04385b3}{num\+Files},\hyperlink{namespacemain_back_a5a0d1ff5b5d2f3a4bec2f88ef04385b3}{num\+Files}));
+\begin{DoxyCompactList}\small\item\em numpy.\+ndarray that stores the final degrees of plagiarism. \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_affa4e447c02fd00737e9a39a8a84a3d1}{temp\+Res} = np.\+array(\hyperlink{namespacemain_back_a864d25dd2821f3c46a914ace51562000}{final\+Res}, copy=True)
+\begin{DoxyCompactList}\small\item\em Copy of the array final\+Res that is made symmetric -\/ this helps in easier input to the heatmap. \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_a0d55fd754fd8cc428c87d89b69beaa7c}{num\+Disp} = int(min(\hyperlink{namespacemain_back_a37d9bf68cddbfd68b167647d790ffe9a}{bar\+Graph\+Param}, \hyperlink{namespacemain_back_a5a0d1ff5b5d2f3a4bec2f88ef04385b3}{num\+Files}$\ast$(\hyperlink{namespacemain_back_a5a0d1ff5b5d2f3a4bec2f88ef04385b3}{num\+Files}-\/1)/2))
+\begin{DoxyCompactList}\small\item\em Number of most similar pairs that are to be displayed on the website. \end{DoxyCompactList}\item 
+list \hyperlink{namespacemain_back_ad13243d6c872360e7fb0b363e7a1d3ee}{max\+Ind} = \mbox{[}0 for x in range(\hyperlink{namespacemain_back_a0d55fd754fd8cc428c87d89b69beaa7c}{num\+Disp})\mbox{]}
+\begin{DoxyCompactList}\small\item\em Positions of the most similar pairs of files. \end{DoxyCompactList}\item 
+dictionary \hyperlink{namespacemain_back_a14e7fa3decf3555d9fd28beaae5657fc}{dic\+Top} = \{\}
+\begin{DoxyCompactList}\small\item\em Dictionary that has the pairs of files that are most similar along with the degree of similarity. \end{DoxyCompactList}\item 
+list \hyperlink{namespacemain_back_a23114ee3f0a053386332a41a4bfc8107}{top\+Coeffs} = \mbox{[}key for key in sorted(\hyperlink{namespacemain_back_a14e7fa3decf3555d9fd28beaae5657fc}{dic\+Top})\mbox{]}
+\begin{DoxyCompactList}\small\item\em List that stores the highest degrees of similarity. \end{DoxyCompactList}\item 
+list \hyperlink{namespacemain_back_adb3e6c6208b05db53a12bcb112a675b6}{top\+Names} = \mbox{[}\hyperlink{namespacemain_back_a14e7fa3decf3555d9fd28beaae5657fc}{dic\+Top}\mbox{[}key\mbox{]} for key in \hyperlink{namespacemain_back_a23114ee3f0a053386332a41a4bfc8107}{top\+Coeffs}\mbox{]}
+\begin{DoxyCompactList}\small\item\em List that stores the names of the most similar pairs of files. \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_ae2547d943b7148a0226f3c43b2cbe697}{fig}
+\begin{DoxyCompactList}\small\item\em pyplot parameters \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_a38c2a7421333f3468e902a87b6e93173}{ax}
+\item 
+\hyperlink{namespacemain_back_a89f7ed0e1ede7fd343133ceeede73230}{right\+\_\+side} = ax.\+spines\mbox{[}\char`\"{}right\char`\"{}\mbox{]}
+\item 
+\hyperlink{namespacemain_back_a2aabdc9357aa71da0c092014593e643e}{im}
+\begin{DoxyCompactList}\small\item\em Heatmap parameters. \end{DoxyCompactList}\item 
+\hyperlink{namespacemain_back_ad1570e07f6c2172680fb6e795e7004c4}{cbar}
+\item 
+\hyperlink{namespacemain_back_aa2bb4cddc5109d85e75c990ec1246cfc}{cmap}
+\item 
+\hyperlink{namespacemain_back_ae03335898c52325fcc32d469cb1a3222}{cbarlabel}
+\item 
+def \hyperlink{namespacemain_back_a562674cbc45c1f945d00bcde6607f2e7}{texts} = \hyperlink{namespacemain_back_a7ad3aabd2ea6412049ac675944201dfa}{annotate\+\_\+heatmap}(\hyperlink{namespacemain_back_a2aabdc9357aa71da0c092014593e643e}{im}, valfmt=\char`\"{}\{x\+:.\+2f\}\char`\"{})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacemain_back_a7ad3aabd2ea6412049ac675944201dfa}\label{namespacemain_back_a7ad3aabd2ea6412049ac675944201dfa}} 
+\index{main\+Back@{main\+Back}!annotate\+\_\+heatmap@{annotate\+\_\+heatmap}}
+\index{annotate\+\_\+heatmap@{annotate\+\_\+heatmap}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{annotate\+\_\+heatmap()}{annotate\_heatmap()}}
+{\footnotesize\ttfamily def main\+Back.\+annotate\+\_\+heatmap (\begin{DoxyParamCaption}\item[{}]{im,  }\item[{}]{data = {\ttfamily None},  }\item[{}]{valfmt = {\ttfamily \char`\"{}\{x\+:.2f\}\char`\"{}},  }\item[{}]{textcolors = {\ttfamily \mbox{[}\char`\"{}black\char`\"{}},  }\item[{}]{white,  }\item[{}]{threshold = {\ttfamily None},  }\item[{}]{textkw }\end{DoxyParamCaption})}
+
+
+
+Function that annotates the input heatmap with the given data. 
+
+\begin{DoxyVerb}Code for annotating heatmap taken from https://matplotlib.org/3.1.1/gallery/images_contours_and_fields/image_annotated_heatmap.html
+\end{DoxyVerb}
+ \begin{DoxyVerb}A function to annotate a heatmap.
+
+Parameters
+----------
+im
+    The AxesImage to be labeled.
+data
+    Data used to annotate.  If None, the image's data is used.  Optional.
+valfmt
+    The format of the annotations inside the heatmap.  This should either
+    use the string format method, e.g. "$ {x:.2f}", or be a
+    `matplotlib.ticker.Formatter`.  Optional.
+textcolors
+    A list or array of two color specifications.  The first is used for
+    values below a threshold, the second for those above.  Optional.
+threshold
+    Value in data units according to which the colors from textcolors are
+    applied.  If None (the default) uses the middle of the colormap as
+    separation.  Optional.
+**kwargs
+    All other arguments are forwarded to each call to `text` used to create
+    the text labels.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemain_back_a35b3762c7d4ae120ebcb9140f21ab99e}\label{namespacemain_back_a35b3762c7d4ae120ebcb9140f21ab99e}} 
+\index{main\+Back@{main\+Back}!comment\+\_\+remover\+\_\+cpp@{comment\+\_\+remover\+\_\+cpp}}
+\index{comment\+\_\+remover\+\_\+cpp@{comment\+\_\+remover\+\_\+cpp}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{comment\+\_\+remover\+\_\+cpp()}{comment\_remover\_cpp()}}
+{\footnotesize\ttfamily def main\+Back.\+comment\+\_\+remover\+\_\+cpp (\begin{DoxyParamCaption}\item[{}]{text }\end{DoxyParamCaption})}
+
+
+
+Function that removes all comments from an input string following the C++ format. 
+
+\begin{DoxyVerb}Code for removing comments (from a CPP file) taken from https://stackoverflow.com/questions/241327/remove-c-and-c-comments-using-python
+Note that we do not necessarily require this due to the code of bashTest.sh, but we keep it in the case that
+the code does not compile (so g++ won't work).
+Since comments in Java files are similar, we use the same function there as well.
+---
+Parameters:
+text: String of the CPP file that is to be pre-processed
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemain_back_a143f8fc662e5d0efc0118244031af2e1}\label{namespacemain_back_a143f8fc662e5d0efc0118244031af2e1}} 
+\index{main\+Back@{main\+Back}!comment\+\_\+remover\+\_\+py@{comment\+\_\+remover\+\_\+py}}
+\index{comment\+\_\+remover\+\_\+py@{comment\+\_\+remover\+\_\+py}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{comment\+\_\+remover\+\_\+py()}{comment\_remover\_py()}}
+{\footnotesize\ttfamily def main\+Back.\+comment\+\_\+remover\+\_\+py (\begin{DoxyParamCaption}\item[{}]{fname }\end{DoxyParamCaption})}
+
+
+
+Function that removes all comments from an input .py file. 
+
+\begin{DoxyVerb}Code for removing comments (from a py file) taken from  https://gist.github.com/BroHui/aca2b8e6e6bdf3cb4af4b246c9837fa3 with minor changes done to bring it into the format we require
+---
+Parameters: 
+fname: A string that is the path to the (Python) file to be pre-processed
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemain_back_a5dcd803071bf0623d43c399c733f233e}\label{namespacemain_back_a5dcd803071bf0623d43c399c733f233e}} 
+\index{main\+Back@{main\+Back}!cosine\+\_\+similarity@{cosine\+\_\+similarity}}
+\index{cosine\+\_\+similarity@{cosine\+\_\+similarity}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{cosine\+\_\+similarity()}{cosine\_similarity()}}
+{\footnotesize\ttfamily def main\+Back.\+cosine\+\_\+similarity (\begin{DoxyParamCaption}\item[{}]{c1,  }\item[{}]{c2 }\end{DoxyParamCaption})}
+
+
+
+Function that calculates the cosine similarity between two vectors. 
+
+\begin{DoxyVerb}This function merely returns the cosine similarity of two vectors (stored as numpy.ndarrays)
+We use scipy.spatial distance to simplify the process
+---
+Parameters:
+c1, c2: numpy.ndarrays that represent the two vectors
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemain_back_a6e34e76908b8cfd5fda4efaaf6737d55}\label{namespacemain_back_a6e34e76908b8cfd5fda4efaaf6737d55}} 
+\index{main\+Back@{main\+Back}!heatmap@{heatmap}}
+\index{heatmap@{heatmap}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{heatmap()}{heatmap()}}
+{\footnotesize\ttfamily def main\+Back.\+heatmap (\begin{DoxyParamCaption}\item[{}]{data,  }\item[{}]{row\+\_\+labels,  }\item[{}]{col\+\_\+labels,  }\item[{}]{ax = {\ttfamily None},  }\item[{}]{cbar\+\_\+kw = {\ttfamily \{\}},  }\item[{}]{cbarlabel = {\ttfamily \char`\"{}\char`\"{}},  }\item[{}]{kwargs }\end{DoxyParamCaption})}
+
+
+
+Function that creates and returns a heatmap of the given data. 
+
+\begin{DoxyVerb}Code for creating heatmap taken from https://matplotlib.org/3.1.1/gallery/images_contours_and_fields/image_annotated_heatmap.html
+
+Create a heatmap from a numpy array and two lists of labels.
+
+Parameters
+----------
+data
+    A 2D numpy array of shape (N, M).
+row_labels
+    A list or array of length N with the labels for the rows.
+col_labels
+    A list or array of length M with the labels for the columns.
+ax
+    A `matplotlib.axes.Axes` instance to which the heatmap is plotted.  If
+    not provided, use current axes or create a new one.  Optional.
+cbar_kw
+    A dictionary with arguments to `matplotlib.Figure.colorbar`.  Optional.
+cbarlabel
+    The label for the colorbar.  Optional.
+**kwargs
+    All other arguments are forwarded to `imshow`.
+\end{DoxyVerb}
+ 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespacemain_back_ae39c5f6bff104ca56fdeaac54c183913}\label{namespacemain_back_ae39c5f6bff104ca56fdeaac54c183913}} 
+\index{main\+Back@{main\+Back}!arr\+Red@{arr\+Red}}
+\index{arr\+Red@{arr\+Red}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{arr\+Red}{arrRed}}
+{\footnotesize\ttfamily main\+Back.\+arr\+Red = np.\+dot(np.\+dot(\hyperlink{namespacemain_back_a5219f1f00f1e13deec736f49b9019c11}{u\+Red}, \hyperlink{namespacemain_back_a00584a33a7cf37843fda73a71092ef9d}{s\+Red}), \hyperlink{namespacemain_back_a92b2e5bb31556f8f2634ccb0d66c3fa3}{v})}
+
+
+
+numpy.\+ndarray that represents the low-\/rank approximation of base\+Array. 
+
+\mbox{\Hypertarget{namespacemain_back_a38c2a7421333f3468e902a87b6e93173}\label{namespacemain_back_a38c2a7421333f3468e902a87b6e93173}} 
+\index{main\+Back@{main\+Back}!ax@{ax}}
+\index{ax@{ax}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{ax}{ax}}
+{\footnotesize\ttfamily main\+Back.\+ax}
+
+\mbox{\Hypertarget{namespacemain_back_a37d9bf68cddbfd68b167647d790ffe9a}\label{namespacemain_back_a37d9bf68cddbfd68b167647d790ffe9a}} 
+\index{main\+Back@{main\+Back}!bar\+Graph\+Param@{bar\+Graph\+Param}}
+\index{bar\+Graph\+Param@{bar\+Graph\+Param}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{bar\+Graph\+Param}{barGraphParam}}
+{\footnotesize\ttfamily int main\+Back.\+bar\+Graph\+Param = 10}
+
+
+
+n such that top n results are displayed in the bar graph 
+
+\mbox{\Hypertarget{namespacemain_back_ab3e90b2d4ac29c0647e746d41ea35ec6}\label{namespacemain_back_ab3e90b2d4ac29c0647e746d41ea35ec6}} 
+\index{main\+Back@{main\+Back}!base\+Array@{base\+Array}}
+\index{base\+Array@{base\+Array}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{base\+Array}{baseArray}}
+{\footnotesize\ttfamily main\+Back.\+base\+Array = np.\+array(list(base\+Dict.\+values()))}
+
+
+
+numpy.\+ndarray where the (i,j)th (i $<$ j) element is the frequency of the (i)th word in the (j)th document 
+
+\mbox{\Hypertarget{namespacemain_back_a522d29412adaea9af5a5f622a084f3d7}\label{namespacemain_back_a522d29412adaea9af5a5f622a084f3d7}} 
+\index{main\+Back@{main\+Back}!base\+Dict@{base\+Dict}}
+\index{base\+Dict@{base\+Dict}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{base\+Dict}{baseDict}}
+{\footnotesize\ttfamily dictionary main\+Back.\+base\+Dict = \{\}}
+
+
+
+Dictionary that stores the frequency of each word in each document. 
+
+\mbox{\Hypertarget{namespacemain_back_a0b5af764dbf53bd6ff0203d136bba033}\label{namespacemain_back_a0b5af764dbf53bd6ff0203d136bba033}} 
+\index{main\+Back@{main\+Back}!bashC@{bashC}}
+\index{bashC@{bashC}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{bashC}{bashC}}
+{\footnotesize\ttfamily string main\+Back.\+bashC = \textquotesingle{}../backend\+\_\+\+L\+SA/Cpreproc.\+sh\textquotesingle{}}
+
+
+
+Path to the Bash file that pre-\/processes code that is in C. 
+
+\mbox{\Hypertarget{namespacemain_back_a926b9a8bc31c40a32db4d060aeb2a6ef}\label{namespacemain_back_a926b9a8bc31c40a32db4d060aeb2a6ef}} 
+\index{main\+Back@{main\+Back}!bash\+C\+PP@{bash\+C\+PP}}
+\index{bash\+C\+PP@{bash\+C\+PP}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{bash\+C\+PP}{bashCPP}}
+{\footnotesize\ttfamily string main\+Back.\+bash\+C\+PP = \textquotesingle{}../backend\+\_\+\+L\+SA/C\+P\+Ppreproc.\+sh\textquotesingle{}}
+
+
+
+Path to the Bash file that pre-\/processes code that is in C++ (or Java) 
+
+\mbox{\Hypertarget{namespacemain_back_ad1570e07f6c2172680fb6e795e7004c4}\label{namespacemain_back_ad1570e07f6c2172680fb6e795e7004c4}} 
+\index{main\+Back@{main\+Back}!cbar@{cbar}}
+\index{cbar@{cbar}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{cbar}{cbar}}
+{\footnotesize\ttfamily main\+Back.\+cbar}
+
+\mbox{\Hypertarget{namespacemain_back_ae03335898c52325fcc32d469cb1a3222}\label{namespacemain_back_ae03335898c52325fcc32d469cb1a3222}} 
+\index{main\+Back@{main\+Back}!cbarlabel@{cbarlabel}}
+\index{cbarlabel@{cbarlabel}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{cbarlabel}{cbarlabel}}
+{\footnotesize\ttfamily main\+Back.\+cbarlabel}
+
+\mbox{\Hypertarget{namespacemain_back_aa2bb4cddc5109d85e75c990ec1246cfc}\label{namespacemain_back_aa2bb4cddc5109d85e75c990ec1246cfc}} 
+\index{main\+Back@{main\+Back}!cmap@{cmap}}
+\index{cmap@{cmap}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{cmap}{cmap}}
+{\footnotesize\ttfamily main\+Back.\+cmap}
+
+\mbox{\Hypertarget{namespacemain_back_a14e7fa3decf3555d9fd28beaae5657fc}\label{namespacemain_back_a14e7fa3decf3555d9fd28beaae5657fc}} 
+\index{main\+Back@{main\+Back}!dic\+Top@{dic\+Top}}
+\index{dic\+Top@{dic\+Top}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{dic\+Top}{dicTop}}
+{\footnotesize\ttfamily dictionary main\+Back.\+dic\+Top = \{\}}
+
+
+
+Dictionary that has the pairs of files that are most similar along with the degree of similarity. 
+
+\mbox{\Hypertarget{namespacemain_back_a3373b5f631222030da4d68399961e046}\label{namespacemain_back_a3373b5f631222030da4d68399961e046}} 
+\index{main\+Back@{main\+Back}!dir@{dir}}
+\index{dir@{dir}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{dir}{dir}}
+{\footnotesize\ttfamily string main\+Back.\+dir = \textquotesingle{}media/results\textquotesingle{}}
+
+
+
+Path to the directory that the final output (the bar graphs and .txt file) are sent to. 
+
+\mbox{\Hypertarget{namespacemain_back_a1c89e94124b1c6fedb3a2c9fe2d299c4}\label{namespacemain_back_a1c89e94124b1c6fedb3a2c9fe2d299c4}} 
+\index{main\+Back@{main\+Back}!directory@{directory}}
+\index{directory@{directory}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{directory}{directory}}
+{\footnotesize\ttfamily main\+Back.\+directory = \textquotesingle{}../backend\+\_\+\+L\+SA/input\+Dir\textquotesingle{}}
+
+
+
+Location of the (temporary) directory that the zipfile is unzipped to. 
+
+\mbox{\Hypertarget{namespacemain_back_a70be22d9dd8cbf946f881a6372fba10a}\label{namespacemain_back_a70be22d9dd8cbf946f881a6372fba10a}} 
+\index{main\+Back@{main\+Back}!f@{f}}
+\index{f@{f}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{f}{f}}
+{\footnotesize\ttfamily def main\+Back.\+f = read\+F.\+read()}
+
+
+
+String obtained on reading the current file that is being processed. 
+
+\mbox{\Hypertarget{namespacemain_back_ae2547d943b7148a0226f3c43b2cbe697}\label{namespacemain_back_ae2547d943b7148a0226f3c43b2cbe697}} 
+\index{main\+Back@{main\+Back}!fig@{fig}}
+\index{fig@{fig}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{fig}{fig}}
+{\footnotesize\ttfamily main\+Back.\+fig}
+
+
+
+pyplot parameters 
+
+\mbox{\Hypertarget{namespacemain_back_a9176897b1308459712e81dc0f702d167}\label{namespacemain_back_a9176897b1308459712e81dc0f702d167}} 
+\index{main\+Back@{main\+Back}!file\+Ext@{file\+Ext}}
+\index{file\+Ext@{file\+Ext}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{file\+Ext}{fileExt}}
+{\footnotesize\ttfamily tuple main\+Back.\+file\+Ext = (os.\+path.\+splitext(\hyperlink{namespacemain_back_afe5cb30123edd8f4ce029bd8dc01a015}{tempF}))\mbox{[}1\mbox{]}}
+
+
+
+Extension of the current file that is being processed (so we know what pre-\/processing to apply) 
+
+\mbox{\Hypertarget{namespacemain_back_ac066274638425ed709610bda61383714}\label{namespacemain_back_ac066274638425ed709610bda61383714}} 
+\index{main\+Back@{main\+Back}!filenames@{filenames}}
+\index{filenames@{filenames}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{filenames}{filenames}}
+{\footnotesize\ttfamily main\+Back.\+filenames = \mbox{[}name for name in os.\+listdir(\hyperlink{namespacemain_back_a1c89e94124b1c6fedb3a2c9fe2d299c4}{directory})\mbox{]}}
+
+
+
+List containing the names of every single file that is in the input zip file. 
+
+\mbox{\Hypertarget{namespacemain_back_a864d25dd2821f3c46a914ace51562000}\label{namespacemain_back_a864d25dd2821f3c46a914ace51562000}} 
+\index{main\+Back@{main\+Back}!final\+Res@{final\+Res}}
+\index{final\+Res@{final\+Res}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{final\+Res}{finalRes}}
+{\footnotesize\ttfamily main\+Back.\+final\+Res = np.\+zeros((\hyperlink{namespacemain_back_a5a0d1ff5b5d2f3a4bec2f88ef04385b3}{num\+Files},\hyperlink{namespacemain_back_a5a0d1ff5b5d2f3a4bec2f88ef04385b3}{num\+Files}));}
+
+
+
+numpy.\+ndarray that stores the final degrees of plagiarism. 
+
+The (i,j)th element represents the similarity between files i and j (where numbering is according to the order of the list filenames) \mbox{\Hypertarget{namespacemain_back_a2aabdc9357aa71da0c092014593e643e}\label{namespacemain_back_a2aabdc9357aa71da0c092014593e643e}} 
+\index{main\+Back@{main\+Back}!im@{im}}
+\index{im@{im}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{im}{im}}
+{\footnotesize\ttfamily main\+Back.\+im}
+
+
+
+Heatmap parameters. 
+
+\mbox{\Hypertarget{namespacemain_back_aee2ac20a3d81f9f6762e47cad7268a32}\label{namespacemain_back_aee2ac20a3d81f9f6762e47cad7268a32}} 
+\index{main\+Back@{main\+Back}!low\+Rank@{low\+Rank}}
+\index{low\+Rank@{low\+Rank}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{low\+Rank}{lowRank}}
+{\footnotesize\ttfamily int main\+Back.\+low\+Rank = 1+int((base\+Array.\+shape\mbox{[}0\mbox{]})/5)}
+
+
+
+The lower dimension that we wish to approximate the input data to. 
+
+This particular value gives good results so it was chosen. \mbox{\Hypertarget{namespacemain_back_ad13243d6c872360e7fb0b363e7a1d3ee}\label{namespacemain_back_ad13243d6c872360e7fb0b363e7a1d3ee}} 
+\index{main\+Back@{main\+Back}!max\+Ind@{max\+Ind}}
+\index{max\+Ind@{max\+Ind}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{max\+Ind}{maxInd}}
+{\footnotesize\ttfamily list main\+Back.\+max\+Ind = \mbox{[}0 for x in range(\hyperlink{namespacemain_back_a0d55fd754fd8cc428c87d89b69beaa7c}{num\+Disp})\mbox{]}}
+
+
+
+Positions of the most similar pairs of files. 
+
+\mbox{\Hypertarget{namespacemain_back_a0d55fd754fd8cc428c87d89b69beaa7c}\label{namespacemain_back_a0d55fd754fd8cc428c87d89b69beaa7c}} 
+\index{main\+Back@{main\+Back}!num\+Disp@{num\+Disp}}
+\index{num\+Disp@{num\+Disp}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{num\+Disp}{numDisp}}
+{\footnotesize\ttfamily main\+Back.\+num\+Disp = int(min(\hyperlink{namespacemain_back_a37d9bf68cddbfd68b167647d790ffe9a}{bar\+Graph\+Param}, \hyperlink{namespacemain_back_a5a0d1ff5b5d2f3a4bec2f88ef04385b3}{num\+Files}$\ast$(\hyperlink{namespacemain_back_a5a0d1ff5b5d2f3a4bec2f88ef04385b3}{num\+Files}-\/1)/2))}
+
+
+
+Number of most similar pairs that are to be displayed on the website. 
+
+\mbox{\Hypertarget{namespacemain_back_a5a0d1ff5b5d2f3a4bec2f88ef04385b3}\label{namespacemain_back_a5a0d1ff5b5d2f3a4bec2f88ef04385b3}} 
+\index{main\+Back@{main\+Back}!num\+Files@{num\+Files}}
+\index{num\+Files@{num\+Files}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{num\+Files}{numFiles}}
+{\footnotesize\ttfamily main\+Back.\+num\+Files = len(\hyperlink{namespacemain_back_ac066274638425ed709610bda61383714}{filenames})}
+
+
+
+Number of files in the input zip file. 
+
+\mbox{\Hypertarget{namespacemain_back_ad40247629e5684702dc93dd647dfd608}\label{namespacemain_back_ad40247629e5684702dc93dd647dfd608}} 
+\index{main\+Back@{main\+Back}!outp\+File@{outp\+File}}
+\index{outp\+File@{outp\+File}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{outp\+File}{outpFile}}
+{\footnotesize\ttfamily string main\+Back.\+outp\+File = \textquotesingle{}media/results/outp\+File.\+txt\textquotesingle{}}
+
+
+
+Path to the file that the .txt output is written into. 
+
+\mbox{\Hypertarget{namespacemain_back_abb2932e94ac86ec3fe6f83a26cd15271}\label{namespacemain_back_abb2932e94ac86ec3fe6f83a26cd15271}} 
+\index{main\+Back@{main\+Back}!outp\+Heatmap@{outp\+Heatmap}}
+\index{outp\+Heatmap@{outp\+Heatmap}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{outp\+Heatmap}{outpHeatmap}}
+{\footnotesize\ttfamily string main\+Back.\+outp\+Heatmap = \textquotesingle{}media/results/outp\+Heatmap.\+png\textquotesingle{}}
+
+
+
+Path to the file with the output heatmap. 
+
+\mbox{\Hypertarget{namespacemain_back_ab8f29ba9b782a6e91e215a59bc597ce8}\label{namespacemain_back_ab8f29ba9b782a6e91e215a59bc597ce8}} 
+\index{main\+Back@{main\+Back}!outp\+Png@{outp\+Png}}
+\index{outp\+Png@{outp\+Png}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{outp\+Png}{outpPng}}
+{\footnotesize\ttfamily string main\+Back.\+outp\+Png = \textquotesingle{}media/results/outp\+Img.\+png\textquotesingle{}}
+
+
+
+Path to the file with the output bar graph. 
+
+\mbox{\Hypertarget{namespacemain_back_a89f7ed0e1ede7fd343133ceeede73230}\label{namespacemain_back_a89f7ed0e1ede7fd343133ceeede73230}} 
+\index{main\+Back@{main\+Back}!right\+\_\+side@{right\+\_\+side}}
+\index{right\+\_\+side@{right\+\_\+side}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{right\+\_\+side}{right\_side}}
+{\footnotesize\ttfamily main\+Back.\+right\+\_\+side = ax.\+spines\mbox{[}\char`\"{}right\char`\"{}\mbox{]}}
+
+\mbox{\Hypertarget{namespacemain_back_a6b0f2224c369d3ec5bf6a3c7bcf3b60d}\label{namespacemain_back_a6b0f2224c369d3ec5bf6a3c7bcf3b60d}} 
+\index{main\+Back@{main\+Back}!s@{s}}
+\index{s@{s}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{s}{s}}
+{\footnotesize\ttfamily main\+Back.\+s}
+
+\mbox{\Hypertarget{namespacemain_back_a30f0d83c5715d2fa96d14b3fd6a7fbd0}\label{namespacemain_back_a30f0d83c5715d2fa96d14b3fd6a7fbd0}} 
+\index{main\+Back@{main\+Back}!shell@{shell}}
+\index{shell@{shell}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{shell}{shell}}
+{\footnotesize\ttfamily main\+Back.\+shell}
+
+\mbox{\Hypertarget{namespacemain_back_a00584a33a7cf37843fda73a71092ef9d}\label{namespacemain_back_a00584a33a7cf37843fda73a71092ef9d}} 
+\index{main\+Back@{main\+Back}!s\+Red@{s\+Red}}
+\index{s\+Red@{s\+Red}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{s\+Red}{sRed}}
+{\footnotesize\ttfamily main\+Back.\+s\+Red = np.\+diag(\hyperlink{namespacemain_back_a6b0f2224c369d3ec5bf6a3c7bcf3b60d}{s}\mbox{[}\+:\hyperlink{namespacemain_back_aee2ac20a3d81f9f6762e47cad7268a32}{low\+Rank}\mbox{]})}
+
+
+
+numpy.\+ndarray that stores the required singular values after dimension reduction 
+
+\mbox{\Hypertarget{namespacemain_back_afe5cb30123edd8f4ce029bd8dc01a015}\label{namespacemain_back_afe5cb30123edd8f4ce029bd8dc01a015}} 
+\index{main\+Back@{main\+Back}!tempF@{tempF}}
+\index{tempF@{tempF}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{tempF}{tempF}}
+{\footnotesize\ttfamily main\+Back.\+tempF = os.\+path.\+join(\hyperlink{namespacemain_back_a1c89e94124b1c6fedb3a2c9fe2d299c4}{directory}, \hyperlink{namespacemain_back_ac066274638425ed709610bda61383714}{filenames}\mbox{[}i\mbox{]})}
+
+
+
+Path to the current file that is being processed. 
+
+\mbox{\Hypertarget{namespacemain_back_affa4e447c02fd00737e9a39a8a84a3d1}\label{namespacemain_back_affa4e447c02fd00737e9a39a8a84a3d1}} 
+\index{main\+Back@{main\+Back}!temp\+Res@{temp\+Res}}
+\index{temp\+Res@{temp\+Res}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{temp\+Res}{tempRes}}
+{\footnotesize\ttfamily main\+Back.\+temp\+Res = np.\+array(\hyperlink{namespacemain_back_a864d25dd2821f3c46a914ace51562000}{final\+Res}, copy=True)}
+
+
+
+Copy of the array final\+Res that is made symmetric -\/ this helps in easier input to the heatmap. 
+
+\mbox{\Hypertarget{namespacemain_back_a562674cbc45c1f945d00bcde6607f2e7}\label{namespacemain_back_a562674cbc45c1f945d00bcde6607f2e7}} 
+\index{main\+Back@{main\+Back}!texts@{texts}}
+\index{texts@{texts}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{texts}{texts}}
+{\footnotesize\ttfamily def main\+Back.\+texts = \hyperlink{namespacemain_back_a7ad3aabd2ea6412049ac675944201dfa}{annotate\+\_\+heatmap}(\hyperlink{namespacemain_back_a2aabdc9357aa71da0c092014593e643e}{im}, valfmt=\char`\"{}\{x\+:.\+2f\}\char`\"{})}
+
+\mbox{\Hypertarget{namespacemain_back_abeb9019342053389159ea0497b6b89d2}\label{namespacemain_back_abeb9019342053389159ea0497b6b89d2}} 
+\index{main\+Back@{main\+Back}!top@{top}}
+\index{top@{top}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{top}{top}}
+{\footnotesize\ttfamily string main\+Back.\+top = \textquotesingle{}media/results/top.\+txt\textquotesingle{}}
+
+
+
+Path to the file that the names/scores of the most similar files are written into. 
+
+\mbox{\Hypertarget{namespacemain_back_a23114ee3f0a053386332a41a4bfc8107}\label{namespacemain_back_a23114ee3f0a053386332a41a4bfc8107}} 
+\index{main\+Back@{main\+Back}!top\+Coeffs@{top\+Coeffs}}
+\index{top\+Coeffs@{top\+Coeffs}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{top\+Coeffs}{topCoeffs}}
+{\footnotesize\ttfamily list main\+Back.\+top\+Coeffs = \mbox{[}key for key in sorted(\hyperlink{namespacemain_back_a14e7fa3decf3555d9fd28beaae5657fc}{dic\+Top})\mbox{]}}
+
+
+
+List that stores the highest degrees of similarity. 
+
+\mbox{\Hypertarget{namespacemain_back_adb3e6c6208b05db53a12bcb112a675b6}\label{namespacemain_back_adb3e6c6208b05db53a12bcb112a675b6}} 
+\index{main\+Back@{main\+Back}!top\+Names@{top\+Names}}
+\index{top\+Names@{top\+Names}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{top\+Names}{topNames}}
+{\footnotesize\ttfamily list main\+Back.\+top\+Names = \mbox{[}\hyperlink{namespacemain_back_a14e7fa3decf3555d9fd28beaae5657fc}{dic\+Top}\mbox{[}key\mbox{]} for key in \hyperlink{namespacemain_back_a23114ee3f0a053386332a41a4bfc8107}{top\+Coeffs}\mbox{]}}
+
+
+
+List that stores the names of the most similar pairs of files. 
+
+\mbox{\Hypertarget{namespacemain_back_acf43846c5a893d78f9a0e7fccf1ba489}\label{namespacemain_back_acf43846c5a893d78f9a0e7fccf1ba489}} 
+\index{main\+Back@{main\+Back}!u@{u}}
+\index{u@{u}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{u}{u}}
+{\footnotesize\ttfamily main\+Back.\+u}
+
+
+
+numpy.\+ndarrays that store the singular value decomposition of the given array 
+
+\mbox{\Hypertarget{namespacemain_back_a5219f1f00f1e13deec736f49b9019c11}\label{namespacemain_back_a5219f1f00f1e13deec736f49b9019c11}} 
+\index{main\+Back@{main\+Back}!u\+Red@{u\+Red}}
+\index{u\+Red@{u\+Red}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{u\+Red}{uRed}}
+{\footnotesize\ttfamily main\+Back.\+u\+Red = \hyperlink{namespacemain_back_acf43846c5a893d78f9a0e7fccf1ba489}{u}\mbox{[}\+:\hyperlink{namespacemain_back_aee2ac20a3d81f9f6762e47cad7268a32}{low\+Rank}, \+:\mbox{]}}
+
+
+
+numpy.\+ndarray that stores the required columns of u after dimension reduction 
+
+\mbox{\Hypertarget{namespacemain_back_a92b2e5bb31556f8f2634ccb0d66c3fa3}\label{namespacemain_back_a92b2e5bb31556f8f2634ccb0d66c3fa3}} 
+\index{main\+Back@{main\+Back}!v@{v}}
+\index{v@{v}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{v}{v}}
+{\footnotesize\ttfamily main\+Back.\+v}
+
+\mbox{\Hypertarget{namespacemain_back_adf7077a22f3e33482f58fd6d892c112e}\label{namespacemain_back_adf7077a22f3e33482f58fd6d892c112e}} 
+\index{main\+Back@{main\+Back}!zip\+File\+Path@{zip\+File\+Path}}
+\index{zip\+File\+Path@{zip\+File\+Path}!main\+Back@{main\+Back}}
+\subsubsection{\texorpdfstring{zip\+File\+Path}{zipFilePath}}
+{\footnotesize\ttfamily main\+Back.\+zip\+File\+Path = \textquotesingle{}\textquotesingle{}}
+
+
+
+Path to the input zip file that is to be processed. 
+
