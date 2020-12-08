@@ -40,7 +40,7 @@ This section is dedicated to explain how to run start the website and the backen
 - Implementation of Logging in and Registering has been done.
 - Implemented uploading of files for a user who has logged in.
 - Basic implementation for downloading a file has been done. 
-- Core logic-wise, a bag-of-words strategy has been used as placeholder logic, which will be replaced later. Rudimentary Latent Semantic Analysis has been implemented as well (debugging is required, some parts don't work as intended).
+- Core logic-wise, the latent semantic analysis strategy has been used. There is also a good amount of pre-processing done if the language of the code is C++, Java, C, or Python.
 
 
 
