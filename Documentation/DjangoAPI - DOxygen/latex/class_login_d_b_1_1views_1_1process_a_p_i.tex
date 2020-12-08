@@ -1,0 +1,70 @@
+\hypertarget{class_login_d_b_1_1views_1_1process_a_p_i}{}\section{Login\+D\+B.\+views.\+process\+A\+PI Class Reference}
+\label{class_login_d_b_1_1views_1_1process_a_p_i}\index{Login\+D\+B.\+views.\+process\+A\+PI@{Login\+D\+B.\+views.\+process\+A\+PI}}
+
+
+A\+PI responsible for integrating website logic with the core logic.  
+
+
+
+
+Inheritance diagram for Login\+D\+B.\+views.\+process\+A\+PI\+:
+% FIG 0
+
+
+Collaboration diagram for Login\+D\+B.\+views.\+process\+A\+PI\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{class_login_d_b_1_1views_1_1process_a_p_i_abf9247305b4cc3b1a22dbdb2e8a30d38}{post} (self, request)
+\begin{DoxyCompactList}\small\item\em This P\+O\+ST request gets the filename from the frontend and passes it to core logic for processing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+list \hyperlink{class_login_d_b_1_1views_1_1process_a_p_i_a0c949077031dc342e5763bb8dfdefcd4}{authentication\+\_\+classes} = \mbox{[}Token\+Authentication\mbox{]}
+\item 
+list \hyperlink{class_login_d_b_1_1views_1_1process_a_p_i_a0e1bfc642be133c0206645511cbfc8b2}{permission\+\_\+classes} = \mbox{[}Is\+Authenticated\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A\+PI responsible for integrating website logic with the core logic. 
+
+\begin{DoxyVerb}processAPI integrates the website with the core logic
+\end{DoxyVerb}
+ 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_login_d_b_1_1views_1_1process_a_p_i_abf9247305b4cc3b1a22dbdb2e8a30d38}\label{class_login_d_b_1_1views_1_1process_a_p_i_abf9247305b4cc3b1a22dbdb2e8a30d38}} 
+\index{Login\+D\+B\+::views\+::process\+A\+PI@{Login\+D\+B\+::views\+::process\+A\+PI}!post@{post}}
+\index{post@{post}!Login\+D\+B\+::views\+::process\+A\+PI@{Login\+D\+B\+::views\+::process\+A\+PI}}
+\subsubsection{\texorpdfstring{post()}{post()}}
+{\footnotesize\ttfamily def Login\+D\+B.\+views.\+process\+A\+P\+I.\+post (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{request }\end{DoxyParamCaption})}
+
+
+
+This P\+O\+ST request gets the filename from the frontend and passes it to core logic for processing. 
+
+\begin{DoxyVerb}POST runs the core logic by passing the data obtained from the frontend as arguments.
+The outputs are stored in a pre-determined folder, which can then be downloaded at the user's pleasure.
+\end{DoxyVerb}
+ 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_login_d_b_1_1views_1_1process_a_p_i_a0c949077031dc342e5763bb8dfdefcd4}\label{class_login_d_b_1_1views_1_1process_a_p_i_a0c949077031dc342e5763bb8dfdefcd4}} 
+\index{Login\+D\+B\+::views\+::process\+A\+PI@{Login\+D\+B\+::views\+::process\+A\+PI}!authentication\+\_\+classes@{authentication\+\_\+classes}}
+\index{authentication\+\_\+classes@{authentication\+\_\+classes}!Login\+D\+B\+::views\+::process\+A\+PI@{Login\+D\+B\+::views\+::process\+A\+PI}}
+\subsubsection{\texorpdfstring{authentication\+\_\+classes}{authentication\_classes}}
+{\footnotesize\ttfamily list Login\+D\+B.\+views.\+process\+A\+P\+I.\+authentication\+\_\+classes = \mbox{[}Token\+Authentication\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_login_d_b_1_1views_1_1process_a_p_i_a0e1bfc642be133c0206645511cbfc8b2}\label{class_login_d_b_1_1views_1_1process_a_p_i_a0e1bfc642be133c0206645511cbfc8b2}} 
+\index{Login\+D\+B\+::views\+::process\+A\+PI@{Login\+D\+B\+::views\+::process\+A\+PI}!permission\+\_\+classes@{permission\+\_\+classes}}
+\index{permission\+\_\+classes@{permission\+\_\+classes}!Login\+D\+B\+::views\+::process\+A\+PI@{Login\+D\+B\+::views\+::process\+A\+PI}}
+\subsubsection{\texorpdfstring{permission\+\_\+classes}{permission\_classes}}
+{\footnotesize\ttfamily list Login\+D\+B.\+views.\+process\+A\+P\+I.\+permission\+\_\+classes = \mbox{[}Is\+Authenticated\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Login\+D\+B/\hyperlink{views_8py}{views.\+py}\end{DoxyCompactItemize}

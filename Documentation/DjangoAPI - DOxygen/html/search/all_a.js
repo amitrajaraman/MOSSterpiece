@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['0001_5finitial',['0001_initial',['../namespace_login_d_b_1_1migrations_1_10001__initial.html',1,'LoginDB::migrations']]],
+  ['0002_5ffiles',['0002_files',['../namespace_login_d_b_1_1migrations_1_10002__files.html',1,'LoginDB::migrations']]],
+  ['0003_5fauto_5f20201206_5f1720',['0003_auto_20201206_1720',['../namespace_login_d_b_1_1migrations_1_10003__auto__20201206__1720.html',1,'LoginDB::migrations']]],
+  ['0003_5fauto_5f20201206_5f1730',['0003_auto_20201206_1730',['../namespace_login_d_b_1_1migrations_1_10003__auto__20201206__1730.html',1,'LoginDB::migrations']]],
+  ['0004_5fmerge_5f20201206_5f1751',['0004_merge_20201206_1751',['../namespace_login_d_b_1_1migrations_1_10004__merge__20201206__1751.html',1,'LoginDB::migrations']]],
+  ['admin',['admin',['../namespace_login_d_b_1_1admin.html',1,'LoginDB']]],
+  ['apps',['apps',['../namespace_login_d_b_1_1apps.html',1,'LoginDB']]],
+  ['language_5fcode',['LANGUAGE_CODE',['../namespace_django_a_p_i_1_1settings.html#aa8e060b013d0a9853782508ba3f5ab82',1,'DjangoAPI::settings']]],
+  ['last',['last',['../class_login_d_b_1_1models_1_1_users.html#a494cd7971ac0f7b84ba3b6fbaef3385d',1,'LoginDB::models::Users']]],
+  ['loginapi',['loginAPI',['../class_login_d_b_1_1views_1_1login_a_p_i.html',1,'LoginDB::views']]],
+  ['logindb',['LoginDB',['../namespace_login_d_b.html',1,'']]],
+  ['logindbconfig',['LogindbConfig',['../class_login_d_b_1_1apps_1_1_logindb_config.html',1,'LoginDB::apps']]],
+  ['loginserializer',['LoginSerializer',['../class_login_d_b_1_1serializers_1_1_login_serializer.html',1,'LoginDB::serializers']]],
+  ['logoutapi',['logoutAPI',['../class_login_d_b_1_1views_1_1logout_a_p_i.html',1,'LoginDB::views']]],
+  ['migrations',['migrations',['../namespace_login_d_b_1_1migrations.html',1,'LoginDB']]],
+  ['models',['models',['../namespace_login_d_b_1_1models.html',1,'LoginDB']]],
+  ['serializers',['serializers',['../namespace_login_d_b_1_1serializers.html',1,'LoginDB']]],
+  ['tests',['tests',['../namespace_login_d_b_1_1tests.html',1,'LoginDB']]],
+  ['urls',['urls',['../namespace_login_d_b_1_1urls.html',1,'LoginDB']]],
+  ['views',['views',['../namespace_login_d_b_1_1views.html',1,'LoginDB']]]
+];

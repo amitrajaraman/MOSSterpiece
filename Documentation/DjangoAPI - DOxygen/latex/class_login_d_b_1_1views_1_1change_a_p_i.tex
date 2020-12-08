@@ -1,0 +1,89 @@
+\hypertarget{class_login_d_b_1_1views_1_1change_a_p_i}{}\section{Login\+D\+B.\+views.\+change\+A\+PI Class Reference}
+\label{class_login_d_b_1_1views_1_1change_a_p_i}\index{Login\+D\+B.\+views.\+change\+A\+PI@{Login\+D\+B.\+views.\+change\+A\+PI}}
+
+
+A\+PI taking care of password change.  
+
+
+
+
+Inheritance diagram for Login\+D\+B.\+views.\+change\+A\+PI\+:
+% FIG 0
+
+
+Collaboration diagram for Login\+D\+B.\+views.\+change\+A\+PI\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{class_login_d_b_1_1views_1_1change_a_p_i_af2fb1243472271e274beffb7a4309358}{post} (self, request)
+\begin{DoxyCompactList}\small\item\em P\+O\+ST takes the request and verifies the validity, raising error appropriately. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+list \hyperlink{class_login_d_b_1_1views_1_1change_a_p_i_aa05c99b11b6324e43b9864b9fc9ec5fc}{authentication\+\_\+classes} = \mbox{[}Token\+Authentication\mbox{]}
+\begin{DoxyCompactList}\small\item\em Token Authenticator. \end{DoxyCompactList}\item 
+list \hyperlink{class_login_d_b_1_1views_1_1change_a_p_i_abf9d3bacee7d5cf40fc1e020cf80f6bc}{permission\+\_\+classes} = \mbox{[}Is\+Authenticated\mbox{]}
+\begin{DoxyCompactList}\small\item\em Permission classes for the token. \end{DoxyCompactList}\item 
+\hyperlink{class_login_d_b_1_1views_1_1change_a_p_i_a3141d145ac66952145f71ea12f9bced7}{serializer\+\_\+class} = \hyperlink{class_login_d_b_1_1serializers_1_1_change_password_serializer}{Change\+Password\+Serializer}
+\begin{DoxyCompactList}\small\item\em Serializer for the password. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A\+PI taking care of password change. 
+
+\begin{DoxyVerb}changeAPI is used for changing the password
+\end{DoxyVerb}
+ 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_login_d_b_1_1views_1_1change_a_p_i_af2fb1243472271e274beffb7a4309358}\label{class_login_d_b_1_1views_1_1change_a_p_i_af2fb1243472271e274beffb7a4309358}} 
+\index{Login\+D\+B\+::views\+::change\+A\+PI@{Login\+D\+B\+::views\+::change\+A\+PI}!post@{post}}
+\index{post@{post}!Login\+D\+B\+::views\+::change\+A\+PI@{Login\+D\+B\+::views\+::change\+A\+PI}}
+\subsubsection{\texorpdfstring{post()}{post()}}
+{\footnotesize\ttfamily def Login\+D\+B.\+views.\+change\+A\+P\+I.\+post (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{request }\end{DoxyParamCaption})}
+
+
+
+P\+O\+ST takes the request and verifies the validity, raising error appropriately. 
+
+\begin{DoxyVerb}Check the authentication of the user, and if the passwords match, change the user's password accordingly.
+\end{DoxyVerb}
+ 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_login_d_b_1_1views_1_1change_a_p_i_aa05c99b11b6324e43b9864b9fc9ec5fc}\label{class_login_d_b_1_1views_1_1change_a_p_i_aa05c99b11b6324e43b9864b9fc9ec5fc}} 
+\index{Login\+D\+B\+::views\+::change\+A\+PI@{Login\+D\+B\+::views\+::change\+A\+PI}!authentication\+\_\+classes@{authentication\+\_\+classes}}
+\index{authentication\+\_\+classes@{authentication\+\_\+classes}!Login\+D\+B\+::views\+::change\+A\+PI@{Login\+D\+B\+::views\+::change\+A\+PI}}
+\subsubsection{\texorpdfstring{authentication\+\_\+classes}{authentication\_classes}}
+{\footnotesize\ttfamily list Login\+D\+B.\+views.\+change\+A\+P\+I.\+authentication\+\_\+classes = \mbox{[}Token\+Authentication\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Token Authenticator. 
+
+\mbox{\Hypertarget{class_login_d_b_1_1views_1_1change_a_p_i_abf9d3bacee7d5cf40fc1e020cf80f6bc}\label{class_login_d_b_1_1views_1_1change_a_p_i_abf9d3bacee7d5cf40fc1e020cf80f6bc}} 
+\index{Login\+D\+B\+::views\+::change\+A\+PI@{Login\+D\+B\+::views\+::change\+A\+PI}!permission\+\_\+classes@{permission\+\_\+classes}}
+\index{permission\+\_\+classes@{permission\+\_\+classes}!Login\+D\+B\+::views\+::change\+A\+PI@{Login\+D\+B\+::views\+::change\+A\+PI}}
+\subsubsection{\texorpdfstring{permission\+\_\+classes}{permission\_classes}}
+{\footnotesize\ttfamily list Login\+D\+B.\+views.\+change\+A\+P\+I.\+permission\+\_\+classes = \mbox{[}Is\+Authenticated\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Permission classes for the token. 
+
+\mbox{\Hypertarget{class_login_d_b_1_1views_1_1change_a_p_i_a3141d145ac66952145f71ea12f9bced7}\label{class_login_d_b_1_1views_1_1change_a_p_i_a3141d145ac66952145f71ea12f9bced7}} 
+\index{Login\+D\+B\+::views\+::change\+A\+PI@{Login\+D\+B\+::views\+::change\+A\+PI}!serializer\+\_\+class@{serializer\+\_\+class}}
+\index{serializer\+\_\+class@{serializer\+\_\+class}!Login\+D\+B\+::views\+::change\+A\+PI@{Login\+D\+B\+::views\+::change\+A\+PI}}
+\subsubsection{\texorpdfstring{serializer\+\_\+class}{serializer\_class}}
+{\footnotesize\ttfamily Login\+D\+B.\+views.\+change\+A\+P\+I.\+serializer\+\_\+class = \hyperlink{class_login_d_b_1_1serializers_1_1_change_password_serializer}{Change\+Password\+Serializer}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Serializer for the password. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Login\+D\+B/\hyperlink{views_8py}{views.\+py}\end{DoxyCompactItemize}

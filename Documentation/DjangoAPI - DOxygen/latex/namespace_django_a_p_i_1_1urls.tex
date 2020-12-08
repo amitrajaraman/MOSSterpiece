@@ -1,0 +1,41 @@
+\hypertarget{namespace_django_a_p_i_1_1urls}{}\section{Django\+A\+P\+I.\+urls Namespace Reference}
+\label{namespace_django_a_p_i_1_1urls}\index{Django\+A\+P\+I.\+urls@{Django\+A\+P\+I.\+urls}}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \hyperlink{namespace_django_a_p_i_1_1urls_a6f091bad65b9ee4612d82edd49191354}{urlpatterns}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}DjangoAPI URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/3.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+\end{DoxyVerb}
+ 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespace_django_a_p_i_1_1urls_a6f091bad65b9ee4612d82edd49191354}\label{namespace_django_a_p_i_1_1urls_a6f091bad65b9ee4612d82edd49191354}} 
+\index{Django\+A\+P\+I\+::urls@{Django\+A\+P\+I\+::urls}!urlpatterns@{urlpatterns}}
+\index{urlpatterns@{urlpatterns}!Django\+A\+P\+I\+::urls@{Django\+A\+P\+I\+::urls}}
+\subsubsection{\texorpdfstring{urlpatterns}{urlpatterns}}
+{\footnotesize\ttfamily list Django\+A\+P\+I.\+urls.\+urlpatterns}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 =  [
+2     path(\textcolor{stringliteral}{'admin/'}, admin.site.urls),
+3     url(\textcolor{stringliteral}{r'^'}, include(\textcolor{stringliteral}{'LoginDB.urls'})),
+4 ]
+\end{DoxyCode}

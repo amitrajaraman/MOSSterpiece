@@ -1,0 +1,70 @@
+\hypertarget{class_login_d_b_1_1migrations_1_10001__initial_1_1_migration}{}\section{Login\+D\+B.\+migrations.0001\+\_\+initial.Migration Class Reference}
+\label{class_login_d_b_1_1migrations_1_10001__initial_1_1_migration}\index{Login\+D\+B.\+migrations.\+0001\+\_\+initial.\+Migration@{Login\+D\+B.\+migrations.\+0001\+\_\+initial.\+Migration}}
+
+
+Inheritance diagram for Login\+D\+B.\+migrations.0001\+\_\+initial.Migration\+:
+% FIG 0
+
+
+Collaboration diagram for Login\+D\+B.\+migrations.0001\+\_\+initial.Migration\+:
+% FIG 1
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_login_d_b_1_1migrations_1_10001__initial_1_1_migration_a781760a44c66be2b67a1307580da0af4}{initial} = True
+\item 
+list \hyperlink{class_login_d_b_1_1migrations_1_10001__initial_1_1_migration_a1a363617086b3ac2a48850e1484d2a64}{dependencies}
+\item 
+list \hyperlink{class_login_d_b_1_1migrations_1_10001__initial_1_1_migration_abb908b6518006a1a23e9ee78fa0c3b89}{operations}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_login_d_b_1_1migrations_1_10001__initial_1_1_migration_a1a363617086b3ac2a48850e1484d2a64}\label{class_login_d_b_1_1migrations_1_10001__initial_1_1_migration_a1a363617086b3ac2a48850e1484d2a64}} 
+\index{Login\+D\+B\+::migrations\+::0001\+\_\+initial\+::\+Migration@{Login\+D\+B\+::migrations\+::0001\+\_\+initial\+::\+Migration}!dependencies@{dependencies}}
+\index{dependencies@{dependencies}!Login\+D\+B\+::migrations\+::0001\+\_\+initial\+::\+Migration@{Login\+D\+B\+::migrations\+::0001\+\_\+initial\+::\+Migration}}
+\subsubsection{\texorpdfstring{dependencies}{dependencies}}
+{\footnotesize\ttfamily list Login\+D\+B.\+migrations.\+0001\+\_\+initial.\+Migration.\+dependencies\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=  [
+    ]
+\end{DoxyCode}
+\mbox{\Hypertarget{class_login_d_b_1_1migrations_1_10001__initial_1_1_migration_a781760a44c66be2b67a1307580da0af4}\label{class_login_d_b_1_1migrations_1_10001__initial_1_1_migration_a781760a44c66be2b67a1307580da0af4}} 
+\index{Login\+D\+B\+::migrations\+::0001\+\_\+initial\+::\+Migration@{Login\+D\+B\+::migrations\+::0001\+\_\+initial\+::\+Migration}!initial@{initial}}
+\index{initial@{initial}!Login\+D\+B\+::migrations\+::0001\+\_\+initial\+::\+Migration@{Login\+D\+B\+::migrations\+::0001\+\_\+initial\+::\+Migration}}
+\subsubsection{\texorpdfstring{initial}{initial}}
+{\footnotesize\ttfamily bool Login\+D\+B.\+migrations.\+0001\+\_\+initial.\+Migration.\+initial = True\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_login_d_b_1_1migrations_1_10001__initial_1_1_migration_abb908b6518006a1a23e9ee78fa0c3b89}\label{class_login_d_b_1_1migrations_1_10001__initial_1_1_migration_abb908b6518006a1a23e9ee78fa0c3b89}} 
+\index{Login\+D\+B\+::migrations\+::0001\+\_\+initial\+::\+Migration@{Login\+D\+B\+::migrations\+::0001\+\_\+initial\+::\+Migration}!operations@{operations}}
+\index{operations@{operations}!Login\+D\+B\+::migrations\+::0001\+\_\+initial\+::\+Migration@{Login\+D\+B\+::migrations\+::0001\+\_\+initial\+::\+Migration}}
+\subsubsection{\texorpdfstring{operations}{operations}}
+{\footnotesize\ttfamily list Login\+D\+B.\+migrations.\+0001\+\_\+initial.\+Migration.\+operations\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=  [
+        migrations.CreateModel(
+            name=\textcolor{stringliteral}{'Users'},
+            fields=[
+                (\textcolor{stringliteral}{'id'}, models.AutoField(auto\_created=\textcolor{keyword}{True}, primary\_key=\textcolor{keyword}{True}, serialize=\textcolor{keyword}{False}, verbose\_name=\textcolor{stringliteral}{
+      'ID'})),
+                (\textcolor{stringliteral}{'first'}, models.CharField(max\_length=100)),
+                (\textcolor{stringliteral}{'last'}, models.CharField(max\_length=100)),
+                (\textcolor{stringliteral}{'pw'}, models.CharField(max\_length=100)),
+                (\textcolor{stringliteral}{'email'}, models.CharField(max\_length=100)),
+                (\textcolor{stringliteral}{'name'}, models.CharField(max\_length=100)),
+            ],
+            options=\{
+                \textcolor{stringliteral}{'unique\_together'}: \{(\textcolor{stringliteral}{'email'}, \textcolor{stringliteral}{'name'})\},
+            \},
+        ),
+    ]
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Login\+D\+B/migrations/\hyperlink{0001__initial_8py}{0001\+\_\+initial.\+py}\end{DoxyCompactItemize}

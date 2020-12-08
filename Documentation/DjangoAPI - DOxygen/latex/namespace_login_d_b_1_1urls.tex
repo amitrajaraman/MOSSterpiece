@@ -1,0 +1,34 @@
+\hypertarget{namespace_login_d_b_1_1urls}{}\section{Login\+D\+B.\+urls Namespace Reference}
+\label{namespace_login_d_b_1_1urls}\index{Login\+D\+B.\+urls@{Login\+D\+B.\+urls}}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \hyperlink{namespace_login_d_b_1_1urls_adfe2fd699edfad0505d75166a0797004}{urlpatterns}
+\begin{DoxyCompactList}\small\item\em Stores all the urls used for calling functions in the backend. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespace_login_d_b_1_1urls_adfe2fd699edfad0505d75166a0797004}\label{namespace_login_d_b_1_1urls_adfe2fd699edfad0505d75166a0797004}} 
+\index{Login\+D\+B\+::urls@{Login\+D\+B\+::urls}!urlpatterns@{urlpatterns}}
+\index{urlpatterns@{urlpatterns}!Login\+D\+B\+::urls@{Login\+D\+B\+::urls}}
+\subsubsection{\texorpdfstring{urlpatterns}{urlpatterns}}
+{\footnotesize\ttfamily list Login\+D\+B.\+urls.\+urlpatterns}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 = [
+2     url(\textcolor{stringliteral}{r'signupreq/$'},views.userAPI.as\_view()),
+3     url(\textcolor{stringliteral}{r'^api/files/'}, views.fileAPI.as\_view()),
+4     url(\textcolor{stringliteral}{r'^api/login/'}, views.loginAPI.as\_view()),
+5     url(\textcolor{stringliteral}{r'^api/logout/'}, views.logoutAPI.as\_view()),
+6     url(\textcolor{stringliteral}{'^api/files/<str:path>'}, views.fileAPI.as\_view(),
+7     \{\textcolor{stringliteral}{'document root'}: settings.MEDIA\_ROOT\}),
+8     url(\textcolor{stringliteral}{r'^api/password/'}, views.changeAPI.as\_view()),    
+9     url(\textcolor{stringliteral}{r'^api/process/'}, views.processAPI.as\_view()),
+10     url(\textcolor{stringliteral}{r'^token/'}, views.tokenAPI.as\_view()),
+11 ]
+\end{DoxyCode}
+
+
+Stores all the urls used for calling functions in the backend. 
+

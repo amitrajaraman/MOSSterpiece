@@ -1,0 +1,84 @@
+\hypertarget{class_login_d_b_1_1views_1_1file_a_p_i}{}\section{Login\+D\+B.\+views.\+file\+A\+PI Class Reference}
+\label{class_login_d_b_1_1views_1_1file_a_p_i}\index{Login\+D\+B.\+views.\+file\+A\+PI@{Login\+D\+B.\+views.\+file\+A\+PI}}
+
+
+A\+PI managing upload and download of the files.  
+
+
+
+
+Inheritance diagram for Login\+D\+B.\+views.\+file\+A\+PI\+:
+% FIG 0
+
+
+Collaboration diagram for Login\+D\+B.\+views.\+file\+A\+PI\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{class_login_d_b_1_1views_1_1file_a_p_i_a6e88d18d20b5d327a78a94fcda9c4efa}{post} (self, request)
+\begin{DoxyCompactList}\small\item\em Used for upload. \end{DoxyCompactList}\item 
+def \hyperlink{class_login_d_b_1_1views_1_1file_a_p_i_a103df06e20d613c155c8f4ad0cb59b7c}{get} (self, request)
+\begin{DoxyCompactList}\small\item\em Used for downloading the file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+list \hyperlink{class_login_d_b_1_1views_1_1file_a_p_i_a5883c87de1e62d011e0d3868c74a5dce}{authentication\+\_\+classes} = \mbox{[}Token\+Authentication\mbox{]}
+\item 
+list \hyperlink{class_login_d_b_1_1views_1_1file_a_p_i_a624b994a7019e545df5c9a4d10d256bd}{permission\+\_\+classes} = \mbox{[}Is\+Authenticated\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A\+PI managing upload and download of the files. 
+
+\begin{DoxyVerb}fileAPI contains requests for download and upload of the zipfiles.
+\end{DoxyVerb}
+ 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_login_d_b_1_1views_1_1file_a_p_i_a103df06e20d613c155c8f4ad0cb59b7c}\label{class_login_d_b_1_1views_1_1file_a_p_i_a103df06e20d613c155c8f4ad0cb59b7c}} 
+\index{Login\+D\+B\+::views\+::file\+A\+PI@{Login\+D\+B\+::views\+::file\+A\+PI}!get@{get}}
+\index{get@{get}!Login\+D\+B\+::views\+::file\+A\+PI@{Login\+D\+B\+::views\+::file\+A\+PI}}
+\subsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily def Login\+D\+B.\+views.\+file\+A\+P\+I.\+get (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{request }\end{DoxyParamCaption})}
+
+
+
+Used for downloading the file. 
+
+\begin{DoxyVerb}GET request downloads the target folder, after the processing of the zip file is done.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{class_login_d_b_1_1views_1_1file_a_p_i_a6e88d18d20b5d327a78a94fcda9c4efa}\label{class_login_d_b_1_1views_1_1file_a_p_i_a6e88d18d20b5d327a78a94fcda9c4efa}} 
+\index{Login\+D\+B\+::views\+::file\+A\+PI@{Login\+D\+B\+::views\+::file\+A\+PI}!post@{post}}
+\index{post@{post}!Login\+D\+B\+::views\+::file\+A\+PI@{Login\+D\+B\+::views\+::file\+A\+PI}}
+\subsubsection{\texorpdfstring{post()}{post()}}
+{\footnotesize\ttfamily def Login\+D\+B.\+views.\+file\+A\+P\+I.\+post (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{request }\end{DoxyParamCaption})}
+
+
+
+Used for upload. 
+
+\begin{DoxyVerb}POST request saves the name of the uploaded file, hashing it if there's a repetition.
+It is being saved in the db as well, can be used laster to show the previous results.
+\end{DoxyVerb}
+ 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_login_d_b_1_1views_1_1file_a_p_i_a5883c87de1e62d011e0d3868c74a5dce}\label{class_login_d_b_1_1views_1_1file_a_p_i_a5883c87de1e62d011e0d3868c74a5dce}} 
+\index{Login\+D\+B\+::views\+::file\+A\+PI@{Login\+D\+B\+::views\+::file\+A\+PI}!authentication\+\_\+classes@{authentication\+\_\+classes}}
+\index{authentication\+\_\+classes@{authentication\+\_\+classes}!Login\+D\+B\+::views\+::file\+A\+PI@{Login\+D\+B\+::views\+::file\+A\+PI}}
+\subsubsection{\texorpdfstring{authentication\+\_\+classes}{authentication\_classes}}
+{\footnotesize\ttfamily list Login\+D\+B.\+views.\+file\+A\+P\+I.\+authentication\+\_\+classes = \mbox{[}Token\+Authentication\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_login_d_b_1_1views_1_1file_a_p_i_a624b994a7019e545df5c9a4d10d256bd}\label{class_login_d_b_1_1views_1_1file_a_p_i_a624b994a7019e545df5c9a4d10d256bd}} 
+\index{Login\+D\+B\+::views\+::file\+A\+PI@{Login\+D\+B\+::views\+::file\+A\+PI}!permission\+\_\+classes@{permission\+\_\+classes}}
+\index{permission\+\_\+classes@{permission\+\_\+classes}!Login\+D\+B\+::views\+::file\+A\+PI@{Login\+D\+B\+::views\+::file\+A\+PI}}
+\subsubsection{\texorpdfstring{permission\+\_\+classes}{permission\_classes}}
+{\footnotesize\ttfamily list Login\+D\+B.\+views.\+file\+A\+P\+I.\+permission\+\_\+classes = \mbox{[}Is\+Authenticated\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Login\+D\+B/\hyperlink{views_8py}{views.\+py}\end{DoxyCompactItemize}
