@@ -4,6 +4,9 @@ from rest_framework import serializers, viewsets
 import json
 from LoginDB.models import Files
 
+"""
+Serializers for storing the data
+"""
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User

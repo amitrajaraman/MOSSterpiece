@@ -21,6 +21,10 @@ import scipy.spatial.distance
 from zipfile import ZipFile
 import subprocess
 
+"""
+UserAPI's post request is used for registering the user.
+Several checks are in place to make sure that the fields aren't repeated twice in the database.
+"""
 class userAPI(generics.GenericAPIView):
     serializer_class = UserSerializer
 
@@ -50,10 +54,17 @@ class userAPI(generics.GenericAPIView):
         )
     
 
+"""
+fileAPI contains requests for download and uplaod of the zipfiles.
+"""
 class fileAPI(generics.GenericAPIView):
     # authentication_classes = [TokenAuthentication]
     # permission_classes = [IsAuthenticated]
 
+    """
+    POST request saves the name of the uploaded file, hashing it if there's a repetition.
+    It is being saved in the db as well, can be used laster to show the previous results.
+    """
     def post(self, request):
         files = Files(files = request.FILES['file'], username=request.user.username)
         files.save()
@@ -62,6 +73,9 @@ class fileAPI(generics.GenericAPIView):
         return Response({
             "file_name": file_name})
 
+    """
+    GET request downloads the target folder, after the processing of the zip file is done.
+    """
     def get(self, request):
         archive_from = "../src/assets/results"
         name = "download"
@@ -80,6 +94,9 @@ class fileAPI(generics.GenericAPIView):
         response['Content-Disposition'] = 'attachment; filename=download.zip'
         return response
 
+"""
+Authenticates the user and logs the person.
+"""
 class loginAPI(generics.GenericAPIView):
     serializer_class = LoginSerializer
     def post(self, request, *args, **kwargs):
@@ -98,11 +115,17 @@ class loginAPI(generics.GenericAPIView):
             "token": token.key
         })
 
+"""
+changeAPI is used for changing the password
+"""
 class changeAPI(generics.GenericAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
     serializer_class = ChangePasswordSerializer
 
+    """
+    Check the authentication of the user, and if the passwords match, change the user's password accordingly.
+    """
     def post(self, request):
         user = request.user
     
@@ -122,6 +145,9 @@ class changeAPI(generics.GenericAPIView):
         }
         return Response(response)
 
+"""
+Generates tokens for security reasons
+"""
 class tokenAPI(generics.GenericAPIView):
     def get(self, request):
         user = request.user
@@ -137,11 +163,18 @@ class logoutAPI(generics.GenericAPIView):
         request.user.auth_token.delete()
         auth.logout(request)
         return Response({})
-   
+ 
+"""
+processAPI integrates the website with the core logic
+"""  
 class processAPI(generics.GenericAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
+    """
+    POST runs the core logic by passing the data obtained from the frontend as arguments.
+    The outputs are stored in a pre-determined folder, which can then be downloaded at the user's pleasure.
+    """
     def post(self, request):
         print(os.getcwd())
         #Get the needed file

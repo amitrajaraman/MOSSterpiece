@@ -15,12 +15,15 @@ export class ChangepasswordComponent implements OnInit {
 
   constructor(private service:SharedService, private router: Router, public messengerService: MessengerService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {  }
   update():void{
 
     if(this.form_password.value != this.form_confirmpw.value){
       window.alert('Error: Passwords do not match.');
+      return;
+    }
+    else if(this.form_password.value == "" || this.form_confirmpw.value == ""){
+      window.alert('Enter a new password.');
       return;
     }
     else{
@@ -38,5 +41,7 @@ export class ChangepasswordComponent implements OnInit {
       });
       
     }
+
+    this.router.navigate(['/profile']);
   }
 }

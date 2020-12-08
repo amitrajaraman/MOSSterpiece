@@ -1,5 +1,12 @@
 from django.db import models
 
+"""
+Create models to store data
+"""
+
+"""
+Model for storing user data
+"""
 # Create your models here.
 class Users(models.Model):
     first = models.CharField(max_length=100)
@@ -11,6 +18,9 @@ class Users(models.Model):
     # class Meta:
     #     unique_together = (("email", "name"),)
 
+"""
+Model for storing the files uploaded by the user, can be used to implement previous results.
+"""
 class Files(models.Model):
     username = models.CharField(max_length=100)
     files = models.FileField()
