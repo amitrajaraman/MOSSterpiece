@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ProfileComponent | redplag</title>
+	<title>GetpostService | redplag</title>
 	<meta name="description" content="Documentation for redplag">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_src_app_profile_profile_component_.html">&quot;src/app/profile/profile.component&quot;</a>
+					<a href="../modules/_src_app_getpost_service_.html">&quot;src/app/getpost.service&quot;</a>
 				</li>
 				<li>
-					<a href="_src_app_profile_profile_component_.profilecomponent.html">ProfileComponent</a>
+					<a href="_src_app_getpost_service_.getpostservice.html">GetpostService</a>
 				</li>
 			</ul>
-			<h1>Class ProfileComponent</h1>
+			<h1>Class GetpostService</h1>
 		</div>
 	</div>
 </header>
@@ -73,14 +73,8 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ProfileComponent</span>
+						<span class="target">GetpostService</span>
 					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3>Implements</h3>
-				<ul class="tsd-hierarchy">
-					<li><span class="tsd-signature-type">OnInit</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -90,24 +84,28 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_src_app_profile_profile_component_.profilecomponent.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_src_app_getpost_service_.getpostservice.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_app_profile_profile_component_.profilecomponent.html#messengerservice" class="tsd-kind-icon">messenger<wbr>Service</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_src_app_profile_profile_component_.profilecomponent.html#router" class="tsd-kind-icon">router</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_src_app_profile_profile_component_.profilecomponent.html#service" class="tsd-kind-icon">service</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_app_profile_profile_component_.profilecomponent.html#user" class="tsd-kind-icon">user</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_src_app_getpost_service_.getpostservice.html#dataurl" class="tsd-kind-icon">dataURL</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_src_app_getpost_service_.getpostservice.html#http" class="tsd-kind-icon">http</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_src_app_getpost_service_.getpostservice.html#posturl" class="tsd-kind-icon">postURL</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_app_profile_profile_component_.profilecomponent.html#ngoninit" class="tsd-kind-icon">ng<wbr>OnInit</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_app_profile_profile_component_.profilecomponent.html#reroute_onlogout" class="tsd-kind-icon">reroute_<wbr>on<wbr>Logout</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_app_profile_profile_component_.profilecomponent.html#setglobalvalue" class="tsd-kind-icon">set<wbr>Global<wbr>Value</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_app_getpost_service_.getpostservice.html#getdata" class="tsd-kind-icon">get<wbr>Data</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_app_getpost_service_.getpostservice.html#postdata" class="tsd-kind-icon">post<wbr>Data</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Object literals</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-object-literal tsd-parent-kind-class"><a href="_src_app_getpost_service_.getpostservice.html#httpoptions" class="tsd-kind-icon">http<wbr>Options</a></li>
 							</ul>
 						</section>
 					</div>
@@ -119,143 +117,123 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Profile<wbr>Component<span class="tsd-signature-symbol">(</span>messengerService<span class="tsd-signature-symbol">: </span><a href="_src_app_shared_service_.messengerservice.html" class="tsd-signature-type">MessengerService</a>, router<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Router</span>, service<span class="tsd-signature-symbol">: </span><a href="_src_app_shared_service_.sharedservice.html" class="tsd-signature-type">SharedService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_src_app_profile_profile_component_.profilecomponent.html" class="tsd-signature-type">ProfileComponent</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Getpost<wbr>Service<span class="tsd-signature-symbol">(</span>http<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HttpClient</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_src_app_getpost_service_.getpostservice.html" class="tsd-signature-type">GetpostService</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/c9ea79f/src/app/profile/profile.component.ts#L13">src/app/profile/profile.component.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/6bbdb65/src/app/getpost.service.ts#L15">src/app/getpost.service.ts:15</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>messengerService: <a href="_src_app_shared_service_.messengerservice.html" class="tsd-signature-type">MessengerService</a></h5>
-								</li>
-								<li>
-									<h5>router: <span class="tsd-signature-type">Router</span></h5>
-								</li>
-								<li>
-									<h5>service: <a href="_src_app_shared_service_.sharedservice.html" class="tsd-signature-type">SharedService</a></h5>
+									<h5>http: <span class="tsd-signature-type">HttpClient</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_src_app_profile_profile_component_.profilecomponent.html" class="tsd-signature-type">ProfileComponent</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_src_app_getpost_service_.getpostservice.html" class="tsd-signature-type">GetpostService</a></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="messengerservice" class="tsd-anchor"></a>
-					<h3>messenger<wbr>Service</h3>
-					<div class="tsd-signature tsd-kind-icon">messenger<wbr>Service<span class="tsd-signature-symbol">:</span> <a href="_src_app_shared_service_.messengerservice.html" class="tsd-signature-type">MessengerService</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="dataurl" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> dataURL</h3>
+					<div class="tsd-signature tsd-kind-icon">dataURL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;https://cs251-outlab-6.herokuapp.com/initial_values/&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/c9ea79f/src/app/profile/profile.component.ts#L14">src/app/profile/profile.component.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/6bbdb65/src/app/getpost.service.ts#L11">src/app/getpost.service.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="router" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> router</h3>
-					<div class="tsd-signature tsd-kind-icon">router<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Router</span></div>
+					<a name="http" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> http</h3>
+					<div class="tsd-signature tsd-kind-icon">http<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">HttpClient</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/c9ea79f/src/app/profile/profile.component.ts#L14">src/app/profile/profile.component.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/6bbdb65/src/app/getpost.service.ts#L17">src/app/getpost.service.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="service" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> service</h3>
-					<div class="tsd-signature tsd-kind-icon">service<span class="tsd-signature-symbol">:</span> <a href="_src_app_shared_service_.sharedservice.html" class="tsd-signature-type">SharedService</a></div>
+					<a name="posturl" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> postURL</h3>
+					<div class="tsd-signature tsd-kind-icon">postURL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;https://cs251-outlab-6.herokuapp.com/add_new_feedback/&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/c9ea79f/src/app/profile/profile.component.ts#L14">src/app/profile/profile.component.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/6bbdb65/src/app/getpost.service.ts#L12">src/app/getpost.service.ts:12</a></li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="user" class="tsd-anchor"></a>
-					<h3>user</h3>
-					<div class="tsd-signature tsd-kind-icon">user<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/c9ea79f/src/app/profile/profile.component.ts#L13">src/app/profile/profile.component.ts:13</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>to store the name of the user</p>
-						</div>
-					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="ngoninit" class="tsd-anchor"></a>
-					<h3>ng<wbr>OnInit</h3>
+					<a name="getdata" class="tsd-anchor"></a>
+					<h3>get<wbr>Data</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">ng<wbr>OnInit<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Data<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_src_app_contact_.contact.html" class="tsd-signature-type">Contact</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/c9ea79f/src/app/profile/profile.component.ts#L16">src/app/profile/profile.component.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/6bbdb65/src/app/getpost.service.ts#L19">src/app/getpost.service.ts:19</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_src_app_contact_.contact.html" class="tsd-signature-type">Contact</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="reroute_onlogout" class="tsd-anchor"></a>
-					<h3>reroute_<wbr>on<wbr>Logout</h3>
+					<a name="postdata" class="tsd-anchor"></a>
+					<h3>post<wbr>Data</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">reroute_<wbr>on<wbr>Logout<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">post<wbr>Data<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><a href="../interfaces/_src_app_contact_.contact.html" class="tsd-signature-type">Contact</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_src_app_contact_.contact.html" class="tsd-signature-type">Contact</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/c9ea79f/src/app/profile/profile.component.ts#L24">src/app/profile/profile.component.ts:24</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>to log out when this button is pressed</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="setglobalvalue" class="tsd-anchor"></a>
-					<h3>set<wbr>Global<wbr>Value</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Global<wbr>Value<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/c9ea79f/src/app/profile/profile.component.ts#L20">src/app/profile/profile.component.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/6bbdb65/src/app/getpost.service.ts#L23">src/app/getpost.service.ts:23</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>value: <span class="tsd-signature-type">string</span></h5>
+									<h5>data: <a href="../interfaces/_src_app_contact_.contact.html" class="tsd-signature-type">Contact</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_src_app_contact_.contact.html" class="tsd-signature-type">Contact</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Object literals</h2>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-class">
+					<a name="httpoptions" class="tsd-anchor"></a>
+					<h3>http<wbr>Options</h3>
+					<div class="tsd-signature tsd-kind-icon">http<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/6bbdb65/src/app/getpost.service.ts#L13">src/app/getpost.service.ts:13</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="httpoptions.headers" class="tsd-anchor"></a>
+						<h3>headers</h3>
+						<div class="tsd-signature tsd-kind-icon">headers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">HttpHeaders</span><span class="tsd-signature-symbol"> = new HttpHeaders({ &#x27;Content-Type&#x27;: &#x27;application/json&#x27; })</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/6bbdb65/src/app/getpost.service.ts#L14">src/app/getpost.service.ts:14</a></li>
+							</ul>
+						</aside>
+					</section>
 				</section>
 			</section>
 		</div>
@@ -289,7 +267,7 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/_src_app_file_upload_file_upload_component_.html">&quot;src/app/file-<wbr>upload/file-<wbr>upload.component&quot;</a>
 					</li>
-					<li class=" tsd-kind-module">
+					<li class="current tsd-kind-module">
 						<a href="../modules/_src_app_getpost_service_.html">&quot;src/app/getpost.service&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -304,7 +282,7 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/_src_app_process_service_.html">&quot;src/app/process.service&quot;</a>
 					</li>
-					<li class="current tsd-kind-module">
+					<li class=" tsd-kind-module">
 						<a href="../modules/_src_app_profile_profile_component_.html">&quot;src/app/profile/profile.component&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -326,31 +304,28 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-module">
-						<a href="_src_app_profile_profile_component_.profilecomponent.html" class="tsd-kind-icon">Profile<wbr>Component</a>
+						<a href="_src_app_getpost_service_.getpostservice.html" class="tsd-kind-icon">Getpost<wbr>Service</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_src_app_profile_profile_component_.profilecomponent.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_src_app_profile_profile_component_.profilecomponent.html#messengerservice" class="tsd-kind-icon">messenger<wbr>Service</a>
+								<a href="_src_app_getpost_service_.getpostservice.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_src_app_profile_profile_component_.profilecomponent.html#router" class="tsd-kind-icon">router</a>
+								<a href="_src_app_getpost_service_.getpostservice.html#dataurl" class="tsd-kind-icon">dataURL</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_src_app_profile_profile_component_.profilecomponent.html#service" class="tsd-kind-icon">service</a>
+								<a href="_src_app_getpost_service_.getpostservice.html#http" class="tsd-kind-icon">http</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_src_app_profile_profile_component_.profilecomponent.html#user" class="tsd-kind-icon">user</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_src_app_profile_profile_component_.profilecomponent.html#ngoninit" class="tsd-kind-icon">ng<wbr>OnInit</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_src_app_getpost_service_.getpostservice.html#posturl" class="tsd-kind-icon">postURL</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_src_app_profile_profile_component_.profilecomponent.html#reroute_onlogout" class="tsd-kind-icon">reroute_<wbr>on<wbr>Logout</a>
+								<a href="_src_app_getpost_service_.getpostservice.html#getdata" class="tsd-kind-icon">get<wbr>Data</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_src_app_profile_profile_component_.profilecomponent.html#setglobalvalue" class="tsd-kind-icon">set<wbr>Global<wbr>Value</a>
+								<a href="_src_app_getpost_service_.getpostservice.html#postdata" class="tsd-kind-icon">post<wbr>Data</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-class">
+								<a href="_src_app_getpost_service_.getpostservice.html#httpoptions" class="tsd-kind-icon">http<wbr>Options</a>
 							</li>
 						</ul>
 					</li>
@@ -368,7 +343,6 @@
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
 				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">

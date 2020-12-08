@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ResultService | redplag</title>
+	<title>LandingComponent | redplag</title>
 	<meta name="description" content="Documentation for redplag">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_src_app_shared_service_.html">&quot;src/app/shared.service&quot;</a>
+					<a href="../modules/_src_app_landing_landing_component_.html">&quot;src/app/landing/landing.component&quot;</a>
 				</li>
 				<li>
-					<a href="_src_app_shared_service_.resultservice.html">ResultService</a>
+					<a href="_src_app_landing_landing_component_.landingcomponent.html">LandingComponent</a>
 				</li>
 			</ul>
-			<h1>Class ResultService</h1>
+			<h1>Class LandingComponent</h1>
 		</div>
 	</div>
 </header>
@@ -73,8 +73,14 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ResultService</span>
+						<span class="target">LandingComponent</span>
 					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><span class="tsd-signature-type">OnInit</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -84,21 +90,13 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_src_app_shared_service_.resultservice.html#constructor" class="tsd-kind-icon">constructor</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Properties</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_src_app_shared_service_.resultservice.html#file" class="tsd-kind-icon">file</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_src_app_shared_service_.resultservice.html#filesource" class="tsd-kind-icon">file<wbr>Source</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_src_app_landing_landing_component_.landingcomponent.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_app_shared_service_.resultservice.html#getmessage" class="tsd-kind-icon">get<wbr>Message</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_app_shared_service_.resultservice.html#setmessage" class="tsd-kind-icon">set<wbr>Message</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_app_landing_landing_component_.landingcomponent.html#ngoninit" class="tsd-kind-icon">ng<wbr>OnInit</a></li>
 							</ul>
 						</section>
 					</div>
@@ -110,81 +108,35 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Result<wbr>Service<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_src_app_shared_service_.resultservice.html" class="tsd-signature-type">ResultService</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Landing<wbr>Component<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_src_app_landing_landing_component_.landingcomponent.html" class="tsd-signature-type">LandingComponent</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/c9ea79f/src/app/shared.service.ts#L59">src/app/shared.service.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/6bbdb65/src/app/landing/landing.component.ts#L8">src/app/landing/landing.component.ts:8</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <a href="_src_app_shared_service_.resultservice.html" class="tsd-signature-type">ResultService</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_src_app_landing_landing_component_.landingcomponent.html" class="tsd-signature-type">LandingComponent</a></h4>
 						</li>
 					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="file" class="tsd-anchor"></a>
-					<h3>file</h3>
-					<div class="tsd-signature tsd-kind-icon">file<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Blob</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = this.fileSource.asObservable()</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/c9ea79f/src/app/shared.service.ts#L62">src/app/shared.service.ts:62</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="filesource" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> file<wbr>Source</h3>
-					<div class="tsd-signature tsd-kind-icon">file<wbr>Source<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BehaviorSubject</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Blob</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = new BehaviorSubject(new Blob())</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/c9ea79f/src/app/shared.service.ts#L61">src/app/shared.service.ts:61</a></li>
-						</ul>
-					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getmessage" class="tsd-anchor"></a>
-					<h3>get<wbr>Message</h3>
+					<a name="ngoninit" class="tsd-anchor"></a>
+					<h3>ng<wbr>OnInit</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Message<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Blob</span></li>
+						<li class="tsd-signature tsd-kind-icon">ng<wbr>OnInit<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/c9ea79f/src/app/shared.service.ts#L67">src/app/shared.service.ts:67</a></li>
+									<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/6bbdb65/src/app/landing/landing.component.ts#L12">src/app/landing/landing.component.ts:12</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Blob</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="setmessage" class="tsd-anchor"></a>
-					<h3>set<wbr>Message</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Message<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Blob</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/amitrajaraman/MOSSterpiece/blob/c9ea79f/src/app/shared.service.ts#L64">src/app/shared.service.ts:64</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>value: <span class="tsd-signature-type">Blob</span></h5>
-								</li>
-							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -224,7 +176,7 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/_src_app_getpost_service_.html">&quot;src/app/getpost.service&quot;</a>
 					</li>
-					<li class=" tsd-kind-module">
+					<li class="current tsd-kind-module">
 						<a href="../modules/_src_app_landing_landing_component_.html">&quot;src/app/landing/landing.component&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -239,7 +191,7 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/_src_app_profile_profile_component_.html">&quot;src/app/profile/profile.component&quot;</a>
 					</li>
-					<li class="current tsd-kind-module">
+					<li class=" tsd-kind-module">
 						<a href="../modules/_src_app_shared_service_.html">&quot;src/app/shared.service&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -255,39 +207,21 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-module">
-						<a href="_src_app_shared_service_.fileservice.html" class="tsd-kind-icon">File<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-module">
-						<a href="_src_app_shared_service_.messengerservice.html" class="tsd-kind-icon">Messenger<wbr>Service</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-module">
-						<a href="_src_app_shared_service_.resultservice.html" class="tsd-kind-icon">Result<wbr>Service</a>
+						<a href="_src_app_landing_landing_component_.landingcomponent.html" class="tsd-kind-icon">Landing<wbr>Component</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_src_app_shared_service_.resultservice.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_src_app_shared_service_.resultservice.html#file" class="tsd-kind-icon">file</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_src_app_shared_service_.resultservice.html#filesource" class="tsd-kind-icon">file<wbr>Source</a>
+								<a href="_src_app_landing_landing_component_.landingcomponent.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_src_app_shared_service_.resultservice.html#getmessage" class="tsd-kind-icon">get<wbr>Message</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_src_app_shared_service_.resultservice.html#setmessage" class="tsd-kind-icon">set<wbr>Message</a>
+								<a href="_src_app_landing_landing_component_.landingcomponent.html#ngoninit" class="tsd-kind-icon">ng<wbr>OnInit</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class tsd-parent-kind-module">
-						<a href="_src_app_shared_service_.sharedservice.html" class="tsd-kind-icon">Shared<wbr>Service</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
@@ -300,7 +234,6 @@
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
 				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
@@ -308,9 +241,6 @@
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
 			</ul>
 		</div>
 	</div>

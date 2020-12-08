@@ -3,16 +3,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 
-/*?
-*The following class stores the first name and token of the user to validate logged in state
-*The sites such as upload, view_results, etc. are not allowed to be visited if the token is not set
-*/
 @Injectable({
   providedIn: 'root'
 })
 export class MessengerService {
     constructor()
     {}
+
+    /**
+    *The following class stores the first name and token of the user to validate logged in state
+    *The sites such as upload, view_results, etc. are not allowed to be visited if the token is not set
+    */
     private messageSource: BehaviorSubject<string> = new BehaviorSubject(''); 
     public message = this.messageSource.asObservable();
     private userSource: BehaviorSubject<string> = new BehaviorSubject(''); 
@@ -38,15 +39,15 @@ export class MessengerService {
     }
 }
 
-/*?
-* The following class stores the filename of uploaded file
-* This name is used in waiting component
-*/
 @Injectable({
   providedIn: 'root'
 })
 export class FileService {
   constructor(){}
+    /**
+    * The following class stores the filename of uploaded file
+    * This name is used in waiting component
+    */
     private fileSource: BehaviorSubject<string> = new BehaviorSubject('');     
     public file = this.fileSource.asObservable();
 
@@ -58,15 +59,15 @@ export class FileService {
     }
 }
 
-/*?
-* The following class stores the result obtained from processing
-* The result is essentially a zip file containing all the content that has to be downloaded/viewed
-* This file is used view_current component to show the plots and prepare the interactive part of the website
-*/
 @Injectable({
   providedIn: 'root'
 })
 export class ResultService {
+    /**
+    * The following class stores the result obtained from processing
+    * The result is essentially a zip file containing all the content that has to be downloaded/viewed
+    * This file is used view_current component to show the plots and prepare the interactive part of the website
+    */
   constructor(){}
     private fileSource: BehaviorSubject<Blob> = new BehaviorSubject(new Blob());     
     public file = this.fileSource.asObservable();
@@ -79,15 +80,15 @@ export class ResultService {
     }
 }
 
-/*?
-* This class is the main hub for all API calls
-* All http requests to the backend are placed from this class
-*/
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
-  /*?
+  /**
+  * This class is the main hub for all API calls
+  * All http requests to the backend are placed from this class
+  */
+  /**
   * The backend url
   */
   readonly APIUrl = "http://127.0.0.1:8000/";
@@ -98,59 +99,65 @@ export class SharedService {
   getUserList():Observable<any[]>{
     return this.http.get<any[]>(this.APIUrl + 'signupreq/');
   }
-  /*?
-  * API call for registration
-  * Invokes UserAPI in backend
-  */
+  
   addUser(val:any){
+    /**
+    * API call for registration
+    * Invokes UserAPI in backend
+    */
     return this.http.post(this.APIUrl + 'signupreq/',val);
   }
-  /*?
-  * API call for login
-  * Invokes LoginAPI in backend
-  * Returns a token which is stored in MessengerService
-  */
+  
   login(val: any):Observable<any>{
+    /**
+    * API call for login
+    * Invokes LoginAPI in backend
+    * Returns a token which is stored in MessengerService
+    */
     return this.http.post(this.APIUrl + 'api/login/', val);
   }
-  /*?
-  * API call for changing password
-  * Invokes changeAPI in backend
-  */
+ 
   changepw(val: any):Observable<any>{
+     /**
+    * API call for changing password
+    * Invokes changeAPI in backend
+    */
     const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
     const httpOptions = {
           headers: headers_object
         };
     return this.http.post(this.APIUrl + 'api/password/', val, httpOptions);
   }
-  /*?
-  * API call for logout
-  * Invokes LogoutAPI in backend
-  */
+ 
   logout():Observable<any>{
+     /**
+    * API call for logout
+    * Invokes LogoutAPI in backend
+    */
     const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
     const httpOptions = {
           headers: headers_object
         };
     return this.http.post(this.APIUrl + 'api/logout/',"", httpOptions);
   }
-  /*?
-  * API call for uploading zip files
-  * Invokes FileAPI in backend
-  */
+  
   UploadZip(val:any){
+    /**
+    * API call for uploading zip files
+    * Invokes FileAPI in backend
+    */
     const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
     const httpOptions = {
           headers: headers_object
         };
     return this.http.post(this.APIUrl+'api/files/', val, httpOptions);
   }
-  /*?
-  * API call for processing the input and returning the results
-  * Invokes ProcessAPI in backend
-  */
+  
   processFile(filename:any){
+    /**
+    * API call for processing the input and returning the results
+    * Invokes ProcessAPI in backend
+    */
     const httpOptions1 = {
     headers: new HttpHeaders({
         'Authorization': "token " + this.token.getMessage(),
