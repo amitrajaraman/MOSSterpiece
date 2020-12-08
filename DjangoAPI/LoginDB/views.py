@@ -49,49 +49,6 @@ class userAPI(generics.GenericAPIView):
             "safe":False}
         )
 
-class resultsAPI(generics.GenericAPIView):
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
-    def get(self, request):
-        print(request)
-        path = settings.MEDIA_ROOT + request.GET.get('path')
-        print("Path is "+ path)
-        # if(path.split('.')[1]=='txt'):
-        #     content = open(path).read()
-        #     print(content)
-        #     response = Response({
-        #         "message": content
-        #         })
-        #     return response
-        # else:
-        #     response = Response({
-        #         "path": path
-        #     })
-        #     return response
-        response = Response({
-                "path": path
-            })
-        return response
-    def post(self,request):
-        path = settings.MEDIA_ROOT + "/" + request.GET.get('path')
-        print("Path is "+ path)
-
-        archive_from = settings.MEDIA_ROOT + "/results"
-        name = "results_" + request.GET.get('path').split('/')[-1].split('.')[0] 
-        archive_to = os.path.abspath(settings.MEDIA_ROOT + "/")
-        print("archive_from is", archive_from)
-        print("archive_to is ", archive_to)
-        shutil.make_archive(name, 'zip', archive_from)
-        name = name+".zip"
-        shutil.move(name, archive_to)
-        zip_file = open(archive_to + "/" + name, 'rb')
-        response = HttpResponse(zip_file, content_type='application/octet-stream')
-        s = 'attachment; filename={name}'.format(name = name)
-        print(s)
-        response['Content-Disposition'] = 'attachment; filename=name'
-        
-        return response
-
 class fileAPI(generics.GenericAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
@@ -103,26 +60,6 @@ class fileAPI(generics.GenericAPIView):
         # print(file_name)
         return Response({
             "file_name": file_name})
-
-    def get(self, request):
-        path = settings.MEDIA_ROOT + "/" + request.GET.get('path')
-        print("Path is "+ path)
-
-        archive_from = settings.MEDIA_ROOT + "/results"
-        name = "results_" + request.GET.get('path').split('/')[-1].split('.')[0] 
-        archive_to = os.path.abspath(settings.MEDIA_ROOT + "/")
-        print("archive_from is", archive_from)
-        print("archive_to is ", archive_to)
-        shutil.make_archive(name, 'zip', archive_from)
-        name = name+".zip"
-        shutil.move(name, archive_to)
-        zip_file = open(archive_to + "/" + name, 'rb')
-        response = HttpResponse(zip_file, content_type='application/octet-stream')
-        s = 'attachment; filename={name}'.format(name = name)
-        print(s)
-        response['Content-Disposition'] = 'attachment; filename=name'
-        
-        return response
 
 class loginAPI(generics.GenericAPIView):
     serializer_class = LoginSerializer
@@ -198,4 +135,14 @@ class processAPI(generics.GenericAPIView):
         except err:
             print("There was an error while processing")
             return Response({"safe":False})
-        return Response({"safe":True})
+        name = "results_" + req_file.files.name.split('.')[0]
+        print("name is "+ name)
+        shutil.make_archive(name, 'zip', "media/results")
+        name = name + ".zip"
+        if(os.path.exists("media/"+name)):
+            os.remove("media/"+name)
+        shutil.move(name, "media")
+        zip_file = open("media/" + name, 'rb')
+        response = HttpResponse(zip_file, content_type='application/x-zip')
+        response['Content-Disposition'] = 'attachment; filename={name}'.format(name = name)
+        return response

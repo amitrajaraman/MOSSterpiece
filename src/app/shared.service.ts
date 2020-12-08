@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
+import { RequestOptions, ResponseContentType } from '@angular/http';
 
 @Injectable({
   providedIn: 'root'
@@ -116,34 +117,45 @@ export class SharedService {
     return this.http.post(this.APIUrl+'api/files/', val, httpOptions);
   }
 
-  viewFile(path:string): Observable<any>{
-    const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
-    const httpOptions = {
-          headers: headers_object
-        };
-    const x = this.http.get(this.APIUrl+'api/file/?path=' + path, httpOptions);
-    return x;
-  }
+  // viewFile(path:string): Observable<any>{
+  //   const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
+  //   const httpOptions = {
+  //         headers: headers_object
+  //       };
+  //   const x = this.http.post(this.APIUrl+'api/file/?path=' + path, httpOptions);
+  //   return x;
+  // }
 
-  downloadFile(path:string): Observable<any>{
-    const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
-    const httpOptions = {
-          headers: headers_object,
+  // downloadFile(path:string): Observable<any>{
+  //   const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
+  //   const httpOptions = {
+  //         headers: headers_object,
           
-        };
-    console.log(path);
-    const x= this.http.post(
-      this.APIUrl+'api/file/?path=' + path, 
-    { headers_object, responseType: 'blob'});
-    return x;
-  }
+  //       };
+  //   console.log(path);
+  //   const x= this.http.post(
+  //     this.APIUrl+'api/file/?path=' + path, 
+  //   { headers_object, responseType: 'blob'});
+  //   return x;
+  // }
 
   processFile(filename:any){
-    const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
-    const httpOptions = {
-          headers: headers_object
-        };
-    return this.http.post(this.APIUrl+'api/process/', filename, httpOptions);
+    const httpOptions1 = {
+    headers: new HttpHeaders({
+        'Authorization': "token " + this.token.getMessage(),
+        'Content-Type':  'application/json',
+        'Accept': 'application/json',
+    }),
+    responseType: 'blob',
+    requestType: 'application/octet-stream'
+    };
+
+    // const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
+    // const httpOptions = {
+    //       headers: headers_object,
+    //       // responseType: 'arraybuffer'
+    //     };
+    return this.http.post(this.APIUrl+'api/process/', filename, httpOptions1 as any);
   }
 
 }

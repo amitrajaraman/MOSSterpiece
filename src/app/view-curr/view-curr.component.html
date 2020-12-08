@@ -6,8 +6,9 @@
             style="color:red">here</a> to register.
     </div>
 </div>
+
 <ng-template #loggedIn>
-   
+
     <div class="h1">Results</div>
 <div style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2); padding-left: 70px; align-self: center; margin: 40px;"> 
 <div style="font-size: 25px; padding-bottom: 20px; padding-top: 20px;">The pairs of files with the most similarity are: </div>
@@ -19,10 +20,10 @@
     <div class="column">
 <div style="font-size: 25px; padding-bottom: 20px; padding-top: 20px; font-weight: 100;">Most Similar Pairs
     <br><br>
-<img [src]=pic1><br></div></div>
+<img [src]="pic1"><br></div></div>
 <div class="column">
 <div style="font-size: 25px; padding-bottom: 20px; padding-top: 20px; font-weight: 100;" >Degrees of Similarity<br><br>
-<img [src]=pic2><br></div>
+<img [src]="pic2"><br></div>
 </div></div>
 <!--Add two drop down lists here to display similarity between any two files-->
 
@@ -54,4 +55,5 @@
     </form>    
 </div>
 </div>
+
 </ng-template>

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FileService, SharedService } from 'src/app/shared.service';
+import { FileService, ResultService, SharedService } from 'src/app/shared.service';
 import { MessengerService } from '../shared.service';
 import { Router } from '@angular/router';
 import { saveAs } from 'file-saver';
@@ -15,7 +15,7 @@ export class FileUploadComponent implements OnInit {
 
   zip: any;
   download : boolean;
-  constructor(private service:SharedService, public messengerService: MessengerService, private router: Router, private fileService: FileService) { }
+  constructor(private resultService: ResultService, private service:SharedService, public messengerService: MessengerService, private router: Router, private fileService: FileService) { }
 
   ngOnInit(): void {
     this.zip = undefined;
@@ -43,21 +43,17 @@ export class FileUploadComponent implements OnInit {
       this.service.processFile(formdata).subscribe(
         (res)=>
         {
-          if(res["safe"])
-          {
-            //reroute after process is done
-            this.router.navigate(['/upload/view']);
-          }
-          else
-          {
-            window.alert("There was an error processing your files");
-          }
+          const blob = new Blob([res], {
+            type: 'application/zip'
+          });
+          this.resultService.setMessage(blob);
+          // console.log(blob);
+          // const file = res["body"];
+          // console.log(file);
+          this.router.navigate(['/upload/view']);
         },
-        (error)=>
-        {
-          console.log("There was an error while processing")
-        }
       );
+
     }
   }
 

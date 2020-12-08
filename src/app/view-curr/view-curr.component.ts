@@ -3,6 +3,8 @@ import { FileService, MessengerService, SharedService } from '../shared.service'
 import { ResultService } from '../shared.service';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-view-curr',
@@ -14,28 +16,50 @@ export class ViewCurrComponent implements OnInit {
   max:any;
   values:string[];
   files:string[];
-  pic1: string;
-  pic2: string;
+  filename: string;
+  fileData: string;
   all_files:string[];
   all_values:any;
+  pic1: any;
+  pic2: any;
   rep:any;
   show:boolean;
   show_val:any;
-  constructor(public messengerService: MessengerService,public fileService: FileService, public resultservice: ResultService, private http:HttpClient, private service: SharedService) { }
+  constructor(public resultService: ResultService, private sanitizer: DomSanitizer, public messengerService: MessengerService,public fileService: FileService, public resultservice: ResultService, private http:HttpClient, private service: SharedService) { }
 
   async ngOnInit() {
-    //Get the results from the data
-    //this.result = this.resultservice.getMessage();
-    let res = await this.service.viewFile("/results/outpImg.png").toPromise();
-    this.pic1 = res.path
-    res = await this.service.viewFile("/results/outpHeatmap.png").toPromise();
-    this.pic2 = res.path;
-    console.log(this.pic2);
-    this.result = await this.http.get("../../../DjangoAPI/media/results/outpFile.txt");
-    this.max = await this.http.get("../../../DjangoAPI/media/results/top.txt");
-    console.log(this.max);
-    // this.proc();
+    this.fileData = '';
+    await this.unzipping();
+    console.log("Didn't finish unzipping?");
+    console.log(this.result);
+    this.proc();
   }
+
+  async unzipping()
+  {
+    const jsZip = require('jszip');
+    const promises = [];
+    let counter = 0;
+    jsZip.loadAsync(this.resultservice.getMessage()).then((zip) => {
+    const numberOfCallbacks = Object.keys(zip.files).length - 1;
+    console.log(numberOfCallbacks);
+    zip.files["outpImg.png"].async('base64').then((fileData) => { 
+          this.pic1 = this.sanitizer.bypassSecurityTrustUrl(
+            'data:image/png;base64,' + fileData);
+        });
+    zip.files["outpHeatmap.png"].async('base64').then((fileData) => {
+        this.pic2 = this.sanitizer.bypassSecurityTrustUrl(
+            'data:image/png;base64,' + fileData);
+        });
+    zip.files["outpFile.txt"].async('string').then((fileData) => { 
+        this.result = fileData;
+        });
+    zip.files["top.txt"].async('string').then((fileData) => { 
+        this.max = fileData;
+        });
+    });
+  }
+  
 
   form = new FormGroup({
     file1: new FormControl('', Validators.required),
@@ -47,17 +71,11 @@ export class ViewCurrComponent implements OnInit {
   }
   Download(){
     console.log("downloading...");
-    console.log(this.fileService.getMessage());
-    this.service.downloadFile(this.fileService.getMessage()).subscribe(
-      (data:any)=> {
-        // This is hack
-        console.log("here");
-        //  var blob = new Blob([data]);
-        // console.log(blob);
-        // saveAs(blob, 'download.zip');
-      }
-
-    );
+    let data = this.resultService.getMessage();
+    console.log(data);
+    const blob = new Blob([data]);
+    const file = new File([blob], 'data.zip');
+    saveAs(file); 
   }
   submit(){
     console.log(this.form.value.file1);

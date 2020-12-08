@@ -9,11 +9,8 @@ urlpatterns=[
     # url(r'signupreq/([\w{}.-]+)',views.userApi),
 
     url(r'^api/files/', views.fileAPI.as_view()),
-    url(r'^api/file/', views.resultsAPI.as_view()),
     url(r'^api/login/', views.loginAPI.as_view()),
     url(r'^api/logout/', views.logoutAPI.as_view()),
-    url('^api/file/<str:path>', views.resultsAPI.as_view(),
-        {'document root': settings.MEDIA_ROOT}),
     url('^api/files/<str:path>', views.fileAPI.as_view(),
     {'document root': settings.MEDIA_ROOT}),
     url(r'^api/password/', views.changeAPI.as_view()),    
