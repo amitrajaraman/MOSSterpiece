@@ -21,6 +21,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { ViewCurrComponent } from './view-curr/view-curr.component';
 import { PrevresComponent } from './prevres/prevres.component';
+import { WaitingComponent } from './waiting/waiting.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { PrevresComponent } from './prevres/prevres.component';
     ProfileComponent,
     ChangepasswordComponent,
     ViewCurrComponent,
+    WaitingComponent,
   ],
   imports: [
     BrowserModule,

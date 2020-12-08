@@ -29,13 +29,10 @@ export class ViewCurrComponent implements OnInit {
 
   async ngOnInit() {
     this.fileData = '';
-    await this.unzipping();
-    console.log("Didn't finish unzipping?");
-    console.log(this.result);
-    this.proc();
+    this.unzipping();
   }
 
-  async unzipping()
+  unzipping()
   {
     const jsZip = require('jszip');
     const promises = [];
@@ -51,12 +48,21 @@ export class ViewCurrComponent implements OnInit {
         this.pic2 = this.sanitizer.bypassSecurityTrustUrl(
             'data:image/png;base64,' + fileData);
         });
-    zip.files["outpFile.txt"].async('string').then((fileData) => { 
-        this.result = fileData;
-        });
-    zip.files["top.txt"].async('string').then((fileData) => { 
-        this.max = fileData;
-        });
+    Object.keys(zip.files).forEach(function (file) {
+      if(file.split('.')[1]=="txt"){
+        console.log(file);
+        promises.push(zip.file(file).async("string"));
+      }
+    });
+    var that = this;
+    Promise.all(promises).then(function (data) {
+      console.log("----------------------");
+      that.result = data[1];
+      console.log(that.result);
+      that.max = data[0];
+      that.proc();
+    });
+    
     });
   }
   
