@@ -4,10 +4,10 @@
 
 |      Member Name      |                 Contribution to the Project                  |
 | :-------------------: | :----------------------------------------------------------: |
-|    Amit Rajaraman     | Frontend contributions, read-up for core logic implementation |
-| Sudhansh Peddabomma |    Heavy Backend Contribution; login, download and merge conflicts     |
-| Sai Vigna Surapaneni  |  Front end implementation, Styling the website   |
-|    Akash Cherukuri    | Initial Backend and Frontend implementations, Read-up on papers |
+|    Amit Rajaraman     | Heavy contribution to the core logic of the project, and the frontend |
+| Sudhansh Peddabomma |    Heavy Backend Contribution; login, download and token authentication     |
+| Sai Vigna Surapaneni  |  Styling the website, documentation and front end contributions|
+|    Akash Cherukuri    | Contributions to frontend, integration of the core logic and the backend|
 
 
 
@@ -31,17 +31,15 @@ This section is dedicated to explain how to run start the website and the backen
 - Install [this](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf/related?hl=en) extension for chrome and activate it, to allow CORS requests to be passed.
 
 
-
-
-## What has been implemented so far
+## What has been implemented
 
 - A basic framework for the website has been created. 
-
 - Implementation of Logging in and Registering has been done.
-- Implemented uploading of files for a user who has logged in.
-- Basic implementation for downloading a file has been done. 
+- Logging in has been done using sessions, so that refreshing the page doesn't log the user out.
+- Functionality for change password has been implemented.
+- Implemented uploading of files for a user who has logged in. 
 - Core logic-wise, a bag-of-words strategy has been used as placeholder logic, which will be replaced later. Rudimentary Latent Semantic Analysis has been implemented as well (debugging is required, some parts don't work as intended).
-
+- The reults are displayed after the processing is done, and the overall data is represented using a heatmap and a bargraph. The similarity of any two files can be shown by using the drop down lists.
 
 
 ## The Theoretical Aspect
@@ -64,10 +62,17 @@ However, before passing the file to the main LSA part of the code, we pre-proces
 
 * Common pre-processing: We replace contiguous blocks of spaces with a single space and remove all ```;```s.
 
-
-
-## Plans on what to implement in the future
-
-- Create file segmentation in the `upload` and the `output` folder, which would let the code pick out the user's particular files.
-
-- Implement sessions for logged in users, a prototype of the same is present as of now.
+## Using the Website
+ - If you have an account, skip this step. If this is the first time using the website, first register yourself using the `REGISTER` tab, and follow the instructions presented on screen.
+ - Login using the `LOGIN` tab, and enter your credentials. If the entered values are correct, you'll be logged in and get redirected to your profile page.
+ - On the profile page, you'll be able to:
+ 	- **Change your Password :-** This is to change your password, pretty self-explanatory.
+ 	- **Process the file :-** Click on this button to be taken to the `PROCESS` tab.
+ - Upload a **ZIP File** in which the files to be processed are in the first level. The code **WILL NOT** be able to process the zip file if there are folders in it. The code assumes that the zip file is correct, and no sanity check for the zip file has been implemented.
+ - Assuming that the format is correct, after the zipfile has been uploaded, click on process. This will redirect you to a page where you'll have to wait until your files have finished processing. **DO NOT REFRESH THE PAGE HERE**
+ - After the files have been processed, you'll be taken to view the results. Here, you'll have four sections:
+ 	- The top ten pairs of files with the highest correlation are displayed in descending order.
+ 	- A bargraph and a heatmap of the data is shown for easy visualization of the data.
+ 	- Selecting any two files from the dropdown list, and clicking on `Submit` shows the correlation between the correspondng files.
+ 	- `Download` button, which downloads a zip file containing the graphs and the csv of the entire dataset.
+ - After viewing and/or downloading the data, click on `PROCESS` button on the header if you'd like to process another zip file.
