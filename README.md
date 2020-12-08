@@ -74,7 +74,7 @@ However, before passing the file to the main LSA part of the code, we pre-proces
  	- **Change your Password:** This is to change your password, pretty self-explanatory.
  	- **Process the file :-** Click on this button to be taken to the `Process` tab.
  - Upload a **ZIP File** in which the files to be processed are in the first level. The code will NOT be able to process the zip file if there are folders in it. The code assumes that the zip file is correct, and no sanity check for the zip file has been implemented.
- - Assuming that the format is correct, click on `Process` after the zipfile has been uploaded. This will redirect you to a page where you have to wait until your files have finished processing. **DO NOT REFRESH THE PAGE HERE**
+ - Assuming that the format is correct, click on `Process` after the zipfile has been uploaded. This will redirect you to a page where you have to wait until your files have finished processing. **DO NOT REFRESH THE PAGE HERE*.*
  - After the files have been processed, you will be taken to view the results. Here, there are four sections:
  	- The top ten pairs of files with the highest correlation are displayed (in descending order).
  	- A bargraph and a heatmap of the data is shown for easy visualization of the data (if there are not too many files, then the heatmap is also annotated with the degree of similarity).
