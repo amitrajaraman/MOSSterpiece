@@ -46,13 +46,23 @@ This section is dedicated to explain how to run start the website and the backen
 
 ## The Theoretical Aspect
 
-The two strategies we have attempted to implement here are:
-
-* **Naïve Bag of Words strategy**: For each document, a sorted vector of the word occurrences in the file are created. The cosine similarity between two vectors is returned as the degree of plagiarism.
+The main strategy (among other alternate strategies) we have implemented here is:
 
 * **Latent Semantic Analysis**: This is slightly more polished than the Bag of Words strategy. First, an array is created where the *i,j*th entry represents the occurrence of word *j* in the *i*th document. LSA essentially works by detecting the latent similarities between two documents. For example, if the word "dog" and "hound" are used similarly in different documents (say we have the sentence "The dog barked at the car" in one document and "The hound barked at the car" in another document), then it inherently identifies that the two words might mean the same thing. A low-rank approximation of the original array is found by performing Singular Value Decomposition and then taking the appropriate rows/columns. When we do this, it clumps together dimensions (which are words here) that mean similar things. So if we had the words {(dog),(hound),(bed)} in the original document, a low-rank approximation of this could correspond to something like {(1.43\*dog + 0.39\*hound),(bed)}. That is, when words are clumped together, an appropriate weight is given to each word such that it carries latent similarities. After these words are grouped together, the cosine similarity between two vectors (in the low-rank approximation) is returned as the degree of plagiarism between them.
 
-For either method, we begin by creating the array used in LSA. In the first case, we just sort each column individually and find cosine similarity. For the second method, we perform the operations described above to get the degree of similarity.
+We begin by creating the array used in LSA. In the first case, we just sort each column individually and find cosine similarity. For the second method, we perform the operations described above to get the degree of similarity.
+
+However, before passing the file to the main LSA part of the code, we pre-process the code depending on the language it is in:
+
+* C++: This code compiles the code using ```g++```, but terminates after the pre-processing step. This does two things: remove all macros (such as ```#define``` and ```#include```) and replaces them with the raw code in a file. Sending the output to temp creates a large file with this. Now, we don't want the massive amounts of code which are present because of the replacement of the ```#include``` macros - not replacing them results in a file of over 100000 lines. Going through [the official documentation](https://gcc.gnu.org/onlinedocs/cpp/Preprocessor-Output.html) shows that when we start a section caused by a ```#include```, it should be of the form ```# linenum "library name" 1 3``` and ends with ```# linennum "file name" 2```. Using sed to delete all the intermediate lines, we get what we want. In case the code does not compile, we just use a ```comment_remover_cpp``` function to remove all comments.
+
+* Java: Since the comment format in Java is similar to that of C++, we use the same ```comment_remover_cpp``` function to remove all comments.
+
+* C: We follow the same process as C++ but we use ```gcc``` instead of ```g++```.
+
+* Python: We use a ```comment_remover_py``` function to remove all comments from a Python source file.
+
+* Common pre-processing: We replace contiguous blocks of spaces with a single space and remove all ```;```s.
 
 
 
@@ -61,7 +71,3 @@ For either method, we begin by creating the array used in LSA. In the first case
 - Create file segmentation in the `upload` and the `output` folder, which would let the code pick out the user's particular files.
 
 - Implement sessions for logged in users, a prototype of the same is present as of now.
-
-- As can be guessed from the group name, we plan to implement the algorithm used in the MOSS software (a modified simpler version in case it becomes too challenging to write the actual thing). We have started reading the paper that describes the ideas behind the MOSS algorithm and have also written a brief summary of what is be done as part of the algorithm [here](https://amitrajaraman.github.io/blog/moss).
-
-  
