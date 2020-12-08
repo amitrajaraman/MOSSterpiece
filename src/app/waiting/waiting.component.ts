@@ -9,14 +9,16 @@ import { Router } from '@angular/router'
   styleUrls: ['./waiting.component.scss']
 })
 export class WaitingComponent implements OnInit {
+  /**variable to store the file name */
   filename:string;
+  /**to check if the file is a zipfile */
   zip: string;
   constructor(private service:SharedService, private resultService:ResultService, public messengerService: MessengerService, private router: Router, private fileService: FileService) {  }
 
   async ngOnInit(){
     this.Process();
   }
-
+  /**Processing function that will redirect to view results page. */
   Process(){
     this.zip = this.fileService.getMessage();
     if(this.zip==undefined){

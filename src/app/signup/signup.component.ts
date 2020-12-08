@@ -9,12 +9,17 @@ import { MessengerService, SharedService } from 'src/app/shared.service'
 })
 
 export class SignupComponent implements OnInit {
-
+  /**Form field for first name */
   form_firstname = new FormControl('');
+  /**Form field for last name */
   form_lastname = new FormControl('');
+  /**Form field for username */
   form_username = new FormControl('');
+  /**Form field for email */
   form_email = new FormControl('');
+  /**Form field for password */
   form_password = new FormControl('');
+  /**Form field to confirm password */
   form_confirmpw = new FormControl('');
 
   constructor(private service:SharedService, public messengerService:MessengerService) { }
@@ -22,7 +27,7 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     
   }
-
+  /**method to register user if the conditions are satisfied, i.e. passwords match, email/username is not taken */
   register():void{
 
     if(this.form_password.value != this.form_confirmpw.value){
