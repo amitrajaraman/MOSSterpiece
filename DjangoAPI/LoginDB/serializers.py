@@ -5,6 +5,9 @@ import json
 from LoginDB.models import Files
 
 class UserSerializer(serializers.ModelSerializer):
+"""
+Serializers for storing user's data
+"""
     class Meta:
         model = User
         fields = ('id', 'first_name', 'last_name', 'username', 'email', 'password')
@@ -18,11 +21,17 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class LoginSerializer(serializers.Serializer):
+    """
+    Stored the logged in user's data
+    """
     username = serializers.CharField()
     password = serializers.CharField()
     
 
     def validate(self, data):
+        """
+        validate() authenticates the user and is used to check whether the person is valid or not.
+        """
         user = authenticate(**data)
         if user is not None:
             return user
@@ -31,6 +40,9 @@ class LoginSerializer(serializers.Serializer):
 
 
 class ChangePasswordSerializer(serializers.Serializer):
+    """
+    Used for changing the passowords.
+    """
     model = User
     oldpassword = serializers.CharField(required=True)
     password = serializers.CharField(required=True)

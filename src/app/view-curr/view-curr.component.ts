@@ -27,6 +27,7 @@ export class ViewCurrComponent implements OnInit {
   show_val:any;
   constructor(public resultService: ResultService, private sanitizer: DomSanitizer, public messengerService: MessengerService,public fileService: FileService, public resultservice: ResultService, private http:HttpClient, private service: SharedService) { }
 
+
   async ngOnInit() {
     this.fileData = '';
     this.unzipping();
@@ -82,6 +83,7 @@ export class ViewCurrComponent implements OnInit {
     const file = new File([blob], 'data.zip');
     saveAs(file); 
   }
+
   submit(){
     console.log(this.form.value.file1);
     console.log(this.form.value.file2);

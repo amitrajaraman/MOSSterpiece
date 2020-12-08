@@ -117,28 +117,6 @@ export class SharedService {
     return this.http.post(this.APIUrl+'api/files/', val, httpOptions);
   }
 
-  // viewFile(path:string): Observable<any>{
-  //   const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
-  //   const httpOptions = {
-  //         headers: headers_object
-  //       };
-  //   const x = this.http.post(this.APIUrl+'api/file/?path=' + path, httpOptions);
-  //   return x;
-  // }
-
-  // downloadFile(path:string): Observable<any>{
-  //   const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
-  //   const httpOptions = {
-  //         headers: headers_object,
-          
-  //       };
-  //   console.log(path);
-  //   const x= this.http.post(
-  //     this.APIUrl+'api/file/?path=' + path, 
-  //   { headers_object, responseType: 'blob'});
-  //   return x;
-  // }
-
   processFile(filename:any){
     const httpOptions1 = {
     headers: new HttpHeaders({
@@ -150,11 +128,6 @@ export class SharedService {
     requestType: 'application/octet-stream'
     };
 
-    // const headers_object =  new HttpHeaders().set("Authorization", "token " + this.token.getMessage()); 
-    // const httpOptions = {
-    //       headers: headers_object,
-    //       // responseType: 'arraybuffer'
-    //     };
     return this.http.post(this.APIUrl+'api/process/', filename, httpOptions1 as any);
   }
 

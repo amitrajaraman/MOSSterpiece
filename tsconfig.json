@@ -16,6 +16,11 @@
     "lib": [
       "es2018",
       "dom"
-    ]
-  }
+    ],
+    
+  },
+  "exclude": [
+    "assets",
+    "/app/assets/**/*"
+  ]
 }
