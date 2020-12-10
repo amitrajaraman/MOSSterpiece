@@ -447,22 +447,23 @@ if __name__ == "__main__":
     for pos in range(numDisp):
         # Find the current highest similarity and immediately set it to 0 so that the same value is not returned again
         # in future iterations
-        dicTop[finalRes[np.argmax(finalRes)]] = str(filenames[np.argmax(finalRes) % numFiles]) + " and " + str(filenames[np.argmax(finalRes) // numFiles])
+        dicTop[str(filenames[np.argmax(finalRes) % numFiles]) + " and " + str(filenames[np.argmax(finalRes) // numFiles])] = finalRes[np.argmax(finalRes)]
         finalRes[np.argmax(finalRes)] = 0
     ## List that stores the highest degrees of similarity
-    topCoeffs = [key for key in sorted(dicTop)]
+    topNames = [key for key in sorted(dicTop)]
     ## List that stores the names of the most similar pairs of files
-    topNames = [dicTop[key] for key in topCoeffs]
+    topCoeffs = [dicTop[key] for key in topNames]
+    topCoeffs, topNames = (list(t) for t in zip(*sorted(zip(topCoeffs, topNames))))
 
     # Reverse order so it appears correctly on website
     topCoeffs = topCoeffs[::-1]
-    topNames = topNames[::-1]    
+    topNames = topNames[::-1]
     with open(top, 'w') as f:
-        for i in topCoeffs:
-            if(i==topCoeffs[-1]):
-                f.write(str(i))
+        for i in range(len(topCoeffs)):
+            if(i==len(topCoeffs)-1):
+                f.write(str(topCoeffs[i]))
             else:
-                f.write(str(i)+",")
+                f.write(str(topCoeffs[i])+",")
         f.write("\n")
         for i in topNames:
             if(i==topNames[-1]):
